@@ -1,0 +1,51 @@
+experiment_id: D-Seg-08
+task: segment
+objective: manual_polygon_domain_adaptation_with_public_positive_and_healthy_negative_replay
+model: yolo11m-seg
+initialization: D-Seg-07_yolo11m_manual_polygon_s42_best
+data: yolo_dataset_dseg08_replay_v1/dataset.yaml
+retention_data: yolo_dataset_dseg08_replay_v1/dataset_retention.yaml
+
+source_policy:
+  manual_positive_train: 326
+  public_positive_replay_train: 326
+  bubt_healthy_training_only_negative: 82
+  primary_validation_images: 38
+  retention_validation_images: 191
+  primary_train_val_exact_sha256_overlap: 0
+  primary_train_val_phash_distance_le_4: 0
+  retention_train_val_exact_sha256_overlap: 0
+  retention_train_val_phash_distance_le_4: 0
+  test_images_used: 0
+  blind_test_used: false
+  external_test_status: LOCKED_NOT_ACCESSED
+
+imgsz: 896
+batch: 4
+epochs: 300
+patience: 80
+optimizer: AdamW
+lr0: 0.00002
+lrf: 0.01
+cos_lr: true
+warmup_epochs: 2
+close_mosaic: 0
+save_period: 10
+seed: 42
+deterministic: true
+workers: 2
+
+augmentation:
+  mosaic: 0.0
+  mixup: 0.0
+  degrees: 3.0
+  translate: 0.03
+  scale: 0.10
+  shear: 0.25
+  perspective: 0.0001
+  fliplr: 0.5
+  flipud: 0.0
+  hsv_h: 0.01
+  hsv_s: 0.30
+  hsv_v: 0.20
+  copy_paste: 0.0

@@ -1,0 +1,45 @@
+experiment_id: D-Seg-06
+task: segment
+objective: one_class_wound_small_and_multi_instance_refinement
+model: yolo11m-seg
+initialization: D-Seg-05_yolo11m_fuseg_azh_bubt_s42_best
+data: yolo_dataset_dseg06_small_multi_v1/dataset.yaml
+
+source_policy:
+  included: [FUSeg_development, AZH_official_train_only, BUBT_healthy_training_only]
+  focus_sampling: one_extra_entry_for_any_small_or_multi_instance_training_image
+  small_area_fraction_max: 0.002819061279296875
+  validation_inventory: unchanged_191_image_fuseg_development_split
+  wsnet_images_used: 0
+  external_test_images_used: 0
+  external_test_status: locked_not_accessible_during_training_or_tuning
+
+imgsz: 896
+batch: 4
+epochs: 180
+patience: 60
+optimizer: AdamW
+lr0: 0.00005
+lrf: 0.01
+cos_lr: true
+warmup_epochs: 2
+close_mosaic: 0
+save_period: 10
+seed: 42
+deterministic: true
+workers: 2
+
+augmentation:
+  mosaic: 0.0
+  mixup: 0.0
+  degrees: 3.0
+  translate: 0.03
+  scale: 0.10
+  shear: 0.25
+  perspective: 0.0001
+  fliplr: 0.5
+  flipud: 0.0
+  hsv_h: 0.01
+  hsv_s: 0.30
+  hsv_v: 0.20
+  copy_paste: 0.0

@@ -1,0 +1,7 @@
+path: C:\Users\milo9\Desktop\智慧型傷口分級與照護對應系統\yolo_dataset_wsnet_official_v1
+train: images/train
+val: images/val
+test: images/test
+nc: 1
+names:
+  0: Wound

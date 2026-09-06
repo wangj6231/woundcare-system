@@ -1,0 +1,50 @@
+experiment_id: D-Seg-07
+task: segment
+objective: one_class_wound_manual_polygon_domain_adaptation
+model: yolo11m-seg
+initialization: D-Seg-06_yolo11m_small_multi_s42_best
+data: yolo_dataset_dseg07_yasin_wound_seg_v2/dataset.yaml
+
+source_policy:
+  source: Yasin_Pratomo_wound_dataset_development_only
+  original_md5_groups: 383
+  included_groups: 364
+  qc_excluded_groups: 19
+  train_images: 326
+  validation_images: 38
+  cross_split_exact_md5: 0
+  cross_split_phash_distance_le_4: 0
+  classification_dataset_modified: false
+  test_images_used: 0
+  blind_test_used: false
+  external_test_status: LOCKED_NOT_ACCESSED
+
+imgsz: 896
+batch: 4
+epochs: 300
+patience: 100
+optimizer: AdamW
+lr0: 0.00005
+lrf: 0.01
+cos_lr: true
+warmup_epochs: 2
+close_mosaic: 0
+save_period: 10
+seed: 42
+deterministic: true
+workers: 2
+
+augmentation:
+  mosaic: 0.0
+  mixup: 0.0
+  degrees: 3.0
+  translate: 0.03
+  scale: 0.10
+  shear: 0.25
+  perspective: 0.0001
+  fliplr: 0.5
+  flipud: 0.0
+  hsv_h: 0.01
+  hsv_s: 0.30
+  hsv_v: 0.20
+  copy_paste: 0.0

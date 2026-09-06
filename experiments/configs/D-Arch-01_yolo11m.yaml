@@ -1,0 +1,16 @@
+task: detect
+model: yolo11m.pt
+data: yolo_dataset_wsnet_official_v1/dataset.yaml
+imgsz: 640
+batch: 4
+epochs: 5
+optimizer: auto
+lr0: 0.01
+seed: 42
+deterministic: true
+workers: 0
+patience: 3
+source: WSNet_official
+source_revision: bdcc1e1cef607bfd7a4f98fc28f31a638a0e0ca9
+license: CC-BY-NC-4.0
+split_policy: exact_image_hash_grouped

@@ -1,0 +1,12 @@
+# No-domain professor preview. The application is reachable only from this
+# computer; cloudflared creates the temporary HTTPS URL separately.
+services:
+  woundcare:
+    build: .
+    restart: unless-stopped
+    env_file: .env.quick-preview
+    volumes:
+      - ./models:/models:ro
+      - ./professor_preview_data:/data
+    ports:
+      - "127.0.0.1:8000:8000"

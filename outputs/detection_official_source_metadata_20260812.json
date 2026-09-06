@@ -1,0 +1,33 @@
+{
+  "metadata_date": "2026-08-12",
+  "network_access": "approved_metadata_only",
+  "sources": {
+    "fuseg": {
+      "url": "https://github.com/uwm-bigdata/wound-segmentation",
+      "head_commit": "42a272dfe0679f20675e826385925cb7562934b6",
+      "status": "METADATA_VERIFIED",
+      "license_status": "UPSTREAM_LICENSE_NOT_STATED"
+    },
+    "wsnet_code": {
+      "url": "https://github.com/subbareddy248/WSNET",
+      "head_commit": "cd407a9b877125352f95954bab3b015a8c58477c",
+      "status": "METADATA_VERIFIED",
+      "license_status": "MIT_CODE"
+    },
+    "wsnet_dataset": {
+      "url": "https://huggingface.co/datasets/subbareddyoota/wseg_dataset",
+      "revision": "bdcc1e1cef607bfd7a4f98fc28f31a638a0e0ca9",
+      "last_modified": "2025-11-26T13:33:25+00:00",
+      "license": "cc-by-nc-4.0",
+      "status": "METADATA_VERIFIED"
+    },
+    "medetec": {
+      "url": "https://medetec.co.uk/files/medetec-images.html",
+      "access_date": "2026-08-12",
+      "status": "TERMS_PAGE_VERIFIED",
+      "license_status": "ACADEMIC_USE_WITH_ATTRIBUTION_CONDITIONAL"
+    }
+  },
+  "formal_training_gate": "BLOCKED",
+  "reason": "Metadata and public terms are recorded, but image download/archive hashes and source-specific publication/derived-label decisions are not yet complete."
+}

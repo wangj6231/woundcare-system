@@ -1,0 +1,9 @@
+Wound Class,Test Support (n),Correct,Recall (%),Precision (%),F1-Score (%),Misclassifications
+Abrasions,9,9,100.00%,100.00%,100.00%,None (9/9 correct)
+Bruises,13,12,92.31%,100.00%,96.00%,1 image predicted as Stab_wound
+Burns,7,7,100.00%,100.00%,100.00%,None (7/7 correct)
+Cut,5,5,100.00%,100.00%,100.00%,None (5/5 correct)
+Ingrown_nails,4,4,100.00%,100.00%,100.00%,None (4/4 correct)
+Laceration,7,6,85.71%,100.00%,92.31%,1 image predicted as Stab_wound
+Stab_wound,3,3,100.00%,60.00%,75.00%,3/3 detected (+2 FP from Bruises/Laceration)
+Overall / Macro,48,46,96.86%,94.29%,94.76%,Total Errors: 2 / 48 (4.17%)

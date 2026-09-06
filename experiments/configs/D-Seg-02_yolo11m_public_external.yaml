@@ -1,0 +1,60 @@
+experiment_id: D-Seg-02
+task: segment
+objective: one_class_wound_localization
+model: yolo11m-seg.pt
+
+# Created only after source/license/hash audit of WoundSeg + FUSeg.
+data: yolo_dataset_public_wound_combined_v1/dataset.yaml
+external_test_dataset: CO2Wounds-V2
+external_test_policy: locked_not_accessible_during_training_or_tuning
+
+imgsz: 640
+batch: 2
+epochs: 300
+patience: 80
+optimizer: AdamW
+lr0: 0.0002
+lrf: 0.01
+cos_lr: true
+warmup_epochs: 5
+close_mosaic: 30
+save_period: 10
+seed: 42
+deterministic: true
+workers: 2
+
+augmentation:
+  mosaic: 0.15
+  mixup: 0.0
+  degrees: 5.0
+  translate: 0.05
+  scale: 0.25
+  shear: 1.0
+  perspective: 0.0005
+  fliplr: 0.5
+  flipud: 0.0
+  hsv_h: 0.015
+  hsv_s: 0.5
+  hsv_v: 0.3
+
+split_policy:
+  # The public releases do not expose verifiable patient identifiers. Keep the
+  # publishers' train/validation split and enforce exact/perceptual hash groups.
+  internal_validation: official_source_splits_plus_hash_group_isolation
+  patient_grouping_claimed: false
+  augmented_derivatives_follow_parent: true
+  exact_hash_overlap_allowed: false
+  perceptual_duplicate_overlap_allowed: false
+
+primary_metric: box_mAP50
+secondary_metrics:
+  - box_mAP50-95
+  - box_precision
+  - box_recall
+  - mask_mAP50
+  - mask_mAP50-95
+
+target_gate:
+  external_box_mAP50: 0.90
+  external_box_recall: 0.90
+  external_box_mAP50-95: 0.50

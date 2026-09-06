@@ -1,0 +1,52 @@
+experiment_id: D-Seg-03
+task: segment
+objective: one_class_wound_localization_fuseg_only
+model: yolo11m-seg.pt
+initialization: coco_pretrained_no_wsnet_checkpoint
+data: yolo_dataset_fuseg_seg_v2/dataset.yaml
+
+source_policy:
+  included: FUSeg_official_labeled_train_validation
+  wsnet_images_used: 0
+  fuseg_unlabeled_test_used: 0
+  external_test_status: locked_not_accessible_during_training_or_tuning
+
+imgsz: 768
+batch: 4
+epochs: 300
+patience: 80
+optimizer: AdamW
+lr0: 0.0005
+lrf: 0.01
+cos_lr: true
+warmup_epochs: 5
+close_mosaic: 30
+save_period: 10
+seed: 42
+deterministic: true
+workers: 2
+
+augmentation:
+  mosaic: 0.10
+  mixup: 0.0
+  degrees: 5.0
+  translate: 0.05
+  scale: 0.20
+  shear: 0.5
+  perspective: 0.0002
+  fliplr: 0.5
+  flipud: 0.0
+  hsv_h: 0.01
+  hsv_s: 0.4
+  hsv_v: 0.25
+  copy_paste: 0.0
+
+development_gate:
+  box_mAP50: 0.90
+  box_recall: 0.85
+  mask_mAP50: 0.90
+
+external_gate_after_model_lock:
+  box_mAP50: 0.90
+  box_recall: 0.90
+  box_mAP50_95: 0.50
