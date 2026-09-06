@@ -1,0 +1,37 @@
+experiment:
+  id: C-Arch-04
+  name: vit_s16
+  type: classification
+
+model:
+  name: vit_s_16
+  framework: torch
+
+dataset:
+  path: yolo_wound_cls_dataset_v3
+  version: v3
+  num_classes: 7
+  data_source: "Wound_dataset+Oversampling+Rotation"
+
+training:
+  epochs: 150
+  batch: 16
+  imgsz: 224
+  seed: 42
+
+optimizer:
+  name: adamw
+  lr0: 0.0001
+  weight_decay: 0.01
+
+augmentation:
+  fliplr: 0.5
+  flipud: 0.5
+  degrees: 45.0
+  scale: 0.5
+  erasing: 0.4
+
+evaluation:
+  metrics: [accuracy, top5, macro_f1, weighted_f1, confusion_matrix, roc_auc]
+
+notes: "Tier1 Architecture Ablation - ViT-S/16 Transformer baseline (Tier2 priority)"

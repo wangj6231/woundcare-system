@@ -1,0 +1,84 @@
+__pycache__/
+*.pyc
+.env
+secret.key
+healthcare.db
+professor_preview_data/
+models/
+runs/
+wandb/
+
+# Datasets
+yolo_dataset/
+yolo_dataset_wound/
+augmented_dataset/
+cropped_wounds_dataset/
+test_dataset/
+
+# Node modules (from React)
+wound_nurse_app/node_modules/
+wound_nurse_app/dist/
+wound_nurse_app/dist-validation/
+wound_nurse_app/dist-validation-final/
+
+# Ignore large YOLO base weights if you want, but best.pt should be kept
+# yolov8s.pt
+# yolov8n.pt
+
+# Public-repository safety: local secrets, databases, credentials and weights
+*.key
+*.pem
+*.p12
+*.pfx
+*.sqlite
+*.sqlite3
+*.db
+*.docx
+*.onnx
+*.safetensors
+*.pt
+*.zip
+.env.*
+!.env.example
+!.env.*.example
+
+# Local or licensed data and generated experiment artifacts.  Curated text
+# reports may still be force-added after a manual privacy/licence review.
+Wound_dataset/
+yolo_dataset_*/
+external_datasets/
+official_*_sources_*/
+clinical_*/
+paired_cascade_manual_bbox_*/
+Wound_AI_Detection*/
+runs/
+tmp/
+work/
+outputs/segmentation/
+outputs/cascade_automatic/
+outputs/clinical_detection/
+experiments/results/raw/
+experiments/results/detection/
+experiments/results/detection_groupkfold/
+experiments/results/segmentation/
+
+# Annotation packages may contain clinical images even when filenames are
+# anonymized. Keep only their instructions/manifests after manual review.
+docker/**/annotation_package/images/
+docker/**/annotation_package/labels/
+docker/**/annotation_package/
+docker/**/label_studio_data/
+*.log
+
+# Keep the working tree's large experiment evidence local by default.
+outputs/
+experiments/results/
+experiments/manifests/
+experiments/experiment_log.csv
+docs/figures/
+.vscode/
+docs/dataset_licenses/
+dseg*_review_project_*/
+dseg*_yasin_wound_annotation_*/
+yolo_wound_cls_dataset_*/
+wound_nurse_app/dist-*/

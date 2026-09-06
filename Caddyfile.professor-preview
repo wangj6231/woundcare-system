@@ -1,0 +1,4 @@
+{$WOUNDCARE_PUBLIC_HOST} {
+    encode zstd gzip
+    reverse_proxy woundcare:8000
+}

@@ -1,0 +1,37 @@
+experiment:
+  id: C-Arch-06
+  name: yolov8s_cls
+  type: classification
+
+model:
+  name: yolov8s-cls.pt
+  framework: ultralytics
+
+dataset:
+  path: yolo_wound_cls_dataset_v3
+  version: v3
+  num_classes: 7
+  data_source: "Wound_dataset+Oversampling+Rotation"
+
+training:
+  epochs: 150
+  batch: 16
+  imgsz: 224
+  seed: 42
+
+optimizer:
+  name: auto
+  lr0: 0.01
+  weight_decay: 0.0005
+
+augmentation:
+  fliplr: 0.5
+  flipud: 0.5
+  degrees: 45.0
+  scale: 0.5
+  erasing: 0.4
+
+evaluation:
+  metrics: [accuracy, top5, macro_f1, weighted_f1, confusion_matrix, roc_auc]
+
+notes: "Tier1 Architecture Ablation - YOLOv8s-cls (larger YOLO, scalability test)"

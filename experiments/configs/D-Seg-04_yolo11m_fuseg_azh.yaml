@@ -1,0 +1,43 @@
+experiment_id: D-Seg-04
+task: segment
+objective: one_class_wound_localization_fuseg_azh_curriculum
+model: yolo11m-seg
+initialization: D-Seg-03_yolo11m_fuseg_only_s42_best
+data: yolo_dataset_fuseg_azh_seg_v1/dataset.yaml
+
+source_policy:
+  included: [FUSeg_development, AZH_official_train_only]
+  wsnet_images_used: 0
+  fuseg_test_images_used: 0
+  azh_test_images_used: 0
+  external_test_status: locked_not_accessible_during_training_or_tuning
+
+imgsz: 768
+batch: 4
+epochs: 300
+patience: 80
+optimizer: AdamW
+lr0: 0.0002
+lrf: 0.01
+cos_lr: true
+warmup_epochs: 3
+close_mosaic: 30
+save_period: 10
+seed: 42
+deterministic: true
+workers: 2
+
+augmentation:
+  mosaic: 0.10
+  mixup: 0.0
+  degrees: 5.0
+  translate: 0.05
+  scale: 0.20
+  shear: 0.5
+  perspective: 0.0002
+  fliplr: 0.5
+  flipud: 0.0
+  hsv_h: 0.01
+  hsv_s: 0.4
+  hsv_v: 0.25
+  copy_paste: 0.0

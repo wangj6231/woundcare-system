@@ -1,0 +1,23 @@
+{
+  "status": "PASS_DSEG07_DOCKER_PACKAGE_READY",
+  "package": "C:\\Users\\milo9\\Desktop\\智慧型傷口分級與照護對應系統\\docker\\D-Seg-07_LabelStudio_Docker_20260823",
+  "docker_image": "heartexlabs/label-studio:1.23.0@sha256:20cec817e63144adec9f23d699bf4f33ce4249a56eb183ae4853d20fbd10fd93",
+  "docker_image_tag": "1.23.0",
+  "docker_image_amd64_manifest_digest": "sha256:20cec817e63144adec9f23d699bf4f33ce4249a56eb183ae4853d20fbd10fd93",
+  "host_binding": "127.0.0.1:8083",
+  "development_images": 383,
+  "annotation_tasks": 383,
+  "lineage_records": 720,
+  "unique_md5_groups": 383,
+  "read_only_annotation_mount": true,
+  "persistent_database_mount": true,
+  "invented_annotations": 0,
+  "test_images_used": 0,
+  "blind_test_used": false,
+  "external_test_status": "LOCKED_NOT_ACCESSED",
+  "inventory_sha256": {
+    "tasks": "b17fafdb1d9760a17a5ac993a9e95883413a58f10dcdf76c7b2988a3ae5db905",
+    "groups": "946c3167479ac80788085effbf37d70f6592a13c7f0c9924981cc4150a61910b",
+    "lineage": "c2449eaded170ad02c330bf7dec4c23ab38d862af9d76ac31922dc6e870cc677"
+  }
+}

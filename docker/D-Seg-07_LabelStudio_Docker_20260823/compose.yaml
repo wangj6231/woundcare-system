@@ -1,0 +1,26 @@
+name: dseg07-label-studio
+
+services:
+  label-studio:
+    image: heartexlabs/label-studio:1.23.0@sha256:20cec817e63144adec9f23d699bf4f33ce4249a56eb183ae4853d20fbd10fd93
+    container_name: dseg07-label-studio
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${LABEL_STUDIO_PORT:-8083}:8080"
+    environment:
+      LABEL_STUDIO_LOCAL_FILES_SERVING_ENABLED: "true"
+      LABEL_STUDIO_LOCAL_FILES_DOCUMENT_ROOT: /label-studio/files
+      LABEL_STUDIO_HOST: "http://localhost:${LABEL_STUDIO_PORT:-8083}"
+      CSRF_TRUSTED_ORIGINS: "http://localhost:${LABEL_STUDIO_PORT:-8083}"
+    volumes:
+      - ./label_studio_data:/label-studio/data
+      - ./annotation_package:/label-studio/files:ro
+      - ./exports:/label-studio/exports
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/user/login/', timeout=5)"]
+      interval: 15s
+      timeout: 8s
+      retries: 20
+      start_period: 45s

@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pydantic
+ultralytics
+opencv-python-headless
+numpy
+cryptography
+bcrypt
+python-multipart
