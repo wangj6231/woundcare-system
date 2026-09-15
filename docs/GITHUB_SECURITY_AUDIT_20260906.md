@@ -6,7 +6,9 @@ Repository：`https://github.com/wangj6231/woundcare-system`
 
 ## 結論
 
-已完成本次憑證處理與公開 Git 歷史重置。曾出現於公開歷史的舊 `secret.key` 已停用；本機 `healthcare.db` 中的加密欄位已改用新密鑰重新加密。遠端 `main` 與 `agent/professor-review-package` 已指向同一個不含舊歷史的新根提交。
+2026-09-15補充界線：本文件下列掃描及權限數字是9/6紀錄，不是今日全平台重新認證。舊SHA與PR ref當時仍可存取，Support工單 #4732924 已送出，但尚未取得本次可驗證的清除完成證據。舊密鑰必須永久視為已外洩；各部署是否完成換key另須確認。
+
+9/6已完成本機憑證處理與兩個公開分支的歷史重置；本機 `healthcare.db` 中的加密欄位已改用新密鑰重新加密。當時遠端 `main` 與 `agent/professor-review-package` 指向同一個不含舊歷史的新根提交，**不代表GitHub伺服器上所有舊物件或快取已刪除**。
 
 從 GitHub 全新下載的裸倉庫已完成二次掃描：可達歷史只有 1 個提交，`secret.key`、`healthcare.db`、`.env` 實值檔、私鑰檔與常見 API token 格式均為 0 命中。
 
@@ -16,7 +18,7 @@ Repository：`https://github.com/wangj6231/woundcare-system`
 2. 產生新 Fernet key，並在 SQLite transaction 內重新加密 27 個非空白欄位，包含 6 個舊版明文欄位。
 3. 驗證 27/27 加密欄位均能使用新密鑰解密，SQLite `integrity_check` 為 `ok`。
 4. 以當前已去除敏感檔的檔案樹建立新根提交，強制更新兩個公開分支。
-5. 確認遠端無 tag，兩個 branch 與既有 Pull Request ref 均只指向清理後提交。
+5. 確認當時遠端無 tag，兩個 branch 指向清理後提交；既有 Pull Request ref／舊SHA的伺服器清除仍交由Support處理，不列為完成。
 6. 確認 GitHub Secret Scanning 與 Push Protection 為啟用狀態。
 
 ## 權限與秘密設定檢查

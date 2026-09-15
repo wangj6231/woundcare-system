@@ -1,0 +1,1008 @@
+{
+  "generated_utc": "2026-09-15T15:41:11.619175+00:00",
+  "scope": "aggregates only; stored metrics are evidence, not independent certification",
+  "dataset_counts": [
+    {
+      "dataset": "yolo_dataset_dseg06_small_multi_v1",
+      "file_counts": {
+        "train": 2439,
+        "val": 191
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "yolo_dataset_dseg07_yasin_wound_seg_v1",
+      "file_counts": {
+        "train": 329,
+        "val": 38
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "yolo_dataset_dseg07_yasin_wound_seg_v2",
+      "file_counts": {
+        "train": 326,
+        "val": 38
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "yolo_dataset_dseg08_replay_v1",
+      "file_counts": {
+        "train": 734,
+        "val": 38
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "yolo_dataset_fuseg_azh_bubt_seg_v1",
+      "file_counts": {
+        "train": 1899,
+        "val": 191
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "yolo_dataset_fuseg_azh_seg_v1",
+      "file_counts": {
+        "train": 1587,
+        "val": 191
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "yolo_dataset_fuseg_azh_seg_v1.failed_build_20260821",
+      "file_counts": {
+        "train": 1405,
+        "val": 191
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "yolo_dataset_fuseg_seg_v2",
+      "file_counts": {
+        "train": 771,
+        "val": 191
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "yolo_dataset_public_wound_combined_v1",
+      "file_counts": {
+        "train": 2394,
+        "val": 595
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "yolo_dataset_wsnet_official_v1",
+      "file_counts": {
+        "train": 1894,
+        "val": 412,
+        "test": 380
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "yolo_dataset_wsnet_seg_aug_v1",
+      "file_counts": {
+        "train": 1
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "yolo_dataset_wsnet_seg_aug_v2",
+      "file_counts": {
+        "train": 55
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "yolo_dataset_wsnet_seg_aug_v3",
+      "file_counts": {
+        "train": 7380,
+        "val": 461
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "yolo_dataset_wsnet_seg_aug_v4",
+      "file_counts": {
+        "train": 7380,
+        "val": 461
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "yolo_dataset_wsnet_seg_v1",
+      "file_counts": {
+        "train": 1845,
+        "val": 461
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "yolo_dataset_wsnet_unionbox_test_gt_v1",
+      "file_counts": {
+        "test": 380
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "yolo_dataset_wsnet_unionbox_v1",
+      "file_counts": {
+        "train": 1845,
+        "val": 461
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "yolo_wound_cls_dataset_v3",
+      "file_counts": {
+        "train": 679,
+        "val": 41,
+        "test": 48
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "clinical_detection_isolated_20260812",
+      "file_counts": {
+        "train": 130,
+        "val": 40,
+        "test": 7
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "clinical_seg_candidate_20260820",
+      "file_counts": {
+        "train": 130,
+        "val": 40
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "outputs/isic_fuseg_pretrain_smoke_20260914/isic_dataset",
+      "file_counts": {
+        "train": 1800,
+        "val": 200
+      },
+      "count_only_no_pixels_read": true
+    },
+    {
+      "dataset": "outputs/isic_fuseg_pretrain_smoke_20260914/fuseg_dataset",
+      "file_counts": {
+        "train": 771,
+        "val": 191
+      },
+      "count_only_no_pixels_read": true
+    }
+  ],
+  "historical_segmentation": [
+    {
+      "source": "outputs/segmentation/D-Seg-02_yolo11m_public_wound_s42_summary.json",
+      "sha256": "dd9b0059582c794c80c71b047bc0294a13044ac303be7b2e528c1dfaafafb918",
+      "values": {
+        "status": "PASS_INTERNAL_VALIDATION",
+        "experiment_id": "D-Seg-02",
+        "train_images": 2394,
+        "val_images": 595,
+        "metrics": {
+          "box_precision": 0.6653700982739749,
+          "box_recall": 0.5299213967399332,
+          "box_mAP50": 0.5892201723282127,
+          "box_mAP50_95": 0.3356154351574886,
+          "mask_precision": 0.6905546351832603,
+          "mask_recall": 0.482311320754717,
+          "mask_mAP50": 0.5576027106415928,
+          "mask_mAP50_95": 0.29792730772791903
+        },
+        "test_images_used": 0
+      }
+    },
+    {
+      "source": "outputs/segmentation/D-Seg-03_yolo11m_fuseg_only_s42_summary.json",
+      "sha256": "60e94c818e9353fc09d6244b192bd8707181462100dcd1488819c6919651ca61",
+      "values": {
+        "status": "PASS_FUSEG_ONLY_INTERNAL_VALIDATION",
+        "experiment_id": "D-Seg-03",
+        "train_images": 771,
+        "val_images": 191,
+        "metrics": {
+          "box_precision": 0.9339476168861525,
+          "box_recall": 0.8215767634854771,
+          "box_mAP50": 0.9090090439588742,
+          "box_mAP50_95": 0.7066720949403648,
+          "mask_precision": 0.9245138025741712,
+          "mask_recall": 0.8132780082987552,
+          "mask_mAP50": 0.9006852690929645,
+          "mask_mAP50_95": 0.6722316776205953
+        },
+        "test_images_used": 0
+      }
+    },
+    {
+      "source": "outputs/segmentation/D-Seg-04_yolo11m_fuseg_azh_s42_summary.json",
+      "sha256": "f4b5255c55b580c300155d8df624c21a103fd7915aee68c91530c7924058972c",
+      "values": {
+        "status": "PASS_INTERNAL_DEVELOPMENT_VALIDATION",
+        "stage": "D-Seg-04",
+        "train_images": 1587,
+        "validation_images": 191,
+        "metrics": {
+          "box_precision": 0.9295913425033181,
+          "box_recall": 0.8630705394190872,
+          "box_mAP50": 0.9364681876334754,
+          "box_mAP50_95": 0.75661625946786,
+          "mask_precision": 0.9295913425033181,
+          "mask_recall": 0.8630705394190872,
+          "mask_mAP50": 0.9354349386197353,
+          "mask_mAP50_95": 0.7299947010546719
+        },
+        "test_images_used": 0
+      }
+    },
+    {
+      "source": "outputs/segmentation/D-Seg-05_yolo11m_fuseg_azh_bubt_s42_summary.json",
+      "sha256": "2c505375232a0f852eb54b96a6688d08552b6eaf230954fefbb9c836316f2077",
+      "values": {
+        "status": "PASS_INTERNAL_DEVELOPMENT_VALIDATION",
+        "stage": "D-Seg-05",
+        "train_images": 1899,
+        "validation_images": 191,
+        "metrics": {
+          "box_precision": 0.9328266148039601,
+          "box_recall": 0.864330584422521,
+          "box_mAP50": 0.9275825237590134,
+          "box_mAP50_95": 0.7695374124452499,
+          "mask_precision": 0.9328266148039601,
+          "mask_recall": 0.864330584422521,
+          "mask_mAP50": 0.929996396894629,
+          "mask_mAP50_95": 0.7445918738351455
+        },
+        "test_images_used": 0
+      }
+    },
+    {
+      "source": "outputs/segmentation/D-Seg-06_yolo11m_small_multi_s42_summary.json",
+      "sha256": "bb52544c23838832d9e057c59cda73550018796f433da098556c723061ed8889",
+      "values": {
+        "status": "PASS_DSEG06_INTERNAL_DEVELOPMENT_VALIDATION",
+        "stage": "D-Seg-06",
+        "train_samples": 2439,
+        "validation_images": 191,
+        "metrics": {
+          "box_precision": 0.9541692867313546,
+          "box_recall": 0.863879704202626,
+          "box_mAP50": 0.9396391923805462,
+          "box_mAP50_95": 0.8012931822812792,
+          "mask_precision": 0.9541692867313546,
+          "mask_recall": 0.863879704202626,
+          "mask_mAP50": 0.9414984344311649,
+          "mask_mAP50_95": 0.7689048426481175
+        },
+        "test_images_used": 0
+      }
+    },
+    {
+      "source": "outputs/segmentation/D-Seg-07_yolo11m_manual_polygon_s42_summary.json",
+      "sha256": "7222614750d96c74583e8443eb2c588b307010deb7a3ae84fe9bbeac7781ca62",
+      "values": {
+        "status": "PASS_DSEG07_INTERNAL_DEVELOPMENT_VALIDATION",
+        "stage": "D-Seg-07",
+        "train_images": 326,
+        "validation_images": 38,
+        "epochs_completed": 254,
+        "epochs_requested": 300,
+        "metrics": {
+          "box_precision": 0.6712657242726503,
+          "box_recall": 0.5614035087719298,
+          "box_mAP50": 0.5801901279534585,
+          "box_mAP50_95": 0.29413000247818116,
+          "mask_precision": 0.7551739398067316,
+          "mask_recall": 0.631578947368421,
+          "mask_mAP50": 0.6511105671410573,
+          "mask_mAP50_95": 0.31550645214025985
+        },
+        "test_images_used": 0
+      }
+    },
+    {
+      "source": "outputs/segmentation/D-Seg-08_yolo11m_replay_s42_summary.json",
+      "sha256": "4be4d15519da8e3249d4b9e0f17cb876ae38880a4737b380244cc3b9521bf830",
+      "values": {
+        "status": "PASS_DSEG08_DUAL_INTERNAL_DEVELOPMENT_VALIDATION",
+        "stage": "D-Seg-08",
+        "train_images": 734,
+        "primary_validation_images": 38,
+        "retention_validation_images": 191,
+        "train_positive_images": 652,
+        "train_negative_images": 82,
+        "epochs_requested": 300,
+        "primary_validation_metrics": {
+          "box_precision": 0.6745622746845027,
+          "box_recall": 0.5964912280701754,
+          "box_mAP50": 0.5834758551606576,
+          "box_mAP50_95": 0.29336643348558616,
+          "mask_precision": 0.7535246730660125,
+          "mask_recall": 0.5789473684210527,
+          "mask_mAP50": 0.5998420151265693,
+          "mask_mAP50_95": 0.28810044163592485,
+          "mean_inference_ms_per_image": 37.95557273061652
+        },
+        "retention_validation_metrics": {
+          "box_precision": 0.8830344652836809,
+          "box_recall": 0.8589211618257261,
+          "box_mAP50": 0.8839715710101245,
+          "box_mAP50_95": 0.6892053055246569,
+          "mask_precision": 0.8787685983016341,
+          "mask_recall": 0.8547717842323651,
+          "mask_mAP50": 0.8810282647142659,
+          "mask_mAP50_95": 0.660031757686083,
+          "mean_inference_ms_per_image": 35.73927080444017
+        },
+        "test_images_used": 0
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "source": "experiments/results/statistics/C-Arch-05-MS_multiseed_summary.json",
+      "sha256": "577b02298c6e4b3330a0aceaf5c166e358da29935116f9f23d556efd807df54d",
+      "values": {
+        "method": "Multi-Seed StratifiedGroupKFold (MD5-aware)",
+        "seeds": [
+          42,
+          123,
+          3407,
+          2026,
+          999
+        ],
+        "k_folds": 5,
+        "total_runs": 25,
+        "overall": {
+          "accuracy_mean": 87.4,
+          "accuracy_std": 2.78,
+          "macro_f1_mean": 87.36,
+          "macro_f1_std": 3.11,
+          "stab_recall_mean": 88.98,
+          "stab_recall_std": 9.3
+        },
+        "between_seed": {
+          "accuracy_mean_of_means": 87.4,
+          "accuracy_sd_of_means": 0.76,
+          "macro_f1_mean_of_means": 87.36,
+          "macro_f1_sd_of_means": 0.81,
+          "stab_recall_mean_of_means": 88.99,
+          "stab_recall_sd_of_means": 2.73
+        }
+      }
+    },
+    {
+      "source": "experiments/results/statistics/C-Arch-05-GKF_gkfold_summary.json",
+      "sha256": "3a1e58684cee330160e768473e8be2aadf101661dd37cbae53488ba7b44865e1",
+      "values": {
+        "data_integrity": {
+          "method": "MD5 + StratifiedGroupKFold",
+          "total_images": 720,
+          "unique_md5_count": 383,
+          "duplicate_group_count": 206,
+          "md5_train_val_overlap": 0,
+          "gid_train_val_overlap": 0,
+          "all_7_classes_in_val": true,
+          "leakage_status": "PASS",
+          "gates_all_pass": true
+        },
+        "fold_results": [
+          {
+            "fold": 1,
+            "train_size": 570,
+            "val_size": 150,
+            "gate_passed": true,
+            "md5_overlap": 0,
+            "gid_overlap": 0,
+            "val_class_dist": {
+              "Abrasions": 23,
+              "Bruises": 21,
+              "Burns": 23,
+              "Cut": 23,
+              "Ingrown_nails": 21,
+              "Laceration": 22,
+              "Stab_wound": 17
+            },
+            "accuracy": 84.67,
+            "macro_f1": 84.44,
+            "weighted_f1": 84.65,
+            "stab_wound_recall": 70.59,
+            "training_time_min": 10.6,
+            "status": "done"
+          },
+          {
+            "fold": 2,
+            "train_size": 587,
+            "val_size": 133,
+            "gate_passed": true,
+            "md5_overlap": 0,
+            "gid_overlap": 0,
+            "val_class_dist": {
+              "Abrasions": 16,
+              "Bruises": 25,
+              "Burns": 18,
+              "Cut": 18,
+              "Ingrown_nails": 18,
+              "Laceration": 23,
+              "Stab_wound": 15
+            },
+            "accuracy": 86.47,
+            "macro_f1": 85.62,
+            "weighted_f1": 86.23,
+            "stab_wound_recall": 66.67,
+            "training_time_min": 10.6,
+            "status": "done"
+          },
+          {
+            "fold": 3,
+            "train_size": 575,
+            "val_size": 145,
+            "gate_passed": true,
+            "md5_overlap": 0,
+            "gid_overlap": 0,
+            "val_class_dist": {
+              "Abrasions": 21,
+              "Bruises": 21,
+              "Burns": 19,
+              "Cut": 24,
+              "Ingrown_nails": 12,
+              "Laceration": 19,
+              "Stab_wound": 29
+            },
+            "accuracy": 91.72,
+            "macro_f1": 91.8,
+            "weighted_f1": 91.68,
+            "stab_wound_recall": 100.0,
+            "training_time_min": 11.9,
+            "status": "done"
+          },
+          {
+            "fold": 4,
+            "train_size": 573,
+            "val_size": 147,
+            "gate_passed": true,
+            "md5_overlap": 0,
+            "gid_overlap": 0,
+            "val_class_dist": {
+              "Abrasions": 22,
+              "Bruises": 22,
+              "Burns": 17,
+              "Cut": 21,
+              "Ingrown_nails": 24,
+              "Laceration": 20,
+              "Stab_wound": 21
+            },
+            "accuracy": 85.71,
+            "macro_f1": 85.22,
+            "weighted_f1": 85.8,
+            "stab_wound_recall": 100.0,
+            "training_time_min": 11.1,
+            "status": "done"
+          },
+          {
+            "fold": 5,
+            "train_size": 575,
+            "val_size": 145,
+            "gate_passed": true,
+            "md5_overlap": 0,
+            "gid_overlap": 0,
+            "val_class_dist": {
+              "Abrasions": 23,
+              "Bruises": 20,
+              "Burns": 25,
+              "Cut": 16,
+              "Ingrown_nails": 25,
+              "Laceration": 19,
+              "Stab_wound": 17
+            },
+            "accuracy": 91.03,
+            "macro_f1": 91.35,
+            "weighted_f1": 90.86,
+            "stab_wound_recall": 100.0,
+            "training_time_min": 8.0,
+            "status": "done"
+          }
+        ]
+      }
+    },
+    {
+      "source": "experiments/results/statistics/C-Arch-05-MS_bootstrap_ci_report.json",
+      "sha256": "8b4faca44ba62ca04487a75526b0822bbaf94df2f391dd451d48fb9a6f000dc0",
+      "values": {
+        "total_predictions": 3622,
+        "prediction_files": 25,
+        "bootstrap_results": {
+          "n_bootstrap": 2000,
+          "ci_level": 0.95,
+          "total_samples": 3622,
+          "accuracy": {
+            "mean": 87.4,
+            "std": 0.55,
+            "ci_lower": 86.32,
+            "ci_upper": 88.48,
+            "ci_str": "87.40% (95% CI: 86.32%–88.48%)"
+          },
+          "macro_f1": {
+            "mean": 87.36,
+            "std": 0.61,
+            "ci_lower": 86.16,
+            "ci_upper": 88.56,
+            "ci_str": "87.36% (95% CI: 86.16%–88.56%)"
+          },
+          "weighted_f1": {
+            "mean": 87.42,
+            "std": 0.56,
+            "ci_lower": 86.32,
+            "ci_upper": 88.52,
+            "ci_str": "87.42% (95% CI: 86.32%–88.52%)"
+          },
+          "per_class_recall": {
+            "Abrasions": {
+              "mean": 85.12,
+              "std": 1.55,
+              "ci_lower": 82.08,
+              "ci_upper": 88.16,
+              "ci_str": "85.12% (95% CI: 82.08%–88.16%)"
+            },
+            "Bruises": {
+              "mean": 88.45,
+              "std": 1.36,
+              "ci_lower": 85.78,
+              "ci_upper": 91.12,
+              "ci_str": "88.45% (95% CI: 85.78%–91.12%)"
+            },
+            "Burns": {
+              "mean": 87.9,
+              "std": 1.42,
+              "ci_lower": 85.12,
+              "ci_upper": 90.68,
+              "ci_str": "87.90% (95% CI: 85.12%–90.68%)"
+            },
+            "Cut": {
+              "mean": 86.35,
+              "std": 1.5,
+              "ci_lower": 83.41,
+              "ci_upper": 89.29,
+              "ci_str": "86.35% (95% CI: 83.41%–89.29%)"
+            },
+            "Ingrown_nails": {
+              "mean": 89.1,
+              "std": 1.35,
+              "ci_lower": 86.45,
+              "ci_upper": 91.75,
+              "ci_str": "89.10% (95% CI: 86.45%–91.75%)"
+            },
+            "Laceration": {
+              "mean": 85.62,
+              "std": 1.52,
+              "ci_lower": 82.64,
+              "ci_upper": 88.6,
+              "ci_str": "85.62% (95% CI: 82.64%–88.60%)"
+            },
+            "Stab_wound": {
+              "mean": 88.98,
+              "std": 1.84,
+              "ci_lower": 85.37,
+              "ci_upper": 92.59,
+              "ci_str": "88.98% (95% CI: 85.37%–92.59%)"
+            }
+          }
+        }
+      }
+    },
+    {
+      "source": "outputs/fuseg_warmup_revision_20260914/result.json",
+      "sha256": "22e5f7b0737f8d22609f705b33677430b8c51fa5a623d726785f3db291f45de9",
+      "values": {
+        "status": "PASS_DEVELOPMENT_ONLY_NOT_DEPLOYMENT",
+        "metrics": {
+          "metrics/precision(B)": 0.9157936795795024,
+          "metrics/recall(B)": 0.8257261410788381,
+          "metrics/mAP50(B)": 0.9035137906100001,
+          "metrics/mAP50-95(B)": 0.705863406444336,
+          "metrics/precision(M)": 0.9157936795795024,
+          "metrics/recall(M)": 0.8257261410788381,
+          "metrics/mAP50(M)": 0.9031649920425552,
+          "metrics/mAP50-95(M)": 0.6807531291357968,
+          "fitness": 1.4286227602873751
+        },
+        "checkpoint_sha256": "2a2d66e7036f2d8eb94e9da8907554f0fcd55484e138c25b024b14fbc6de678d",
+        "test_images_used": 0
+      }
+    },
+    {
+      "source": "outputs/isic_fuseg_formal_seed42_20260914/protocol.json",
+      "sha256": "a804c9dfdc94a63fd40b175a72088e03fd55ceaecf5c1b565318a3379a85a8a1",
+      "values": {
+        "experiment_id": "D-Formal-ISIC-FUSeg-seed42-20260914",
+        "training": {
+          "imgsz": 768,
+          "batch": 4,
+          "optimizer": "AdamW",
+          "lr0": 0.0005,
+          "warmup_bias_lr": 0.0,
+          "warmup_epochs": 5,
+          "lrf": 0.01,
+          "cos_lr": true,
+          "close_mosaic": 30,
+          "seed": 42,
+          "deterministic": true,
+          "workers": 2,
+          "amp": true,
+          "mosaic": 0.1,
+          "mixup": 0.0,
+          "copy_paste": 0.0,
+          "degrees": 5.0,
+          "translate": 0.05,
+          "scale": 0.2,
+          "shear": 0.5,
+          "perspective": 0.0002,
+          "fliplr": 0.5,
+          "flipud": 0.0,
+          "hsv_h": 0.01,
+          "hsv_s": 0.4,
+          "hsv_v": 0.25,
+          "device": "0",
+          "val": true,
+          "plots": true
+        },
+        "formal_seed": 42,
+        "test_images_used": 0
+      }
+    },
+    {
+      "source": "outputs/isic_fuseg_formal_seed42_20260914/status.json",
+      "sha256": "dde369963e4cdd6b9e0ba9eadd959facd6bc32855de64bef49e05512eadc735b",
+      "values": {
+        "status": "FAIL_DEVELOPMENT_GATE",
+        "stage": "DEVELOPMENT_GATE_COMPLETE",
+        "updated_utc": "2026-09-15T08:37:27.272224+00:00",
+        "epoch_completed": 300,
+        "isic_epochs_completed": 80,
+        "metrics": {
+          "metrics/precision(B)": 0.9204369845314925,
+          "metrics/recall(B)": 0.8340248962655602,
+          "metrics/mAP50(B)": 0.9161921128725665,
+          "metrics/mAP50-95(B)": 0.6984759231403804,
+          "metrics/precision(M)": 0.9065887014862759,
+          "metrics/recall(M)": 0.8215767634854771,
+          "metrics/mAP50(M)": 0.901971219235924,
+          "metrics/mAP50-95(M)": 0.6798899097554937
+        },
+        "test_images_used": 0
+      }
+    },
+    {
+      "source": "outputs/isic_fuseg_formal_seed42_20260914/development_gate/result.json",
+      "sha256": "bdcf4e70d592158111ad4596399c095432b3bd5ac55fad35432084d97301f292",
+      "values": {
+        "status": "FAIL_DEVELOPMENT_GATE",
+        "candidate": {
+          "images": 191,
+          "positive_images": 186,
+          "negative_images": 5,
+          "tp": 31,
+          "fp": 37,
+          "fn": 210,
+          "precision": 0.45588235294117646,
+          "recall": 0.12863070539419086,
+          "f1": 0.20064724919093851,
+          "mask_iou_positive_mean": 0.11409854511591193,
+          "mask_dice_positive_mean": 0.13180128213780082,
+          "crop_coverage_positive_mean": 0.17040557254817904,
+          "crop_complete95_images": 27,
+          "crop_complete95_fraction": 0.14516129032258066,
+          "positive_without_roi": 130,
+          "negative_images_with_predictions": 3,
+          "crop_area_positive_mean": 0.0126032470374979,
+          "size_recall": {
+            "small": {
+              "gt": 137,
+              "matched": 16,
+              "recall": 0.11678832116788321
+            },
+            "medium": {
+              "gt": 90,
+              "matched": 12,
+              "recall": 0.13333333333333333
+            },
+            "large": {
+              "gt": 14,
+              "matched": 3,
+              "recall": 0.21428571428571427
+            }
+          }
+        },
+        "baseline": {
+          "images": 191,
+          "positive_images": 186,
+          "negative_images": 5,
+          "tp": 204,
+          "fp": 30,
+          "fn": 37,
+          "precision": 0.8717948717948718,
+          "recall": 0.8464730290456431,
+          "f1": 0.8589473684210527,
+          "mask_iou_positive_mean": 0.7764318964707693,
+          "mask_dice_positive_mean": 0.8542854695834015,
+          "crop_coverage_positive_mean": 0.9651176166209099,
+          "crop_complete95_images": 168,
+          "crop_complete95_fraction": 0.9032258064516129,
+          "positive_without_roi": 3,
+          "negative_images_with_predictions": 3,
+          "crop_area_positive_mean": 0.0538494151125672,
+          "size_recall": {
+            "small": {
+              "gt": 137,
+              "matched": 105,
+              "recall": 0.7664233576642335
+            },
+            "medium": {
+              "gt": 90,
+              "matched": 85,
+              "recall": 0.9444444444444444
+            },
+            "large": {
+              "gt": 14,
+              "matched": 14,
+              "recall": 1.0
+            }
+          }
+        },
+        "gpu_latency": {
+          "n": 191,
+          "mean_ms": 39.71560209586056,
+          "median_ms": 38.97629998391494,
+          "p95_ms": 52.39210001309402,
+          "serial_fps_from_mean": 25.179021523740843
+        },
+        "decision": {
+          "passed": false,
+          "checks": {
+            "precision": false,
+            "recall": false,
+            "f1": false,
+            "crop_complete95_fraction": false,
+            "gpu_mean_latency": true
+          },
+          "minima_percent": {
+            "precision": 87.18,
+            "recall": 84.65,
+            "f1": 85.89,
+            "crop_complete95_fraction": 90.32
+          },
+          "latency_max_ms": 50,
+          "comparison_precision": "published percentages rounded to 2 decimals"
+        },
+        "five_seeds_started": false,
+        "sealed_unchanged": true,
+        "test_images_used": 0
+      }
+    },
+    {
+      "source": "outputs/segmentation/dseg09b_carch05_oof_cascade_bgr_corrected_20260831/summary.json",
+      "sha256": "51bf8abfe0ccb8649388b60faaabb15755bfc5e8f1ca76bb8aa536480074b293",
+      "values": {
+        "status": "PASS_DSEG09B_CARCH05_BGR_CORRECTED_DEVELOPMENT_CASCADE_EVALUATION",
+        "sample_count": 41,
+        "class_counts": {
+          "Abrasions": 8,
+          "Bruises": 12,
+          "Burns": 5,
+          "Cut": 5,
+          "Ingrown_nails": 3,
+          "Laceration": 6,
+          "Stab_wound": 2
+        },
+        "integrity": {
+          "phase7_development_images": 720,
+          "phase7_unique_md5_groups": 383,
+          "phase7_duplicate_groups": 206,
+          "cascade_images_mapped_to_phase7": 41,
+          "cascade_images_unmapped": 0,
+          "cascade_label_mismatch": 0,
+          "segmenter_manifest_records": 963,
+          "segmenter_train_samples": 734,
+          "segmenter_primary_validation_images": 38,
+          "segmenter_retention_validation_images": 191,
+          "cascade_exact_sha256_overlap_with_segmenter_train": 0,
+          "cascade_exact_sha256_overlap_with_segmenter_primary_val": 38,
+          "cascade_exact_sha256_overlap_with_segmenter_retention_val": 0,
+          "training_overlap_gate_passed": true,
+          "interpretation": "No segmenter-training overlap. Primary-validation overlap is expected and makes this a post-selection development engineering evaluation, not an independent test."
+        },
+        "detector": {
+          "total": 41,
+          "detected": 37,
+          "coverage": 0.9024390243902439,
+          "no_detection": 4
+        },
+        "full_image_raw": {
+          "total": 41,
+          "classified": 41,
+          "coverage": 1.0,
+          "strict_accuracy_over_all_images": 0.9024390243902439,
+          "selective_accuracy_on_classified": 0.9024390243902439,
+          "macro_f1_on_classified": 0.9114379084967321,
+          "weighted_f1_on_classified": 0.9009883628248048
+        },
+        "cascade_raw": {
+          "total": 41,
+          "classified": 37,
+          "coverage": 0.9024390243902439,
+          "strict_accuracy_over_all_images": 0.5853658536585366,
+          "selective_accuracy_on_classified": 0.6486486486486487,
+          "macro_f1_on_classified": 0.6705709077889529,
+          "weighted_f1_on_classified": 0.6840956814641024
+        },
+        "cascade_gated": {
+          "total": 41,
+          "classified": 28,
+          "coverage": 0.6829268292682927,
+          "strict_accuracy_over_all_images": 0.4878048780487805,
+          "selective_accuracy_on_classified": 0.7142857142857143,
+          "macro_f1_on_classified": 0.6873626373626375,
+          "weighted_f1_on_classified": 0.740521978021978
+        },
+        "paired_comparison": {
+          "cascade_minus_full_accuracy_percentage_points": -31.70731707317073,
+          "paired_bootstrap_95_ci_percentage_points": [
+            -48.78048780487805,
+            -14.634146341463413
+          ],
+          "mcnemar_cascade_wins": 2,
+          "mcnemar_full_image_wins": 15,
+          "mcnemar_exact_two_sided_p": 0.002349853515625
+        },
+        "limitations": [
+          "41-image post-selection development engineering subset; small and imbalanced.",
+          "38 images overlap segmenter Primary validation but zero overlap segmenter training.",
+          "Image-level seven-class labels exist, but independent expert masks do not exist for all 41 images.",
+          "The classifier was trained on full images, so ROI crops introduce input-distribution shift."
+        ]
+      }
+    },
+    {
+      "source": "outputs/github_progress_verification_20260915/verification.json",
+      "sha256": "cd688a1c1121794e9691894f9e4ea3f75eaa3479fd27679e2b92630a64b60481",
+      "values": {
+        "status": "PASS_ENGINEERING_ONLY",
+        "created_utc": "2026-09-15T15:27:26.350635+00:00",
+        "checkpoint_sha256_matches": true,
+        "sealed_metadata_unchanged": true,
+        "scope": "synthetic unit/API tests and frontend lint/build; not model accuracy or clinical deployment validation",
+        "test_images_used": 0,
+        "clinical_database_opened": false,
+        "app_model_replaced": false
+      }
+    },
+    {
+      "source": "outputs/segmentation/co2wounds_external_test_20260831/D-Seg-09B_CO2Wounds-V2_external_results.json",
+      "sha256": "118e8d2e4be9d3dd57ed82cd8e32e1d38a76c338269a27d64cc6fc46ddf981ac",
+      "values": {
+        "status": "PASS_ONE_SHOT_EXTERNAL_EVALUATION_COMPLETED",
+        "evaluation_role": "independent_labeled_external_domain_cohort",
+        "images_evaluated": 607,
+        "content_groups": 576,
+        "official_unlabeled_test_images_used": 0,
+        "training_or_tuning_images_used_from_co2wounds": 0,
+        "full_cohort_coco_instance_segmentation": {
+          "mask_AP50_95": 0.16869062039407456,
+          "mask_AP50": 0.40633396992098003,
+          "mask_AP75": 0.11880623551089153,
+          "mask_AP_small": 0.05055555399432356,
+          "mask_AP_medium": 0.13706525054319613,
+          "mask_AP_large": 0.24731591192746427,
+          "mask_AR1": 0.1984552008238929,
+          "mask_AR10": 0.27033985581874354,
+          "mask_AR100": 0.27095777548918637,
+          "mask_AR_small": 0.11419354838709676,
+          "mask_AR_medium": 0.23308457711442787,
+          "mask_AR_large": 0.36642512077294687
+        },
+        "canonical_representative_coco_sensitivity": {
+          "mask_AP50_95": 0.17081343359395942,
+          "mask_AP50": 0.4091274160946151,
+          "mask_AP75": 0.12053661770143652,
+          "mask_AP_small": 0.049689415687734266,
+          "mask_AP_medium": 0.139500604377572,
+          "mask_AP_large": 0.24733743433238062,
+          "mask_AR1": 0.19836244541484718,
+          "mask_AR10": 0.2707423580786026,
+          "mask_AR100": 0.27139737991266377,
+          "mask_AR_small": 0.1106382978723404,
+          "mask_AR_medium": 0.23218997361477572,
+          "mask_AR_large": 0.3661616161616162
+        },
+        "fixed_operating_point": {
+          "confidence": 0.25,
+          "nms_iou": 0.4,
+          "instance_match_mask_iou": 0.5,
+          "instance_tp": 434,
+          "instance_fp": 328,
+          "instance_fn": 537,
+          "instance_precision": 0.5695538057742782,
+          "instance_recall": 0.446961894953656,
+          "instance_f1": 0.500865551067513,
+          "macro_union_mask_dice": 0.5635591865579975,
+          "macro_union_mask_iou": 0.4596145656685011,
+          "micro_pixel_precision": 0.6389234390036737,
+          "micro_pixel_recall": 0.6287137186022547,
+          "micro_pixel_dice": 0.63377746357135,
+          "micro_pixel_iou": 0.46389035949301854,
+          "group_bootstrap_95_ci": {
+            "macro_dice": [
+              0.531845003135502,
+              0.5857717567137819
+            ],
+            "macro_iou": [
+              0.43128624545164496,
+              0.4801325832053074
+            ],
+            "micro_pixel_precision": [
+              0.601159957874204,
+              0.6794220227468297
+            ],
+            "micro_pixel_recall": [
+              0.5872025237248538,
+              0.6713265162967507
+            ],
+            "instance_precision": [
+              0.5322787836287135,
+              0.6055866950551371
+            ],
+            "instance_recall": [
+              0.4109808684760606,
+              0.48242338891392517
+            ],
+            "instance_f1": [
+              0.4667793786190905,
+              0.533102903050019
+            ]
+          },
+          "bootstrap_iterations": 2000,
+          "bootstrap_unit": "pHash content group"
+        },
+        "annotation_quality_disclosure": {
+          "exact_duplicate_content_groups": 23,
+          "exact_duplicate_groups_with_mask_disagreement": 23,
+          "official_mask_to_coco_union_iou_min": 0.8221574344023324,
+          "official_mask_to_coco_union_iou_mean": 0.9695756647465291,
+          "official_mask_to_coco_union_iou_below_0_95": 100
+        },
+        "rerun_permitted": false
+      }
+    }
+  ],
+  "engineering_checks": [
+    {
+      "check": "unittest",
+      "exit_code": 0
+    },
+    {
+      "check": "inference_synthetic",
+      "exit_code": 0
+    },
+    {
+      "check": "frontend_lint",
+      "exit_code": 0
+    },
+    {
+      "check": "frontend_build",
+      "exit_code": 0
+    }
+  ],
+  "review_notes": [
+    "ISIC-FUSeg fixed-point gate passes RGB ndarray where Ultralytics expects BGR. Its low scores are diagnostic outputs pending corrected validation, not a valid comparison with BGR baseline.",
+    "Classification bootstrap total_predictions=3622 needs reconciliation with 720*5=3600; sealed values are retained as historical reports.",
+    "File counts do not establish licenses or patient-level independence."
+  ]
+}

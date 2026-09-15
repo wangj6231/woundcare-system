@@ -1,0 +1,27 @@
+{
+  "D-Seg-07_manual": {
+    "status": "UNKNOWN_YASIN_LICENSE_FROM_EXISTING_SOURCE_AUDIT",
+    "development_allowed": false,
+    "evidence_file": null,
+    "evidence_sha256": null,
+    "note": "Manual annotation does not grant rights to source images. Do not fabricate approval."
+  },
+  "FUSeg": {
+    "status": "REQUIRES_ORIGINAL_TERMS_AND_INTENDED_USE_REVIEW_FOR_NEW_RUNNER",
+    "development_allowed": null,
+    "evidence_file": null,
+    "evidence_sha256": null
+  },
+  "AZH": {
+    "status": "REQUIRES_ORIGINAL_TERMS_AND_INTENDED_USE_REVIEW_FOR_NEW_RUNNER",
+    "development_allowed": null,
+    "evidence_file": null,
+    "evidence_sha256": null
+  },
+  "BUBT_healthy": {
+    "status": "HISTORICAL_SOURCE_AUDIT_SAYS_CC_BY_4_0; ORIGINAL_EVIDENCE_NOT_YET_ADMITTED_HERE",
+    "development_allowed": null,
+    "evidence_file": null,
+    "evidence_sha256": null
+  }
+}

@@ -1,0 +1,63 @@
+# NEW development-only ablation, NOT a modification of D-Seg-08.
+# Not a launched or approved training run. Source permission + ancestry gates
+# are enforced by run_development.py before it uses this recipe.
+experiment_id: D-Seg-08R-warmup-control
+status: READY_FOR_PREFLIGHT_NOT_TRAINED
+role: development
+test_images_used: 0
+repartitioned_cv: false
+sources: [D-Seg-07_manual, FUSeg, AZH, BUBT_healthy]
+data: yolo_dataset_dseg08_replay_v1/dataset.yaml
+retention_data: yolo_dataset_dseg08_replay_v1/dataset_retention.yaml
+initialization: experiments/results/segmentation/D-Seg-07_yolo11m_manual_polygon_s42/weights/best.pt
+reference_run: experiments/results/segmentation/D-Seg-08_yolo11m_replay_s42
+causal_change: explicit_bias_warmup_lr_zero
+imgsz: 896
+batch: 4
+epochs: 300
+patience: 80
+optimizer: AdamW
+lr0: 0.00002
+warmup_bias_lr: 0.0
+warmup_epochs: 2
+lrf: 0.01
+cos_lr: true
+weight_decay: 0.0005
+seed: 42
+workers: 2
+deterministic: true
+close_mosaic: 0
+amp: true
+mask_ratio: 4
+augmentation:
+  mosaic: 0.0
+  mixup: 0.0
+  copy_paste: 0.0
+  degrees: 3.0
+  translate: 0.03
+  scale: 0.10
+  shear: 0.25
+  perspective: 0.0001
+  fliplr: 0.5
+  flipud: 0.0
+  hsv_h: 0.01
+  hsv_s: 0.30
+  hsv_v: 0.20
+evaluation:
+  split: val
+  primary_role: repeated_development_selection_only
+  confidence_for_ap: 0.001
+  confidence_for_operating_point: 0.25
+  nms_iou_for_operating_point: 0.40
+  matching_mask_iou: 0.50
+  select_from: primary_validation_only
+  report_separately: [primary, retention, small, medium, large, negatives]
+  no_test_or_external_selection: true
+required_preflight:
+  - verify_every_source_permission_for_intended_use_with_original_evidence
+  - compare_current_image_and_label_hashes_to_frozen_manifest
+  - verify_checkpoint_sha256_architecture_and_all_ancestor_training_groups
+  - forbid_any_new_train_val_partition_with_ancestor_wound_weights
+  - use_a_new_nonexistent_output_directory
+  - record_all_realized_train_arguments_and_package_versions
+  - stop_and_mark_failed_if_training_or_evaluation_raises

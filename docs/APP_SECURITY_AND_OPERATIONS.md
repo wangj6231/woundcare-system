@@ -2,6 +2,13 @@
 
 ## Product boundary
 
+2026-09-14 addendum: explicit human-review/de-identification confirmations and
+source-EMR provenance are now enforced for retrieved guidance. Legacy rows are
+preserved but excluded until explicitly re-reviewed. Professor preview must
+use an explicit non-default database and key; production cannot fall back to
+the local key. These changes were tested only with synthetic temporary data.
+See [current handoff](PROJECT_HANDOFF_20260914.md) for migration boundaries.
+
 WoundCare+ is a clinical decision-support tool. The detection → classification
 result is advisory only. A nurse must select the patient, review the image and
 model output, write the treatment observation, and explicitly save the EMR.

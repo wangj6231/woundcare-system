@@ -33,9 +33,11 @@ from starlette.middleware.base import BaseHTTPMiddleware
 from ultralytics import YOLO
 
 from woundcare_inference import CascadeConfig, classify_image, infer_segmentation_cascade
+from woundcare_safety import validate_startup
 
 
 ROOT_DIR = Path(__file__).resolve().parent
+validate_startup(os.environ, ROOT_DIR)
 DB_PATH = Path(os.getenv("WOUNDCARE_DB_PATH", str(ROOT_DIR / "healthcare.db")))
 KEY_PATH = Path(os.getenv("WOUNDCARE_KEY_PATH", str(ROOT_DIR / "secret.key")))
 APP_ENV = os.getenv("WOUNDCARE_ENV", "development").lower()
@@ -215,6 +217,12 @@ def init_db() -> None:
         _ensure_column(connection, "patients", "assigned_nurse", "TEXT NOT NULL DEFAULT ''")
         _ensure_column(connection, "emr_records", "human_review_confirmed", "INTEGER NOT NULL DEFAULT 0")
         _ensure_column(connection, "emr_records", "human_reviewed_at", "TEXT")
+        # Legacy guidance is retained, but is not silently declared reviewed.
+        _ensure_column(connection, "rag_guidance", "source_emr_id", "INTEGER")
+        _ensure_column(connection, "rag_guidance", "review_confirmed", "INTEGER NOT NULL DEFAULT 0")
+        _ensure_column(connection, "rag_guidance", "deidentified_confirmed", "INTEGER NOT NULL DEFAULT 0")
+        _ensure_column(connection, "rag_guidance", "reviewed_by", "INTEGER")
+        _ensure_column(connection, "rag_guidance", "reviewed_at", "TEXT")
 
         # Never create a publicly-known password.  A fresh deployment must set
         # WOUNDCARE_BOOTSTRAP_PASSWORD explicitly before the first login.
@@ -402,10 +410,14 @@ class RAGGuidanceCreate(BaseModel):
     evidence_level: str = Field(default="clinical_consensus", max_length=80)
     source: str = Field(default="head_nurse_review", max_length=160)
     source_emr_id: Optional[int] = Field(default=None, ge=1)
+    review_confirmed: bool = False
+    deidentified_confirmed: bool = False
 
 
 class RAGGuidanceStatusUpdate(BaseModel):
     is_active: bool
+    review_confirmed: bool = False
+    deidentified_confirmed: bool = False
 
 
 class ProfessorFeedbackCreate(BaseModel):
@@ -489,6 +501,9 @@ def health(user: dict[str, Any] = Depends(current_user)) -> dict[str, Any]:
         "detection_model_loaded": det_model is not None,
         "segmentation_model_loaded": seg_model is not None,
         "classification_model_loaded": cls_model is not None,
+        "inference_ready": cls_model is not None and (seg_model is not None or det_model is not None),
+        "advice_mode": "rule_based_with_reviewed_lexical_retrieval",
+        "model_weights_learn_from_feedback": False,
         "inference_mode": "full_image_primary_with_roi" if seg_model is not None and CLASSIFICATION_SOURCE == "full_image" else ("segmentation_crop_with_full_image_fallback" if seg_model is not None else "legacy_detection"),
         "classification_model": model_identity(CLS_MODEL_PATH),
         "classification_input_size": CASCADE_CONFIG.classifier_imgsz,
@@ -584,18 +599,19 @@ def _rag_tokens(value: str) -> set[str]:
     return {token for token in normalized.split() if len(token) > 1}
 
 
-def retrieve_rag_guidance(query: str, limit: int = 5) -> list[dict[str, Any]]:
+def retrieve_rag_guidance(query: str, limit: int = 5, *, include_pending: bool = False) -> list[dict[str, Any]]:
     query_tokens = _rag_tokens(query)
     with db() as connection:
         rows = connection.execute(
             """
             SELECT id, title, wound_classes, recommendation, rationale, precautions,
-                   evidence_level, source, is_active, created_at, updated_at
+                   evidence_level, source, is_active, created_at, updated_at,
+                   source_emr_id, review_confirmed, deidentified_confirmed, reviewed_by, reviewed_at
             FROM rag_guidance
-            WHERE is_active = 1
+            WHERE (? = 1 OR (is_active = 1 AND review_confirmed = 1 AND deidentified_confirmed = 1))
             ORDER BY updated_at DESC, id DESC
             LIMIT 200
-            """
+            """, (int(include_pending),)
         ).fetchall()
     scored: list[tuple[int, sqlite3.Row]] = []
     for row in rows:
@@ -615,6 +631,11 @@ def retrieve_rag_guidance(query: str, limit: int = 5) -> list[dict[str, Any]]:
             "precautions": row["precautions"],
             "evidence_level": row["evidence_level"],
             "source": row["source"],
+            "is_active": bool(row["is_active"]),
+            "review_confirmed": bool(row["review_confirmed"]),
+            "deidentified_confirmed": bool(row["deidentified_confirmed"]),
+            "reviewed_at": row["reviewed_at"],
+            **({"source_emr_id": row["source_emr_id"], "reviewed_by": row["reviewed_by"]} if include_pending else {}),
             "created_at": row["created_at"],
             "updated_at": row["updated_at"],
             "match_score": score,
@@ -630,6 +651,8 @@ async def predict_wound(file: UploadFile = File(...), user: dict[str, Any] = Dep
     contents = await file.read(MAX_UPLOAD_BYTES + 1)
     if len(contents) > MAX_UPLOAD_BYTES:
         raise HTTPException(status_code=413, detail="圖片大小不可超過 10 MB")
+    if not contents:
+        raise HTTPException(status_code=400, detail="圖片內容為空")
     image = cv2.imdecode(np.frombuffer(contents, dtype=np.uint8), cv2.IMREAD_COLOR)
     if image is None or image.size == 0:
         raise HTTPException(status_code=400, detail="圖片無法解析")
@@ -710,10 +733,22 @@ async def predict_wound(file: UploadFile = File(...), user: dict[str, Any] = Dep
         if not ok:
             raise RuntimeError("annotated image encoding failed")
         audit_event(user, "ai_prediction", "wound_image", f"mode={inference_mode};boxes={len(detections)};fallback={fallback_used}")
-        rag_guidance = retrieve_rag_guidance(" ".join(classes), limit=3)
-        advice = _clinical_advice(classes, len(detections))
-        if inference_mode == "full_image_fallback":
-            advice = "偵測 ROI 信心不足，已改用原圖分類；請由護理師確認傷口位置與分類後再保存。" + (f" 模型分類：{classes[0]}。" if classes else "")
+        # A closed-set classifier can be confident on non-wound/OOD images.
+        # Preserve research hints, but do not turn absent/uncertain localization
+        # into class-specific care suggestions or automatic knowledge retrieval.
+        review_reasons = []
+        if not detections:
+            review_reasons.append("no_reliable_roi")
+        if low_confidence or not classes:
+            review_reasons.append("uncertain_classification")
+        if fallback_used:
+            review_reasons.append("localization_fallback")
+        if any(item.get("class_confidence") is None or item["class_confidence"] < CLS_CONFIDENCE for item in detections):
+            review_reasons.append("uncertain_region_classification")
+        advice_blocked = bool(review_reasons)
+        rag_guidance = retrieve_rag_guidance(" ".join(classes), limit=3) if classes and not advice_blocked else []
+        advice = ("目前不能確認可靠的傷口定位或分類。高分類信心不代表影像一定有傷口；暫不提供類別對應處置與 RAG 建議，請先由護理人員確認影像、位置與分類。"
+                  if advice_blocked else _clinical_advice(classes, len(detections)))
         return {
             "image": "data:image/jpeg;base64," + base64.b64encode(buffer).decode("ascii"),
             "detected_boxes": len(detections),
@@ -726,8 +761,13 @@ async def predict_wound(file: UploadFile = File(...), user: dict[str, Any] = Dep
             "crop_box": crop_box,
             "low_confidence": low_confidence,
             "llm_advice": advice,
+            "advice_mode": "rule_based_with_reviewed_lexical_retrieval",
+            "model_weights_learn_from_feedback": False,
             "rag_guidance": rag_guidance,
             "requires_human_review": True,
+            "localization_available": bool(detections),
+            "advice_blocked": advice_blocked,
+            "review_reasons": review_reasons,
             "model": {
                 **model_identity(CLS_MODEL_PATH),
                 "input_size": CASCADE_CONFIG.classifier_imgsz,
@@ -798,10 +838,10 @@ def add_patient_emr(patient_id: int, record: EMRRecordCreate, actor: dict[str, A
     with db() as connection:
         patient = require_patient_access(connection, patient_id, actor)
         reviewed_at = iso_now() if record.human_review_confirmed else None
-        connection.execute("INSERT INTO emr_records(patient_id, nurse_name, shift, wound_image, ai_analysis, treatment, status, review_status, human_review_confirmed, human_reviewed_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (patient_id, actor["username"], record.shift, encrypt_data(record.wound_image), encrypt_data(record.ai_analysis), encrypt_data(record.treatment), record.status, record.review_status, int(record.human_review_confirmed), reviewed_at))
+        emr_cursor = connection.execute("INSERT INTO emr_records(patient_id, nurse_name, shift, wound_image, ai_analysis, treatment, status, review_status, human_review_confirmed, human_reviewed_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (patient_id, actor["username"], record.shift, encrypt_data(record.wound_image), encrypt_data(record.ai_analysis), encrypt_data(record.treatment), record.status, record.review_status, int(record.human_review_confirmed), reviewed_at))
+        emr_id = emr_cursor.lastrowid
         connection.execute("UPDATE patients SET status = ?, last_assessment = ? WHERE id = ?", (record.status, f"{record.shift}｜{datetime.now().strftime('%m/%d %H:%M')}", patient_id))
         connection.execute("INSERT INTO reports(nurse_name, patient_name, action) VALUES (?, ?, ?)", (encrypt_data(actor["username"]), patient["name"], f"完成傷口評估（{record.status}）"))
-        emr_id = connection.execute("SELECT last_insert_rowid()").fetchone()[0]
     audit_event(actor, "emr_created", str(emr_id), f"patient_id={patient_id};status={record.status}")
     return {"message": "評估已儲存，並等待護理團隊追蹤", "id": emr_id}
 
@@ -867,20 +907,34 @@ def get_professor_feedback(user: dict[str, Any] = Depends(require_roles("admin",
 
 
 @app.get("/api/rag/guidance")
-def get_rag_guidance(query: str = "", limit: int = 5, user: dict[str, Any] = Depends(current_user)) -> list[dict[str, Any]]:
-    return retrieve_rag_guidance(query[:500], limit)
+def get_rag_guidance(query: str = "", limit: int = 5, include_pending: bool = False, user: dict[str, Any] = Depends(current_user)) -> list[dict[str, Any]]:
+    if include_pending and user["role"] not in {"admin", "head_nurse"}:
+        raise HTTPException(status_code=403, detail="只有管理者或護理長可查看待覆核知識")
+    return retrieve_rag_guidance(query[:500], limit, include_pending=include_pending)
 
 
 @app.post("/api/rag/guidance")
 def create_rag_guidance(guidance: RAGGuidanceCreate, actor: dict[str, Any] = Depends(require_roles("admin", "head_nurse"))) -> dict[str, Any]:
+    if not guidance.review_confirmed or not guidance.deidentified_confirmed:
+        raise HTTPException(status_code=422, detail="必須確認內容已覆核且已去識別化，才能加入可檢索知識")
+    if len(guidance.title.strip()) < 3 or len(guidance.recommendation.strip()) < 10 or not guidance.source.strip():
+        raise HTTPException(status_code=422, detail="請填寫有效標題、處置內容及來源")
     with db() as connection:
+        if guidance.source_emr_id is not None:
+            source_record = connection.execute("SELECT patient_id, review_status, human_review_confirmed FROM emr_records WHERE id = ?", (guidance.source_emr_id,)).fetchone()
+            if source_record is None:
+                raise HTTPException(status_code=404, detail="找不到來源評估紀錄")
+            require_patient_access(connection, source_record["patient_id"], actor)
+            if source_record["review_status"] != "reviewed" or not source_record["human_review_confirmed"]:
+                raise HTTPException(status_code=422, detail="來源評估尚未完成人工覆核")
         cursor = connection.execute(
             """
             INSERT INTO rag_guidance(title, wound_classes, recommendation, rationale,
-                                     precautions, evidence_level, source, created_by)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                                     precautions, evidence_level, source, created_by, source_emr_id,
+                                     review_confirmed, deidentified_confirmed, reviewed_by, reviewed_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 1, ?, ?)
             """,
-            (guidance.title.strip(), guidance.wound_classes.strip(), guidance.recommendation.strip(), guidance.rationale.strip(), guidance.precautions.strip(), guidance.evidence_level.strip(), guidance.source.strip(), actor["id"]),
+            (guidance.title.strip(), guidance.wound_classes.strip(), guidance.recommendation.strip(), guidance.rationale.strip(), guidance.precautions.strip(), guidance.evidence_level.strip(), guidance.source.strip(), actor["id"], guidance.source_emr_id, actor["id"], iso_now()),
         )
         guidance_id = cursor.lastrowid
     metadata = f"guidance_id={guidance_id}"
@@ -892,8 +946,21 @@ def create_rag_guidance(guidance: RAGGuidanceCreate, actor: dict[str, Any] = Dep
 
 @app.patch("/api/rag/guidance/{guidance_id}")
 def update_rag_guidance_status(guidance_id: int, update: RAGGuidanceStatusUpdate, actor: dict[str, Any] = Depends(require_roles("admin", "head_nurse"))) -> dict[str, str]:
+    if update.is_active and (not update.review_confirmed or not update.deidentified_confirmed):
+        raise HTTPException(status_code=422, detail="啟用前必須重新確認內容已覆核且已去識別化")
     with db() as connection:
-        changed = connection.execute("UPDATE rag_guidance SET is_active = ?, updated_at = ? WHERE id = ?", (int(update.is_active), iso_now(), guidance_id)).rowcount
+        if update.is_active:
+            guidance = connection.execute("SELECT source_emr_id FROM rag_guidance WHERE id = ?", (guidance_id,)).fetchone()
+            if guidance is None:
+                raise HTTPException(status_code=404, detail="找不到 RAG 建議")
+            if guidance["source_emr_id"] is not None:
+                source_record = connection.execute("SELECT patient_id, review_status, human_review_confirmed FROM emr_records WHERE id = ?", (guidance["source_emr_id"],)).fetchone()
+                if source_record is None or source_record["review_status"] != "reviewed" or not source_record["human_review_confirmed"]:
+                    raise HTTPException(status_code=422, detail="來源評估不存在或尚未完成人工覆核")
+                require_patient_access(connection, source_record["patient_id"], actor)
+            changed = connection.execute("UPDATE rag_guidance SET is_active = 1, review_confirmed = 1, deidentified_confirmed = 1, reviewed_by = ?, reviewed_at = ?, updated_at = ? WHERE id = ?", (actor["id"], iso_now(), iso_now(), guidance_id)).rowcount
+        else:
+            changed = connection.execute("UPDATE rag_guidance SET is_active = 0, updated_at = ? WHERE id = ?", (iso_now(), guidance_id)).rowcount
     if not changed:
         raise HTTPException(status_code=404, detail="找不到 RAG 建議")
     audit_event(actor, "rag_guidance_status_changed", str(guidance_id), f"is_active={update.is_active}")

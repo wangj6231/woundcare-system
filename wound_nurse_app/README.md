@@ -1,73 +1,23 @@
-# React + TypeScript + Vite
+# WoundCare+ 前端
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React / TypeScript / Vite 的護理流程研究原型。延續既有看板、評估、覆核與管理頁面，不以模型輸出自動開立處置。
 
-Currently, two official plugins are available:
+## 安裝與建置
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```powershell
+npm ci
+npm run lint
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+建置結果在 dist，供根目錄 FastAPI 提供。開發模式 npm run dev 會使用 vite.config.ts 中的 API proxy；預設開發設定可供 LAN 存取，請勿搭配真實病人資料或測試 fixture 公開帳密。
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 安全驗收
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- 模型缺席時顯示「系統可用 · 模型未就緒」。
+- 已覆核評估必須另勾人工確認；選擇「已覆核」本身不等同勾選。
+- 更換病人或影像時重置評估，過期影像分析不可套用到新的照護對象。
+- RAG 新增與重新啟用需要明確覆核／去識別化確認；停用或未核准內容不給一般護理師檢索。
+- RAG 是文字檢索，不是自動訓練 LLM；所有真實權限與確認條件由 API 再驗證。
+
+從專案根目錄按 [交付说明](../docs/PROJECT_HANDOFF_20260914.md) 啟動拋棄式 localhost UI fixture。正式權重、病人 DB、key 及外網分享都不在此測試範圍。

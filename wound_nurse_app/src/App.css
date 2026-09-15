@@ -116,3 +116,8 @@
 .preview-notice p { color: var(--muted); font-size: 11px; line-height: 1.6; margin-top: 4px; }
 .feedback-archive { margin-top: 27px; }
 @media (max-width: 700px) { .preview-safety { align-items: flex-start; flex-direction: column; }.review-attestation { max-width: none; } }
+.review-checklist { display: grid; gap: 12px; margin: 16px 0; }
+.review-confirmation { display: flex; align-items: flex-start; gap: 10px; margin: 14px 0; font-size: 14px; line-height: 1.6; }
+.review-confirmation input { width: 18px; height: 18px; margin-top: 3px; flex: 0 0 18px; accent-color: #137a70; }
+.rag-row-actions { flex-wrap: wrap; }
+button:disabled { opacity: .5; cursor: not-allowed; }

@@ -9,6 +9,7 @@ access; it only accepts an image array supplied by the API.
 from __future__ import annotations
 
 from dataclasses import dataclass
+import math
 from typing import Any, Optional
 
 import numpy as np
@@ -23,6 +24,32 @@ class CascadeConfig:
     classifier_imgsz: int = 224
     device: str = "cpu"
     classification_source: str = "full_image"
+    # Explicitly retain the existing Ultralytics NMS default. Calibration is a
+    # separate development experiment, never inferred from sealed test scores.
+    segmenter_iou: float = 0.70
+
+    def __post_init__(self) -> None:
+        for value in (self.segmenter_confidence, self.classifier_confidence, self.segmenter_iou):
+            if not math.isfinite(value) or not 0 <= value <= 1:
+                raise ValueError("confidence and NMS thresholds must be finite in [0, 1]")
+        if not math.isfinite(self.crop_margin) or not 0 <= self.crop_margin <= 1:
+            raise ValueError("crop_margin must be finite in [0, 1]")
+        for size in (self.segmenter_imgsz, self.classifier_imgsz):
+            if not isinstance(size, int) or isinstance(size, bool) or size <= 0:
+                raise ValueError("inference image sizes must be positive integers")
+        if self.classification_source not in {"full_image", "segmentation_crop"}:
+            raise ValueError("classification_source must be full_image or segmentation_crop")
+
+
+def _validate_bgr_image(image: np.ndarray) -> None:
+    """Require OpenCV-style HWC uint8 BGR; channel semantics cannot be guessed.
+
+    A caller holding RGB must convert explicitly before calling this module.
+    Do not silently convert here: the API already uses cv2.imdecode (BGR).
+    """
+    if (not isinstance(image, np.ndarray) or image.dtype != np.uint8 or image.ndim != 3
+            or image.shape[2] != 3 or min(image.shape[:2]) == 0):
+        raise ValueError("expected a nonempty HWC uint8 BGR image")
 
 
 def _class_name(model: Any, index: int) -> str:
@@ -31,8 +58,9 @@ def _class_name(model: Any, index: int) -> str:
 
 
 def classify_image(model: Any, image: np.ndarray, config: CascadeConfig) -> tuple[Optional[str], Optional[float]]:
-    """Return the top-1 class and confidence, without applying a threshold."""
+    """Return a finite top-1 class/confidence for a uint8 BGR image."""
 
+    _validate_bgr_image(image)
     result = model.predict(
         source=image,
         imgsz=config.classifier_imgsz,
@@ -43,7 +71,10 @@ def classify_image(model: Any, image: np.ndarray, config: CascadeConfig) -> tupl
     if probabilities is None:
         return None, None
     index = int(probabilities.top1)
-    return _class_name(model, index), float(probabilities.top1conf)
+    confidence = float(probabilities.top1conf)
+    if not math.isfinite(confidence) or not 0 <= confidence <= 1:
+        return None, None
+    return _class_name(model, index), confidence
 
 
 def _segmentation_box(result: Any, width: int, height: int) -> tuple[Optional[list[int]], float, int]:
@@ -51,11 +82,26 @@ def _segmentation_box(result: Any, width: int, height: int) -> tuple[Optional[li
     polygons = getattr(masks, "xy", None) if masks is not None else None
     if polygons is None:
         return None, 0.0, 0
-    valid = []
-    for polygon in polygons:
-        points = np.asarray(polygon, dtype=np.float32).reshape(-1, 2)
-        if len(points) >= 3:
+    boxes = getattr(result, "boxes", None)
+    confidences = getattr(boxes, "conf", None) if boxes is not None else None
+    if confidences is None or len(confidences) != len(polygons):
+        return None, 0.0, 0
+    valid, valid_confidences = [], []
+    for index, polygon in enumerate(polygons):
+        points = np.asarray(polygon, dtype=np.float32)
+        confidence = float(confidences[index].detach().cpu().item())
+        if (points.ndim != 2 or points.shape[1] != 2 or len(points) < 3
+                or not np.isfinite(points).all() or not math.isfinite(confidence)
+                or not 0 <= confidence <= 1):
+            continue
+        points = points.copy()
+        points[:, 0] = np.clip(points[:, 0], 0, width - 1)
+        points[:, 1] = np.clip(points[:, 1], 0, height - 1)
+        area2 = np.sum(points[:, 0] * np.roll(points[:, 1], -1)
+                       - np.roll(points[:, 0], -1) * points[:, 1])
+        if abs(float(area2)) > 1e-6:
             valid.append(points)
+            valid_confidences.append(confidence)
     if not valid:
         return None, 0.0, 0
     all_points = np.concatenate(valid, axis=0)
@@ -65,10 +111,7 @@ def _segmentation_box(result: Any, width: int, height: int) -> tuple[Optional[li
     y2 = min(height, int(np.ceil(all_points[:, 1].max() + 1)))
     if x2 <= x1 or y2 <= y1:
         return None, 0.0, 0
-    boxes = getattr(result, "boxes", None)
-    confidences = getattr(boxes, "conf", None) if boxes is not None else None
-    confidence = float(confidences.max().detach().cpu().item()) if confidences is not None and len(confidences) else 0.0
-    return [x1, y1, x2, y2], confidence, len(valid)
+    return [x1, y1, x2, y2], max(valid_confidences), len(valid)
 
 
 def _padded_box(box: list[int], width: int, height: int, margin: float) -> list[int]:
@@ -86,12 +129,18 @@ def infer_segmentation_cascade(
     classifier: Any,
     config: CascadeConfig = CascadeConfig(),
 ) -> dict[str, Any]:
-    """Run segmentation→crop→classification with full-image fallback."""
+    """Run ROI proposal and classification on a uint8 BGR image.
 
+    Full-image classification stays the default; a displayed ROI is not proof
+    of a correct wound localization or of clinically validated performance.
+    """
+
+    _validate_bgr_image(image)
     height, width = image.shape[:2]
     segment_result = segmenter.predict(
         source=image,
         conf=config.segmenter_confidence,
+        iou=config.segmenter_iou,
         imgsz=config.segmenter_imgsz,
         device=config.device,
         verbose=False,
@@ -107,7 +156,7 @@ def infer_segmentation_cascade(
     label: Optional[str] = None
     class_confidence: Optional[float] = None
     if config.classification_source == "full_image":
-        # Domain-shift-safe production default: classify the original image
+        # Development-supported default: classify the original image
         # and use segmentation only to provide a visual ROI when available.
         label, class_confidence = classify_image(classifier, image, config)
         low_confidence = label is None or class_confidence is None or class_confidence < config.classifier_confidence

@@ -2,13 +2,22 @@
 
 這是一個「先找出傷口，再協助分類，最後交給護理師確認」的研究型原型。它的目標不是取代護理判斷，而是把影像整理、模型提示、人工覆核與照護建議放在同一個流程中。
 
-## 目前進度（2026-09-06）
+## 目前進度（2026-09-15）
 
-- 分類流程已完成：431 張原始影像，保留 48 張鎖定測試影像只使用一次。
+最新主報告：[完整進度、資料張數、訓練切分、驗證隔離與問題處理](docs/PROGRESS_AND_METHODS_20260915.md)。每一步附來源或方法依據，並公開[彙總證據 JSON](docs/evidence/progress_20260915.json)；缺少原始來源證據的資料明確標為待補，不冒稱已核實。
+
+- 分類既有實驗與 48 張一次性測試結果保留封版；本輪不重新測試。
 - 分類模型在鎖定測試中答對 46/48 張（95.83%）；這是內部一次性結果，不代表臨床驗證。
 - 影像分割流程已完成多輪開發比較；目前最好的模型候選只在開發資料上比較，尚未開啟官方鎖定測試。
 - 最新外部資料檢查使用 607 張 CO2Wounds-V2 影像，結果已封存，不再拿來調整模型。
-- 下一階段 D-Seg-10 等待 Redscar 官方個別存取核准；在授權與資料稽核完成前不會開始訓練。
+- FUSeg 非商業研究修正版已完成 300 epochs：771 train／191 val，最終 Mask mAP50 90.32%、mAP50–95 68.08%，僅為內部 development 結果；沒有替換 App 權重。
+- ISIC→FUSeg 接續亦已完成；固定工作點驗收失敗，但發現候選驗收的 RGB/BGR 輸入與基準不一致，須修正評估再比較，尚未開始五種子實驗。
+- 分類歷史統計另發現 3,622 與理論 3,600 預測列的差額，以及逐列 Bootstrap 未處理群組相依性；保留封版原件，修訂統計列為下一步，不重開 48 張 test。
+- App 已補齊人工覆核確認、正確 EMR ID、病人切換防護、RAG 覆核／去識別化／來源追溯與隔離預覽啟動檢查。
+- 新候選真實權重的合成輸入相容性通過；針對「雜訊高信心但無 ROI」反例，加入不自動提供類別處置／RAG 的防護，不將高信心當成傷口存在證據。
+- Redscar 仍等待官方個別存取核准；新未見資料的泛化評估與臨床部署驗收尚未完成。
+
+本轮工程交付與本機操作：[交付說明](docs/PROJECT_HANDOFF_20260914.md)；[最新分割模型卡與來源](docs/FUSEG_MODEL_CARD_20260914.md)。
 
 ## 公開內容原則
 
@@ -16,20 +25,21 @@
 
 ## 建議閱讀順序
 
-1. [目前進度白話報告](docs/PORTFOLIO_PROGRESS_20260906.md)
+1. [最新完整白話方法與進度報告（2026-09-15）](docs/PROGRESS_AND_METHODS_20260915.md)
 2. [GitHub 公開版安全稽核](docs/GITHUB_SECURITY_AUDIT_20260906.md)
-3. [教授版完整實驗報告](docs/PROFESSOR_INTEGRATED_EXPERIMENT_REPORT_20260817.md)
+3. [歷史教授實驗報告（新版限制與更正見最新報告）](docs/PROFESSOR_INTEGRATED_EXPERIMENT_REPORT_20260817.md)
 4. [分類結果總表](experiments/results/tables/Table5_Final_Blind_Test_Generalization.md)
 5. [專案結構](PROJECT_STRUCTURE_20260812.md)
 
 ## 本機啟動
 
-請先複製 `.env.example`，自行產生新的 Fernet key 與管理者密碼；不要使用或提交本機的 `secret.key`、`healthcare.db`。資料集與模型權重也必須放在本機忽略目錄。
+初次檢查請使用不接觸既有資料庫／模型的合成 UI fixture；依賴安裝、建置、測試帳號與停止方式見[交付說明](docs/PROJECT_HANDOFF_20260914.md)。
 
 ```powershell
-Copy-Item .env.example .env
-python -m pip install -r requirements.txt
-python backend_main.py
+# 先依交付說明安裝依賴並完成前端 build
+python tests/run_local_preview_smoke.py
 ```
 
 這是畢業專題與研究原型，不是已完成醫療器材認證的臨床決策系統。
+
+正式啟動不得使用 fixture 公開密碼；請以環境變數供應獨立 key、強密碼與 DB 路徑。Python 入口不會自動讀取 `.env`；Docker compose 的 `env_file` 才會載入對應檔案。

@@ -14,7 +14,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends libgl1 libglib2.0-0 && rm -rf /var/lib/apt/lists/*
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
-COPY backend_main.py woundcare_inference.py ./
+COPY backend_main.py woundcare_inference.py woundcare_safety.py ./
 COPY --from=frontend /frontend/dist ./wound_nurse_app/dist
 RUN useradd --create-home --uid 10001 woundcare && mkdir /data && chown -R woundcare:woundcare /app /data
 USER woundcare
