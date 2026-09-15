@@ -17,7 +17,7 @@
 - 新候選真實權重的合成輸入相容性通過；針對「雜訊高信心但無 ROI」反例，加入不自動提供類別處置／RAG 的防護，不將高信心當成傷口存在證據。
 - Redscar 仍等待官方個別存取核准；新未見資料的泛化評估與臨床部署驗收尚未完成。
 
-本轮工程交付與本機操作：[交付說明](docs/PROJECT_HANDOFF_20260914.md)；[最新分割模型卡與來源](docs/FUSEG_MODEL_CARD_20260914.md)。
+本輪工程交付與本機操作：[交付說明](docs/PROJECT_HANDOFF_20260914.md)；[最新分割模型卡與來源](docs/FUSEG_MODEL_CARD_20260914.md)。
 
 ## 公開內容原則
 
@@ -25,9 +25,9 @@
 
 ## 建議閱讀順序
 
-1. [最新完整白話方法與進度報告（2026-09-15）](docs/PROGRESS_AND_METHODS_20260915.md)
+1. [最新完整進度報告（2026-09-15）](docs/PROGRESS_AND_METHODS_20260915.md)
 2. [GitHub 公開版安全稽核](docs/GITHUB_SECURITY_AUDIT_20260906.md)
-3. [歷史教授實驗報告（新版限制與更正見最新報告）](docs/PROFESSOR_INTEGRATED_EXPERIMENT_REPORT_20260817.md)
+3. [歷史實驗報告（新版限制與更正見最新報告）](docs/PROFESSOR_INTEGRATED_EXPERIMENT_REPORT_20260817.md)
 4. [分類結果總表](experiments/results/tables/Table5_Final_Blind_Test_Generalization.md)
 5. [專案結構](PROJECT_STRUCTURE_20260812.md)
 
