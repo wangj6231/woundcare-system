@@ -72,10 +72,27 @@ docker/**/label_studio_data/
 
 # Keep the working tree's large experiment evidence local by default.
 outputs/
-experiments/results/
+experiments/results/**
+!experiments/results/statistics/
+experiments/results/statistics/**
+!experiments/results/statistics/C-Arch-05-MS_saved_arrays_recomputed_v2.json
+!experiments/results/statistics/C-Arch-05-MS_phase_b1_final_summary.json
+!experiments/results/tables/
+experiments/results/tables/**
+!experiments/results/tables/Table1b_Dataset_Definition_Correction.md
+!experiments/results/tables/Table2b_Classification_Performance_Recomputed_From_Saved_Arrays.md
+!experiments/results/tables/Table2c_Final_Classification_Development_Summary.md
+!experiments/results/tables/Table_B1_PerClass_SeedPooled_Performance.md
+!experiments/results/tables/Table_B1_PerClass_SeedPooled_Performance.csv
+!experiments/results/tables/Table_B1_SeedPooled_Confusion_Counts.md
 experiments/manifests/
 experiments/experiment_log.csv
 docs/figures/
+
+# Per-run preregistration evidence is retained locally. These files contain
+# machine-specific paths and per-sample manifests; publish only the compact
+# methods reports and aggregate tables derived from them.
+experiments/protocols/
 .vscode/
 docs/dataset_licenses/
 dseg*_review_project_*/

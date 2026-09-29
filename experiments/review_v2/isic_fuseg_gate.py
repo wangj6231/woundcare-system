@@ -7,6 +7,7 @@ from pathlib import Path
 
 import numpy as np
 from PIL import Image
+from experiments.data_roles import validate_model_input_contract
 
 from .audit_project import ROOT, read_json, sha, snapshot_sealed, write_json
 from .fuseg_warmup_experiment import update_status, verify_inventory
@@ -94,7 +95,7 @@ def execute_gate(formal: Path):
     rows, elapsed = [], []
     for row in cohort:
         with Image.open(loc.safe_path(loc.BUNDLE, row["image"])) as im:
-            image = np.asarray(im.convert("RGB"))
+            image = validate_model_input_contract(im.convert("RGB"), source_type="PIL_RGB")
         result, masks, milliseconds = loc.predict_materialized(model, image, predict)
         rows.append(loc.assess(row, result, masks, settings["primary"]["confidence"]))
         elapsed.append(milliseconds)

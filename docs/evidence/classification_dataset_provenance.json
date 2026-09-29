@@ -1,0 +1,28 @@
+{
+  "audit_date": "2026-09-20",
+  "dataset_name": "local seven-class classification development snapshot",
+  "source_status": "UNVERIFIED",
+  "original_count": 431,
+  "original_count_evidence": "Historical documentation only; original pool not opened this audit",
+  "verified_count": 720,
+  "verified_count_scope": "Current development files only; train=679, val=41",
+  "unique_md5_groups": 383,
+  "download_url": null,
+  "publication": null,
+  "license": null,
+  "version": null,
+  "download_date": null,
+  "archive_sha256": null,
+  "image_mapping_status": "CURRENT_FILE_HASHES_VERIFIED; ORIGINAL_SOURCE_AND_HISTORICAL_OOF_MAPPING_UNVERIFIED",
+  "identity_manifest": "experiments/results/audit/phase_a_20260920/sample_identity_manifest.csv",
+  "identity_manifest_sha256": "6db2930ead92faf03bd0b6c7ec6bc4b112cf711550e5120a69f3dad5e83bfa5d",
+  "patient_independence": "NOT_VERIFIED",
+  "test_images_used": 0,
+  "known_limitations": [
+    "Original URL, license, version and archive evidence unavailable in inspected materials",
+    "Filenames do not establish patient, institution, consent or augmentation lineage",
+    "720 files are 383 exact-content groups, not 720 independent patients",
+    "No historical prediction row to file identity mapping was retained in the exported arrays",
+    "No protected image pixels were opened to recheck dev/test overlap"
+  ]
+}

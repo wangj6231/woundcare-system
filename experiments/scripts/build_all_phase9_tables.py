@@ -6,12 +6,14 @@ BASE_DIR  = Path(__file__).parent.parent.parent
 LOG_PATH  = Path(__file__).parent.parent / 'experiment_log.csv'
 STATS_DIR = Path(__file__).parent.parent / 'results' / 'statistics'
 OUT_DIR   = Path(__file__).parent.parent / 'results' / 'tables'
-OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 CLASS_NAMES = ['Abrasions', 'Bruises', 'Burns', 'Cut',
                'Ingrown_nails', 'Laceration', 'Stab_wound']
 
 def build_tables():
+    if OUT_DIR.exists():
+        raise FileExistsError(f"historical table directory is immutable: {OUT_DIR}")
+    OUT_DIR.mkdir(parents=True, exist_ok=False)
     # ── Table 1: Dataset Partition & Protocol Summary ──────────────────────
     t1_data = [
         {"Subset / Category": "Total Raw Images", "Count / Value": "768 images", "Description": "Complete collected wound dataset"},
@@ -115,4 +117,5 @@ def build_tables():
 
     print("ALL TABLES GENERATED IN experiments/results/tables/")
 
-build_tables()
+if __name__ == '__main__':
+    build_tables()

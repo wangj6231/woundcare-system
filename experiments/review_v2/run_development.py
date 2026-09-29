@@ -14,6 +14,7 @@ import yaml
 
 from .audit_project import ROOT, audit_development_dataset, check_replay_manifest, read_json, sha, write_json
 from .guards import validate_new_development_run, validate_optimizer_settings
+from experiments.data_roles import require_source_role
 
 RECIPE = ROOT / "experiments/review_v2/recipes/D-Seg-08R_warmup_control.yaml"
 
@@ -22,6 +23,8 @@ def preflight(admission_file: Path, output: Path) -> dict:
     recipe = yaml.safe_load(RECIPE.read_text(encoding="utf-8"))
     validate_optimizer_settings(recipe)
     gates = read_json(admission_file)
+    for source in recipe["sources"]:
+        require_source_role(source, "train")
     # Check source permission FIRST: no original pixels or model loaded on failure.
     for source in recipe["sources"]:
         g = gates.get(source, {})

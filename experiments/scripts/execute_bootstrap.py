@@ -15,6 +15,10 @@ DEFAULT_SEEDS = [42, 123, 3407, 2026, 999]
 K = 5
 
 def do_compute():
+    raise RuntimeError("ROW_WISE_BOOTSTRAP_SUPERSEDED: grouped CI requires verified historical row-to-group identity")
+    out_path = STATS_DIR / "C-Arch-05-MS_bootstrap_ci_report.json"
+    if out_path.exists():
+        raise FileExistsError(f"historical bootstrap report is immutable: {out_path}")
     pred_files = []
     for s in DEFAULT_SEEDS:
         for f in range(1, K + 1):
@@ -116,9 +120,9 @@ def do_compute():
     }
 
     STATS_DIR.mkdir(parents=True, exist_ok=True)
-    out_path = STATS_DIR / "C-Arch-05-MS_bootstrap_ci_report.json"
-    with open(out_path, 'w', encoding='utf-8') as f:
+    with open(out_path, 'x', encoding='utf-8') as f:
         json.dump(report, f, indent=2, ensure_ascii=False)
     print(f"DONE writing {out_path}")
 
-do_compute()
+if __name__ == '__main__':
+    do_compute()

@@ -1,0 +1,67 @@
+{
+  "scope": "Aggregate development charts and five reviewed FUSeg paired-error composites only",
+  "source_dataset": "FUSeg / Foot Ulcer Segmentation Challenge",
+  "source_repository": "https://github.com/uwm-bigdata/wound-segmentation",
+  "pinned_commit": "42a272dfe0679f20675e826385925cb7562934b6",
+  "license_evidence": "Challenge PDF records CC BY NC without a version; use is noncommercial academic reporting",
+  "clinical_or_field_images_included": false,
+  "locked_test_images_included": false,
+  "selection_policy": "Five pre-rendered development examples chosen to illustrate FP, multi-GT, very-small loss and crop recovery; not a performance sample",
+  "selected_cases": [
+    {
+      "sample_id": "fuseg__0003.png",
+      "reasons": [
+        "H4_ONLY_FP"
+      ],
+      "sha256": "f506795ef5d4f888ce9070909d284b61d9854bbb0fb0819f383566f4fb81d632",
+      "source": "experiments/results/f_higher_scale_v2_paired_error_audit/paired_error_visualizations/fuseg__0003.png",
+      "published_copy": "docs/report_assets/progress_20260929/fuseg__0003.png"
+    },
+    {
+      "sample_id": "fuseg__0412.png",
+      "reasons": [
+        "C4_ONLY_FP"
+      ],
+      "sha256": "fe0b14c287a841540c80fc21162c87c8b20995cfb92a6ff15900962c8515deaa",
+      "source": "experiments/results/f_higher_scale_v2_paired_error_audit/paired_error_visualizations/fuseg__0412.png",
+      "published_copy": "docs/report_assets/progress_20260929/fuseg__0412.png"
+    },
+    {
+      "sample_id": "fuseg__0604.png",
+      "reasons": [
+        "C4_ONLY:GT1",
+        "C4_ONLY_FP",
+        "H4_ONLY_FP"
+      ],
+      "sha256": "c282d649a2b1b90e90474c71fdd3d5ddff8ae4c493bac8b17c421a8a730a3a08",
+      "source": "experiments/results/f_higher_scale_v2_paired_error_audit/paired_error_visualizations/fuseg__0604.png",
+      "published_copy": "docs/report_assets/progress_20260929/fuseg__0604.png"
+    },
+    {
+      "sample_id": "fuseg__0867.png",
+      "reasons": [
+        "C4_ONLY:GT0",
+        "H4_ONLY_FP"
+      ],
+      "sha256": "c3cf09f3f63108c77192154ae7cae6d1212ef19bb289f54bbbf88ca4f818296c",
+      "source": "experiments/results/f_higher_scale_v2_paired_error_audit/paired_error_visualizations/fuseg__0867.png",
+      "published_copy": "docs/report_assets/progress_20260929/fuseg__0867.png"
+    },
+    {
+      "sample_id": "fuseg__0971.png",
+      "reasons": [
+        "H4_ONLY_CROP_PASS"
+      ],
+      "sha256": "efd3c9950041355c04b47d649042f39c263a3f66fa89d3bbd0b403806a77209d",
+      "source": "experiments/results/f_higher_scale_v2_paired_error_audit/paired_error_visualizations/fuseg__0971.png",
+      "published_copy": "docs/report_assets/progress_20260929/fuseg__0971.png"
+    }
+  ],
+  "charts": [
+    "classification_seed_metrics.png",
+    "rgb_bgr_controlled_reevaluation.png",
+    "d2_multiseed_small_tp.png",
+    "f12_higher_scale_pair.png",
+    "f13_false_positive_categories.png"
+  ]
+}

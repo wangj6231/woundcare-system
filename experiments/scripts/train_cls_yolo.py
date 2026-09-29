@@ -9,6 +9,8 @@ import time
 import yaml
 import argparse
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from data_roles import require_source_role
 
 BASE_DIR = Path(__file__).parent.parent.parent
 
@@ -26,8 +28,6 @@ def train_yolo_cls(flat_cfg: dict) -> dict:
     Returns:
         dict 含 weights_path, best_epoch, train_samples, val_samples
     """
-    from ultralytics import YOLO
-
     model_name  = flat_cfg['model']
     run_name    = flat_cfg['run_name']
     epochs      = flat_cfg.get('epochs', 150)
@@ -35,6 +35,10 @@ def train_yolo_cls(flat_cfg: dict) -> dict:
     imgsz       = flat_cfg.get('img_size', 224)
     seed        = flat_cfg.get('seed', 42)
     dataset     = flat_cfg.get('dataset', '')
+    require_source_role(None, 'train', path=dataset)
+    if (BASE_DIR / 'experiments' / 'results' / 'raw' / flat_cfg['run_name']).exists():
+        raise FileExistsError('existing YOLO classification run; overwrite forbidden')
+    from ultralytics import YOLO
     optimizer   = flat_cfg.get('optimizer', 'auto')
     lr0         = flat_cfg.get('lr0', 0.01)
     weight_decay = flat_cfg.get('weight_decay', 0.0005)
@@ -77,7 +81,7 @@ def train_yolo_cls(flat_cfg: dict) -> dict:
         degrees=degrees,
         erasing=erasing,
         verbose=False,
-        exist_ok=True,
+        exist_ok=False,
     )
 
     best_top1  = float(results.results_dict.get('metrics/accuracy_top1', 0))

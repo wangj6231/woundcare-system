@@ -118,7 +118,9 @@ class GuardTests(unittest.TestCase):
                 validate_polygon_line(line)
 
     def call_guard(self, **changes):
-        config = {"role": "development", "test_images_used": 0, "sources": ["synthetic"]}
+        # Synthetic groups/evidence; use a registered source ID so the separate
+        # source-role gate is exercised without admitting an unknown ID.
+        config = {"role": "development", "test_images_used": 0, "sources": ["FUSeg"]}
         config.update(changes.pop("config", {}))
         with tempfile.TemporaryDirectory() as folder:
             evidence = Path(folder) / "evidence.txt"
@@ -126,7 +128,7 @@ class GuardTests(unittest.TestCase):
             kwargs = {"train_groups": {"a"}, "val_groups": {"b"}, "ancestor_train_groups": set(),
                       "generic_pretrained": True, "output_dir": Path(folder) / "new_run"}
             kwargs.update(changes)
-            validate_new_development_run(config, {"synthetic": {"development_allowed": True, "evidence_file": str(evidence)}}, **kwargs)
+            validate_new_development_run(config, {"FUSeg": {"development_allowed": True, "evidence_file": str(evidence)}}, **kwargs)
 
     def test_clean_development_guard(self):
         self.call_guard()

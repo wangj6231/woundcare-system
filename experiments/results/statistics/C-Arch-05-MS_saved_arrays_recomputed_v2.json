@@ -1,0 +1,2218 @@
+{
+  "SOURCE": "SAVED_FOLD_PREDICTION_ARRAYS",
+  "ROW_IDENTITY": "NOT AVAILABLE",
+  "PATIENT_INDEPENDENCE": "NOT VERIFIED",
+  "GROUPED_BOOTSTRAP_CI": "NOT AVAILABLE",
+  "GROUPED_CI_STATUS": "BLOCKED_BY_MISSING_HISTORICAL_ROW_IDENTITY",
+  "NO_MODEL_INFERENCE_PERFORMED": true,
+  "LOCKED_TEST_USED": false,
+  "test_images_used": 0,
+  "CO2Wounds_used_for_tuning": false,
+  "interpretation": "seed-level aggregate metrics reconstructed from saved fold prediction arrays; not canonical image-identified OOF",
+  "sd_definition": "sample SD (ddof=1) across the five seed aggregates; descriptive, not independent-dataset inference",
+  "fold_distribution_definition": "descriptive fold variability only; 25 folds are not independent datasets",
+  "classes": [
+    "Abrasions",
+    "Bruises",
+    "Burns",
+    "Cut",
+    "Ingrown_nails",
+    "Laceration",
+    "Stab_wound"
+  ],
+  "folds": [
+    {
+      "seed": 42,
+      "fold": 1,
+      "rows": 150,
+      "metrics_percent": {
+        "accuracy": 84.67,
+        "macro_precision": 85.85,
+        "macro_recall": 84.18,
+        "macro_f1": 84.44,
+        "weighted_f1": 84.65,
+        "stab_wound_recall": 70.59
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 22,
+          "support": 23,
+          "predicted": 30,
+          "precision_percent": 73.33,
+          "recall_percent": 95.65,
+          "f1_percent": 83.02
+        },
+        "Bruises": {
+          "correct": 20,
+          "support": 21,
+          "predicted": 24,
+          "precision_percent": 83.33,
+          "recall_percent": 95.24,
+          "f1_percent": 88.89
+        },
+        "Burns": {
+          "correct": 21,
+          "support": 23,
+          "predicted": 23,
+          "precision_percent": 91.3,
+          "recall_percent": 91.3,
+          "f1_percent": 91.3
+        },
+        "Cut": {
+          "correct": 18,
+          "support": 23,
+          "predicted": 20,
+          "precision_percent": 90.0,
+          "recall_percent": 78.26,
+          "f1_percent": 83.72
+        },
+        "Ingrown_nails": {
+          "correct": 17,
+          "support": 21,
+          "predicted": 17,
+          "precision_percent": 100.0,
+          "recall_percent": 80.95,
+          "f1_percent": 89.47
+        },
+        "Laceration": {
+          "correct": 17,
+          "support": 22,
+          "predicted": 22,
+          "precision_percent": 77.27,
+          "recall_percent": 77.27,
+          "f1_percent": 77.27
+        },
+        "Stab_wound": {
+          "correct": 12,
+          "support": 17,
+          "predicted": 14,
+          "precision_percent": 85.71,
+          "recall_percent": 70.59,
+          "f1_percent": 77.42
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s42_fold1_predictions.json",
+      "sha256": "690fc4bb44103b3ae700a131e6cd3bd22dbee3c7cdc3b34130dda5db72bbda97"
+    },
+    {
+      "seed": 42,
+      "fold": 2,
+      "rows": 133,
+      "metrics_percent": {
+        "accuracy": 86.47,
+        "macro_precision": 90.0,
+        "macro_recall": 85.27,
+        "macro_f1": 85.62,
+        "weighted_f1": 86.23,
+        "stab_wound_recall": 66.67
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 15,
+          "support": 16,
+          "predicted": 21,
+          "precision_percent": 71.43,
+          "recall_percent": 93.75,
+          "f1_percent": 81.08
+        },
+        "Bruises": {
+          "correct": 23,
+          "support": 25,
+          "predicted": 23,
+          "precision_percent": 100.0,
+          "recall_percent": 92.0,
+          "f1_percent": 95.83
+        },
+        "Burns": {
+          "correct": 16,
+          "support": 18,
+          "predicted": 18,
+          "precision_percent": 88.89,
+          "recall_percent": 88.89,
+          "f1_percent": 88.89
+        },
+        "Cut": {
+          "correct": 10,
+          "support": 18,
+          "predicted": 10,
+          "precision_percent": 100.0,
+          "recall_percent": 55.56,
+          "f1_percent": 71.43
+        },
+        "Ingrown_nails": {
+          "correct": 18,
+          "support": 18,
+          "predicted": 18,
+          "precision_percent": 100.0,
+          "recall_percent": 100.0,
+          "f1_percent": 100.0
+        },
+        "Laceration": {
+          "correct": 23,
+          "support": 23,
+          "predicted": 33,
+          "precision_percent": 69.7,
+          "recall_percent": 100.0,
+          "f1_percent": 82.14
+        },
+        "Stab_wound": {
+          "correct": 10,
+          "support": 15,
+          "predicted": 10,
+          "precision_percent": 100.0,
+          "recall_percent": 66.67,
+          "f1_percent": 80.0
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s42_fold2_predictions.json",
+      "sha256": "509a89ba61a92390f0d82d115d2399b90ef440d379d4749a5a64b126a8e12a23"
+    },
+    {
+      "seed": 42,
+      "fold": 3,
+      "rows": 145,
+      "metrics_percent": {
+        "accuracy": 91.72,
+        "macro_precision": 92.71,
+        "macro_recall": 91.75,
+        "macro_f1": 91.8,
+        "weighted_f1": 91.68,
+        "stab_wound_recall": 100.0
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 19,
+          "support": 21,
+          "predicted": 21,
+          "precision_percent": 90.48,
+          "recall_percent": 90.48,
+          "f1_percent": 90.48
+        },
+        "Bruises": {
+          "correct": 21,
+          "support": 21,
+          "predicted": 25,
+          "precision_percent": 84.0,
+          "recall_percent": 100.0,
+          "f1_percent": 91.3
+        },
+        "Burns": {
+          "correct": 15,
+          "support": 19,
+          "predicted": 15,
+          "precision_percent": 100.0,
+          "recall_percent": 78.95,
+          "f1_percent": 88.24
+        },
+        "Cut": {
+          "correct": 20,
+          "support": 24,
+          "predicted": 20,
+          "precision_percent": 100.0,
+          "recall_percent": 83.33,
+          "f1_percent": 90.91
+        },
+        "Ingrown_nails": {
+          "correct": 12,
+          "support": 12,
+          "predicted": 12,
+          "precision_percent": 100.0,
+          "recall_percent": 100.0,
+          "f1_percent": 100.0
+        },
+        "Laceration": {
+          "correct": 17,
+          "support": 19,
+          "predicted": 21,
+          "precision_percent": 80.95,
+          "recall_percent": 89.47,
+          "f1_percent": 85.0
+        },
+        "Stab_wound": {
+          "correct": 29,
+          "support": 29,
+          "predicted": 31,
+          "precision_percent": 93.55,
+          "recall_percent": 100.0,
+          "f1_percent": 96.67
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s42_fold3_predictions.json",
+      "sha256": "cd9ffb67e331fa1f141c9ac29473ee840045468ff04e81f3f0377d97edb227ea"
+    },
+    {
+      "seed": 42,
+      "fold": 4,
+      "rows": 147,
+      "metrics_percent": {
+        "accuracy": 85.71,
+        "macro_precision": 87.72,
+        "macro_recall": 84.86,
+        "macro_f1": 85.22,
+        "weighted_f1": 85.8,
+        "stab_wound_recall": 100.0
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 19,
+          "support": 22,
+          "predicted": 25,
+          "precision_percent": 76.0,
+          "recall_percent": 86.36,
+          "f1_percent": 80.85
+        },
+        "Bruises": {
+          "correct": 22,
+          "support": 22,
+          "predicted": 24,
+          "precision_percent": 91.67,
+          "recall_percent": 100.0,
+          "f1_percent": 95.65
+        },
+        "Burns": {
+          "correct": 10,
+          "support": 17,
+          "predicted": 10,
+          "precision_percent": 100.0,
+          "recall_percent": 58.82,
+          "f1_percent": 74.07
+        },
+        "Cut": {
+          "correct": 19,
+          "support": 21,
+          "predicted": 22,
+          "precision_percent": 86.36,
+          "recall_percent": 90.48,
+          "f1_percent": 88.37
+        },
+        "Ingrown_nails": {
+          "correct": 20,
+          "support": 24,
+          "predicted": 20,
+          "precision_percent": 100.0,
+          "recall_percent": 83.33,
+          "f1_percent": 90.91
+        },
+        "Laceration": {
+          "correct": 15,
+          "support": 20,
+          "predicted": 25,
+          "precision_percent": 60.0,
+          "recall_percent": 75.0,
+          "f1_percent": 66.67
+        },
+        "Stab_wound": {
+          "correct": 21,
+          "support": 21,
+          "predicted": 21,
+          "precision_percent": 100.0,
+          "recall_percent": 100.0,
+          "f1_percent": 100.0
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s42_fold4_predictions.json",
+      "sha256": "361797469b1427abf8c6001619dc272a0123f132a44a84b7f6997f5f2d4e8b26"
+    },
+    {
+      "seed": 42,
+      "fold": 5,
+      "rows": 145,
+      "metrics_percent": {
+        "accuracy": 91.03,
+        "macro_precision": 91.33,
+        "macro_recall": 91.77,
+        "macro_f1": 91.35,
+        "weighted_f1": 90.86,
+        "stab_wound_recall": 100.0
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 17,
+          "support": 23,
+          "predicted": 19,
+          "precision_percent": 89.47,
+          "recall_percent": 73.91,
+          "f1_percent": 80.95
+        },
+        "Bruises": {
+          "correct": 19,
+          "support": 20,
+          "predicted": 22,
+          "precision_percent": 86.36,
+          "recall_percent": 95.0,
+          "f1_percent": 90.48
+        },
+        "Burns": {
+          "correct": 21,
+          "support": 25,
+          "predicted": 25,
+          "precision_percent": 84.0,
+          "recall_percent": 84.0,
+          "f1_percent": 84.0
+        },
+        "Cut": {
+          "correct": 16,
+          "support": 16,
+          "predicted": 18,
+          "precision_percent": 88.89,
+          "recall_percent": 100.0,
+          "f1_percent": 94.12
+        },
+        "Ingrown_nails": {
+          "correct": 25,
+          "support": 25,
+          "predicted": 26,
+          "precision_percent": 96.15,
+          "recall_percent": 100.0,
+          "f1_percent": 98.04
+        },
+        "Laceration": {
+          "correct": 17,
+          "support": 19,
+          "predicted": 18,
+          "precision_percent": 94.44,
+          "recall_percent": 89.47,
+          "f1_percent": 91.89
+        },
+        "Stab_wound": {
+          "correct": 17,
+          "support": 17,
+          "predicted": 17,
+          "precision_percent": 100.0,
+          "recall_percent": 100.0,
+          "f1_percent": 100.0
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s42_fold5_predictions.json",
+      "sha256": "84a214b46af631d649ef8b243afe6b2d52d8787749ff9713b810c9ffdab61003"
+    },
+    {
+      "seed": 123,
+      "fold": 1,
+      "rows": 145,
+      "metrics_percent": {
+        "accuracy": 88.28,
+        "macro_precision": 88.69,
+        "macro_recall": 88.33,
+        "macro_f1": 88.05,
+        "weighted_f1": 88.43,
+        "stab_wound_recall": 78.26
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 23,
+          "support": 24,
+          "predicted": 26,
+          "precision_percent": 88.46,
+          "recall_percent": 95.83,
+          "f1_percent": 92.0
+        },
+        "Bruises": {
+          "correct": 20,
+          "support": 23,
+          "predicted": 22,
+          "precision_percent": 90.91,
+          "recall_percent": 86.96,
+          "f1_percent": 88.89
+        },
+        "Burns": {
+          "correct": 10,
+          "support": 12,
+          "predicted": 14,
+          "precision_percent": 71.43,
+          "recall_percent": 83.33,
+          "f1_percent": 76.92
+        },
+        "Cut": {
+          "correct": 19,
+          "support": 23,
+          "predicted": 20,
+          "precision_percent": 95.0,
+          "recall_percent": 82.61,
+          "f1_percent": 88.37
+        },
+        "Ingrown_nails": {
+          "correct": 17,
+          "support": 17,
+          "predicted": 17,
+          "precision_percent": 100.0,
+          "recall_percent": 100.0,
+          "f1_percent": 100.0
+        },
+        "Laceration": {
+          "correct": 21,
+          "support": 23,
+          "predicted": 28,
+          "precision_percent": 75.0,
+          "recall_percent": 91.3,
+          "f1_percent": 82.35
+        },
+        "Stab_wound": {
+          "correct": 18,
+          "support": 23,
+          "predicted": 18,
+          "precision_percent": 100.0,
+          "recall_percent": 78.26,
+          "f1_percent": 87.8
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s123_fold1_predictions.json",
+      "sha256": "39a2788ccfd4584f4be86f5aa5e8265f7ac796fc53590d76c82743194d3ee5b3"
+    },
+    {
+      "seed": 123,
+      "fold": 2,
+      "rows": 155,
+      "metrics_percent": {
+        "accuracy": 85.16,
+        "macro_precision": 87.11,
+        "macro_recall": 84.87,
+        "macro_f1": 84.99,
+        "weighted_f1": 85.11,
+        "stab_wound_recall": 100.0
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 23,
+          "support": 25,
+          "predicted": 26,
+          "precision_percent": 88.46,
+          "recall_percent": 92.0,
+          "f1_percent": 90.2
+        },
+        "Bruises": {
+          "correct": 20,
+          "support": 21,
+          "predicted": 30,
+          "precision_percent": 66.67,
+          "recall_percent": 95.24,
+          "f1_percent": 78.43
+        },
+        "Burns": {
+          "correct": 18,
+          "support": 25,
+          "predicted": 18,
+          "precision_percent": 100.0,
+          "recall_percent": 72.0,
+          "f1_percent": 83.72
+        },
+        "Cut": {
+          "correct": 12,
+          "support": 18,
+          "predicted": 13,
+          "precision_percent": 92.31,
+          "recall_percent": 66.67,
+          "f1_percent": 77.42
+        },
+        "Ingrown_nails": {
+          "correct": 12,
+          "support": 12,
+          "predicted": 12,
+          "precision_percent": 100.0,
+          "recall_percent": 100.0,
+          "f1_percent": 100.0
+        },
+        "Laceration": {
+          "correct": 15,
+          "support": 22,
+          "predicted": 22,
+          "precision_percent": 68.18,
+          "recall_percent": 68.18,
+          "f1_percent": 68.18
+        },
+        "Stab_wound": {
+          "correct": 32,
+          "support": 32,
+          "predicted": 34,
+          "precision_percent": 94.12,
+          "recall_percent": 100.0,
+          "f1_percent": 96.97
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s123_fold2_predictions.json",
+      "sha256": "0a8848f7e1aeca063c5e1db2712703dc783eed9725c7e0acabc8b388c695f985"
+    },
+    {
+      "seed": 123,
+      "fold": 3,
+      "rows": 141,
+      "metrics_percent": {
+        "accuracy": 85.11,
+        "macro_precision": 86.13,
+        "macro_recall": 85.48,
+        "macro_f1": 85.37,
+        "weighted_f1": 85.47,
+        "stab_wound_recall": 77.27
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 16,
+          "support": 18,
+          "predicted": 18,
+          "precision_percent": 88.89,
+          "recall_percent": 88.89,
+          "f1_percent": 88.89
+        },
+        "Bruises": {
+          "correct": 19,
+          "support": 20,
+          "predicted": 25,
+          "precision_percent": 76.0,
+          "recall_percent": 95.0,
+          "f1_percent": 84.44
+        },
+        "Burns": {
+          "correct": 17,
+          "support": 21,
+          "predicted": 19,
+          "precision_percent": 89.47,
+          "recall_percent": 80.95,
+          "f1_percent": 85.0
+        },
+        "Cut": {
+          "correct": 17,
+          "support": 17,
+          "predicted": 17,
+          "precision_percent": 100.0,
+          "recall_percent": 100.0,
+          "f1_percent": 100.0
+        },
+        "Ingrown_nails": {
+          "correct": 21,
+          "support": 25,
+          "predicted": 21,
+          "precision_percent": 100.0,
+          "recall_percent": 84.0,
+          "f1_percent": 91.3
+        },
+        "Laceration": {
+          "correct": 13,
+          "support": 18,
+          "predicted": 22,
+          "precision_percent": 59.09,
+          "recall_percent": 72.22,
+          "f1_percent": 65.0
+        },
+        "Stab_wound": {
+          "correct": 17,
+          "support": 22,
+          "predicted": 19,
+          "precision_percent": 89.47,
+          "recall_percent": 77.27,
+          "f1_percent": 82.93
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s123_fold3_predictions.json",
+      "sha256": "22b5cbf5ef124bd5f1cadd613a07c988b69dd3e34d79904e256a134732bbcb21"
+    },
+    {
+      "seed": 123,
+      "fold": 4,
+      "rows": 133,
+      "metrics_percent": {
+        "accuracy": 90.98,
+        "macro_precision": 92.33,
+        "macro_recall": 92.27,
+        "macro_f1": 91.88,
+        "weighted_f1": 91.02,
+        "stab_wound_recall": 100.0
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 16,
+          "support": 18,
+          "predicted": 16,
+          "precision_percent": 100.0,
+          "recall_percent": 88.89,
+          "f1_percent": 94.12
+        },
+        "Bruises": {
+          "correct": 23,
+          "support": 23,
+          "predicted": 26,
+          "precision_percent": 88.46,
+          "recall_percent": 100.0,
+          "f1_percent": 93.88
+        },
+        "Burns": {
+          "correct": 19,
+          "support": 23,
+          "predicted": 20,
+          "precision_percent": 95.0,
+          "recall_percent": 82.61,
+          "f1_percent": 88.37
+        },
+        "Cut": {
+          "correct": 19,
+          "support": 22,
+          "predicted": 20,
+          "precision_percent": 95.0,
+          "recall_percent": 86.36,
+          "f1_percent": 90.48
+        },
+        "Ingrown_nails": {
+          "correct": 16,
+          "support": 16,
+          "predicted": 21,
+          "precision_percent": 76.19,
+          "recall_percent": 100.0,
+          "f1_percent": 86.49
+        },
+        "Laceration": {
+          "correct": 22,
+          "support": 25,
+          "predicted": 24,
+          "precision_percent": 91.67,
+          "recall_percent": 88.0,
+          "f1_percent": 89.8
+        },
+        "Stab_wound": {
+          "correct": 6,
+          "support": 6,
+          "predicted": 6,
+          "precision_percent": 100.0,
+          "recall_percent": 100.0,
+          "f1_percent": 100.0
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s123_fold4_predictions.json",
+      "sha256": "2548f4d9da1e4904d0cbbaa7c957956f96070f2ff251aed8223d544111533e96"
+    },
+    {
+      "seed": 123,
+      "fold": 5,
+      "rows": 146,
+      "metrics_percent": {
+        "accuracy": 90.41,
+        "macro_precision": 91.52,
+        "macro_recall": 90.05,
+        "macro_f1": 90.34,
+        "weighted_f1": 90.45,
+        "stab_wound_recall": 100.0
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 17,
+          "support": 20,
+          "predicted": 23,
+          "precision_percent": 73.91,
+          "recall_percent": 85.0,
+          "f1_percent": 79.07
+        },
+        "Bruises": {
+          "correct": 20,
+          "support": 22,
+          "predicted": 23,
+          "precision_percent": 86.96,
+          "recall_percent": 90.91,
+          "f1_percent": 88.89
+        },
+        "Burns": {
+          "correct": 19,
+          "support": 21,
+          "predicted": 19,
+          "precision_percent": 100.0,
+          "recall_percent": 90.48,
+          "f1_percent": 95.0
+        },
+        "Cut": {
+          "correct": 17,
+          "support": 22,
+          "predicted": 17,
+          "precision_percent": 100.0,
+          "recall_percent": 77.27,
+          "f1_percent": 87.18
+        },
+        "Ingrown_nails": {
+          "correct": 30,
+          "support": 30,
+          "predicted": 33,
+          "precision_percent": 90.91,
+          "recall_percent": 100.0,
+          "f1_percent": 95.24
+        },
+        "Laceration": {
+          "correct": 13,
+          "support": 15,
+          "predicted": 13,
+          "precision_percent": 100.0,
+          "recall_percent": 86.67,
+          "f1_percent": 92.86
+        },
+        "Stab_wound": {
+          "correct": 16,
+          "support": 16,
+          "predicted": 18,
+          "precision_percent": 88.89,
+          "recall_percent": 100.0,
+          "f1_percent": 94.12
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s123_fold5_predictions.json",
+      "sha256": "ee854f4a41a340e95903cce7d6c74282534b50bda7e2afff87e1009fa9a0961e"
+    },
+    {
+      "seed": 999,
+      "fold": 1,
+      "rows": 137,
+      "metrics_percent": {
+        "accuracy": 89.05,
+        "macro_precision": 89.76,
+        "macro_recall": 89.22,
+        "macro_f1": 88.88,
+        "weighted_f1": 88.95,
+        "stab_wound_recall": 100.0
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 19,
+          "support": 24,
+          "predicted": 20,
+          "precision_percent": 95.0,
+          "recall_percent": 79.17,
+          "f1_percent": 86.36
+        },
+        "Bruises": {
+          "correct": 22,
+          "support": 24,
+          "predicted": 23,
+          "precision_percent": 95.65,
+          "recall_percent": 91.67,
+          "f1_percent": 93.62
+        },
+        "Burns": {
+          "correct": 12,
+          "support": 16,
+          "predicted": 12,
+          "precision_percent": 100.0,
+          "recall_percent": 75.0,
+          "f1_percent": 85.71
+        },
+        "Cut": {
+          "correct": 15,
+          "support": 17,
+          "predicted": 17,
+          "precision_percent": 88.24,
+          "recall_percent": 88.24,
+          "f1_percent": 88.24
+        },
+        "Ingrown_nails": {
+          "correct": 18,
+          "support": 18,
+          "predicted": 22,
+          "precision_percent": 81.82,
+          "recall_percent": 100.0,
+          "f1_percent": 90.0
+        },
+        "Laceration": {
+          "correct": 19,
+          "support": 21,
+          "predicted": 23,
+          "precision_percent": 82.61,
+          "recall_percent": 90.48,
+          "f1_percent": 86.36
+        },
+        "Stab_wound": {
+          "correct": 17,
+          "support": 17,
+          "predicted": 20,
+          "precision_percent": 85.0,
+          "recall_percent": 100.0,
+          "f1_percent": 91.89
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s999_fold1_predictions.json",
+      "sha256": "1e226be52edbf4001587aba69b33a69cbcdf6452a3ddbd7da54d069d9a96d0b2"
+    },
+    {
+      "seed": 999,
+      "fold": 2,
+      "rows": 133,
+      "metrics_percent": {
+        "accuracy": 82.71,
+        "macro_precision": 83.83,
+        "macro_recall": 80.75,
+        "macro_f1": 81.26,
+        "weighted_f1": 82.78,
+        "stab_wound_recall": 54.55
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 17,
+          "support": 19,
+          "predicted": 20,
+          "precision_percent": 85.0,
+          "recall_percent": 89.47,
+          "f1_percent": 87.18
+        },
+        "Bruises": {
+          "correct": 18,
+          "support": 20,
+          "predicted": 20,
+          "precision_percent": 90.0,
+          "recall_percent": 90.0,
+          "f1_percent": 90.0
+        },
+        "Burns": {
+          "correct": 18,
+          "support": 20,
+          "predicted": 19,
+          "precision_percent": 94.74,
+          "recall_percent": 90.0,
+          "f1_percent": 92.31
+        },
+        "Cut": {
+          "correct": 11,
+          "support": 19,
+          "predicted": 11,
+          "precision_percent": 100.0,
+          "recall_percent": 57.89,
+          "f1_percent": 73.33
+        },
+        "Ingrown_nails": {
+          "correct": 20,
+          "support": 20,
+          "predicted": 20,
+          "precision_percent": 100.0,
+          "recall_percent": 100.0,
+          "f1_percent": 100.0
+        },
+        "Laceration": {
+          "correct": 20,
+          "support": 24,
+          "predicted": 32,
+          "precision_percent": 62.5,
+          "recall_percent": 83.33,
+          "f1_percent": 71.43
+        },
+        "Stab_wound": {
+          "correct": 6,
+          "support": 11,
+          "predicted": 11,
+          "precision_percent": 54.55,
+          "recall_percent": 54.55,
+          "f1_percent": 54.55
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s999_fold2_predictions.json",
+      "sha256": "d37bf1768192276f0b6f69a8e4512172fa07625066c66fb957249ce95d057784"
+    },
+    {
+      "seed": 999,
+      "fold": 3,
+      "rows": 148,
+      "metrics_percent": {
+        "accuracy": 88.51,
+        "macro_precision": 91.02,
+        "macro_recall": 89.0,
+        "macro_f1": 89.09,
+        "weighted_f1": 88.7,
+        "stab_wound_recall": 81.48
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 21,
+          "support": 23,
+          "predicted": 24,
+          "precision_percent": 87.5,
+          "recall_percent": 91.3,
+          "f1_percent": 89.36
+        },
+        "Bruises": {
+          "correct": 21,
+          "support": 23,
+          "predicted": 23,
+          "precision_percent": 91.3,
+          "recall_percent": 91.3,
+          "f1_percent": 91.3
+        },
+        "Burns": {
+          "correct": 15,
+          "support": 21,
+          "predicted": 15,
+          "precision_percent": 100.0,
+          "recall_percent": 71.43,
+          "f1_percent": 83.33
+        },
+        "Cut": {
+          "correct": 14,
+          "support": 16,
+          "predicted": 14,
+          "precision_percent": 100.0,
+          "recall_percent": 87.5,
+          "f1_percent": 93.33
+        },
+        "Ingrown_nails": {
+          "correct": 18,
+          "support": 18,
+          "predicted": 18,
+          "precision_percent": 100.0,
+          "recall_percent": 100.0,
+          "f1_percent": 100.0
+        },
+        "Laceration": {
+          "correct": 20,
+          "support": 20,
+          "predicted": 30,
+          "precision_percent": 66.67,
+          "recall_percent": 100.0,
+          "f1_percent": 80.0
+        },
+        "Stab_wound": {
+          "correct": 22,
+          "support": 27,
+          "predicted": 24,
+          "precision_percent": 91.67,
+          "recall_percent": 81.48,
+          "f1_percent": 86.27
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s999_fold3_predictions.json",
+      "sha256": "7e0e5f9fdb49161f69e9d2b61f4d5c4e51281fca23d5a6802a99f3f9dc64dfbb"
+    },
+    {
+      "seed": 999,
+      "fold": 4,
+      "rows": 139,
+      "metrics_percent": {
+        "accuracy": 82.73,
+        "macro_precision": 85.48,
+        "macro_recall": 84.16,
+        "macro_f1": 82.59,
+        "weighted_f1": 82.28,
+        "stab_wound_recall": 100.0
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 13,
+          "support": 14,
+          "predicted": 19,
+          "precision_percent": 68.42,
+          "recall_percent": 92.86,
+          "f1_percent": 78.79
+        },
+        "Bruises": {
+          "correct": 20,
+          "support": 23,
+          "predicted": 23,
+          "precision_percent": 86.96,
+          "recall_percent": 86.96,
+          "f1_percent": 86.96
+        },
+        "Burns": {
+          "correct": 10,
+          "support": 19,
+          "predicted": 10,
+          "precision_percent": 100.0,
+          "recall_percent": 52.63,
+          "f1_percent": 68.97
+        },
+        "Cut": {
+          "correct": 17,
+          "support": 26,
+          "predicted": 17,
+          "precision_percent": 100.0,
+          "recall_percent": 65.38,
+          "f1_percent": 79.07
+        },
+        "Ingrown_nails": {
+          "correct": 12,
+          "support": 12,
+          "predicted": 14,
+          "precision_percent": 85.71,
+          "recall_percent": 100.0,
+          "f1_percent": 92.31
+        },
+        "Laceration": {
+          "correct": 21,
+          "support": 23,
+          "predicted": 32,
+          "precision_percent": 65.62,
+          "recall_percent": 91.3,
+          "f1_percent": 76.36
+        },
+        "Stab_wound": {
+          "correct": 22,
+          "support": 22,
+          "predicted": 24,
+          "precision_percent": 91.67,
+          "recall_percent": 100.0,
+          "f1_percent": 95.65
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s999_fold4_predictions.json",
+      "sha256": "823fed0cf904c1ab79e3f41b6d7baa45941b9794f20bfe2e4835699e3a251008"
+    },
+    {
+      "seed": 999,
+      "fold": 5,
+      "rows": 163,
+      "metrics_percent": {
+        "accuracy": 88.34,
+        "macro_precision": 89.18,
+        "macro_recall": 88.71,
+        "macro_f1": 87.96,
+        "weighted_f1": 88.59,
+        "stab_wound_recall": 100.0
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 22,
+          "support": 25,
+          "predicted": 22,
+          "precision_percent": 100.0,
+          "recall_percent": 88.0,
+          "f1_percent": 93.62
+        },
+        "Bruises": {
+          "correct": 19,
+          "support": 19,
+          "predicted": 30,
+          "precision_percent": 63.33,
+          "recall_percent": 100.0,
+          "f1_percent": 77.55
+        },
+        "Burns": {
+          "correct": 22,
+          "support": 26,
+          "predicted": 26,
+          "precision_percent": 84.62,
+          "recall_percent": 84.62,
+          "f1_percent": 84.62
+        },
+        "Cut": {
+          "correct": 24,
+          "support": 24,
+          "predicted": 24,
+          "precision_percent": 100.0,
+          "recall_percent": 100.0,
+          "f1_percent": 100.0
+        },
+        "Ingrown_nails": {
+          "correct": 24,
+          "support": 32,
+          "predicted": 24,
+          "precision_percent": 100.0,
+          "recall_percent": 75.0,
+          "f1_percent": 85.71
+        },
+        "Laceration": {
+          "correct": 11,
+          "support": 15,
+          "predicted": 13,
+          "precision_percent": 84.62,
+          "recall_percent": 73.33,
+          "f1_percent": 78.57
+        },
+        "Stab_wound": {
+          "correct": 22,
+          "support": 22,
+          "predicted": 24,
+          "precision_percent": 91.67,
+          "recall_percent": 100.0,
+          "f1_percent": 95.65
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s999_fold5_predictions.json",
+      "sha256": "6ca9b0e2240704523d45a5ddecab8e7f29b545f0a2ff6a8dbb579fbc831e0dd7"
+    },
+    {
+      "seed": 2026,
+      "fold": 1,
+      "rows": 155,
+      "metrics_percent": {
+        "accuracy": 86.45,
+        "macro_precision": 87.58,
+        "macro_recall": 86.91,
+        "macro_f1": 86.57,
+        "weighted_f1": 86.67,
+        "stab_wound_recall": 81.48
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 24,
+          "support": 26,
+          "predicted": 28,
+          "precision_percent": 85.71,
+          "recall_percent": 92.31,
+          "f1_percent": 88.89
+        },
+        "Bruises": {
+          "correct": 18,
+          "support": 19,
+          "predicted": 20,
+          "precision_percent": 90.0,
+          "recall_percent": 94.74,
+          "f1_percent": 92.31
+        },
+        "Burns": {
+          "correct": 16,
+          "support": 22,
+          "predicted": 17,
+          "precision_percent": 94.12,
+          "recall_percent": 72.73,
+          "f1_percent": 82.05
+        },
+        "Cut": {
+          "correct": 18,
+          "support": 23,
+          "predicted": 20,
+          "precision_percent": 90.0,
+          "recall_percent": 78.26,
+          "f1_percent": 83.72
+        },
+        "Ingrown_nails": {
+          "correct": 20,
+          "support": 20,
+          "predicted": 20,
+          "precision_percent": 100.0,
+          "recall_percent": 100.0,
+          "f1_percent": 100.0
+        },
+        "Laceration": {
+          "correct": 16,
+          "support": 18,
+          "predicted": 26,
+          "precision_percent": 61.54,
+          "recall_percent": 88.89,
+          "f1_percent": 72.73
+        },
+        "Stab_wound": {
+          "correct": 22,
+          "support": 27,
+          "predicted": 24,
+          "precision_percent": 91.67,
+          "recall_percent": 81.48,
+          "f1_percent": 86.27
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold1_predictions.json",
+      "sha256": "dccdaa31842aefd65fa952371eff58f5d763b2c98dbe63e2748c1c652d2695d6"
+    },
+    {
+      "seed": 2026,
+      "fold": 2,
+      "rows": 146,
+      "metrics_percent": {
+        "accuracy": 86.99,
+        "macro_precision": 88.78,
+        "macro_recall": 85.1,
+        "macro_f1": 85.97,
+        "weighted_f1": 86.98,
+        "stab_wound_recall": 76.19
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 19,
+          "support": 21,
+          "predicted": 22,
+          "precision_percent": 86.36,
+          "recall_percent": 90.48,
+          "f1_percent": 88.37
+        },
+        "Bruises": {
+          "correct": 19,
+          "support": 21,
+          "predicted": 25,
+          "precision_percent": 76.0,
+          "recall_percent": 90.48,
+          "f1_percent": 82.61
+        },
+        "Burns": {
+          "correct": 25,
+          "support": 25,
+          "predicted": 26,
+          "precision_percent": 96.15,
+          "recall_percent": 100.0,
+          "f1_percent": 98.04
+        },
+        "Cut": {
+          "correct": 7,
+          "support": 11,
+          "predicted": 7,
+          "precision_percent": 100.0,
+          "recall_percent": 63.64,
+          "f1_percent": 77.78
+        },
+        "Ingrown_nails": {
+          "correct": 21,
+          "support": 25,
+          "predicted": 21,
+          "precision_percent": 100.0,
+          "recall_percent": 84.0,
+          "f1_percent": 91.3
+        },
+        "Laceration": {
+          "correct": 20,
+          "support": 22,
+          "predicted": 27,
+          "precision_percent": 74.07,
+          "recall_percent": 90.91,
+          "f1_percent": 81.63
+        },
+        "Stab_wound": {
+          "correct": 16,
+          "support": 21,
+          "predicted": 18,
+          "precision_percent": 88.89,
+          "recall_percent": 76.19,
+          "f1_percent": 82.05
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold2_predictions.json",
+      "sha256": "cdea30253eae239becd8b2479b75a1c72a9c1402c449cf20493f7d7ad65c3785"
+    },
+    {
+      "seed": 2026,
+      "fold": 3,
+      "rows": 140,
+      "metrics_percent": {
+        "accuracy": 87.86,
+        "macro_precision": 89.03,
+        "macro_recall": 88.24,
+        "macro_f1": 88.5,
+        "weighted_f1": 87.9,
+        "stab_wound_recall": 100.0
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 19,
+          "support": 21,
+          "predicted": 21,
+          "precision_percent": 90.48,
+          "recall_percent": 90.48,
+          "f1_percent": 90.48
+        },
+        "Bruises": {
+          "correct": 17,
+          "support": 20,
+          "predicted": 20,
+          "precision_percent": 85.0,
+          "recall_percent": 85.0,
+          "f1_percent": 85.0
+        },
+        "Burns": {
+          "correct": 14,
+          "support": 19,
+          "predicted": 19,
+          "precision_percent": 73.68,
+          "recall_percent": 73.68,
+          "f1_percent": 73.68
+        },
+        "Cut": {
+          "correct": 15,
+          "support": 18,
+          "predicted": 15,
+          "precision_percent": 100.0,
+          "recall_percent": 83.33,
+          "f1_percent": 90.91
+        },
+        "Ingrown_nails": {
+          "correct": 23,
+          "support": 27,
+          "predicted": 29,
+          "precision_percent": 79.31,
+          "recall_percent": 85.19,
+          "f1_percent": 82.14
+        },
+        "Laceration": {
+          "correct": 18,
+          "support": 18,
+          "predicted": 19,
+          "precision_percent": 94.74,
+          "recall_percent": 100.0,
+          "f1_percent": 97.3
+        },
+        "Stab_wound": {
+          "correct": 17,
+          "support": 17,
+          "predicted": 17,
+          "precision_percent": 100.0,
+          "recall_percent": 100.0,
+          "f1_percent": 100.0
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold3_predictions.json",
+      "sha256": "a6c261d3240552ea0f84a281c4750290bf49876f1496c87c7affffd12586effc"
+    },
+    {
+      "seed": 2026,
+      "fold": 4,
+      "rows": 141,
+      "metrics_percent": {
+        "accuracy": 87.23,
+        "macro_precision": 87.66,
+        "macro_recall": 88.47,
+        "macro_f1": 87.7,
+        "weighted_f1": 87.14,
+        "stab_wound_recall": 100.0
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 15,
+          "support": 18,
+          "predicted": 21,
+          "precision_percent": 71.43,
+          "recall_percent": 83.33,
+          "f1_percent": 76.92
+        },
+        "Bruises": {
+          "correct": 23,
+          "support": 23,
+          "predicted": 26,
+          "precision_percent": 88.46,
+          "recall_percent": 100.0,
+          "f1_percent": 93.88
+        },
+        "Burns": {
+          "correct": 13,
+          "support": 17,
+          "predicted": 15,
+          "precision_percent": 86.67,
+          "recall_percent": 76.47,
+          "f1_percent": 81.25
+        },
+        "Cut": {
+          "correct": 26,
+          "support": 32,
+          "predicted": 28,
+          "precision_percent": 92.86,
+          "recall_percent": 81.25,
+          "f1_percent": 86.67
+        },
+        "Ingrown_nails": {
+          "correct": 12,
+          "support": 12,
+          "predicted": 12,
+          "precision_percent": 100.0,
+          "recall_percent": 100.0,
+          "f1_percent": 100.0
+        },
+        "Laceration": {
+          "correct": 18,
+          "support": 23,
+          "predicted": 20,
+          "precision_percent": 90.0,
+          "recall_percent": 78.26,
+          "f1_percent": 83.72
+        },
+        "Stab_wound": {
+          "correct": 16,
+          "support": 16,
+          "predicted": 19,
+          "precision_percent": 84.21,
+          "recall_percent": 100.0,
+          "f1_percent": 91.43
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold4_predictions.json",
+      "sha256": "8a49807e3d74a37794fc51975fadbd3a641152cf84c1b3ef1ba925495fa2b84b"
+    },
+    {
+      "seed": 2026,
+      "fold": 5,
+      "rows": 138,
+      "metrics_percent": {
+        "accuracy": 92.03,
+        "macro_precision": 92.49,
+        "macro_recall": 91.81,
+        "macro_f1": 91.43,
+        "weighted_f1": 91.83,
+        "stab_wound_recall": 100.0
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 18,
+          "support": 19,
+          "predicted": 21,
+          "precision_percent": 85.71,
+          "recall_percent": 94.74,
+          "f1_percent": 90.0
+        },
+        "Bruises": {
+          "correct": 25,
+          "support": 26,
+          "predicted": 25,
+          "precision_percent": 100.0,
+          "recall_percent": 96.15,
+          "f1_percent": 98.04
+        },
+        "Burns": {
+          "correct": 13,
+          "support": 19,
+          "predicted": 13,
+          "precision_percent": 100.0,
+          "recall_percent": 68.42,
+          "f1_percent": 81.25
+        },
+        "Cut": {
+          "correct": 15,
+          "support": 18,
+          "predicted": 16,
+          "precision_percent": 93.75,
+          "recall_percent": 83.33,
+          "f1_percent": 88.24
+        },
+        "Ingrown_nails": {
+          "correct": 16,
+          "support": 16,
+          "predicted": 20,
+          "precision_percent": 80.0,
+          "recall_percent": 100.0,
+          "f1_percent": 88.89
+        },
+        "Laceration": {
+          "correct": 22,
+          "support": 22,
+          "predicted": 25,
+          "precision_percent": 88.0,
+          "recall_percent": 100.0,
+          "f1_percent": 93.62
+        },
+        "Stab_wound": {
+          "correct": 18,
+          "support": 18,
+          "predicted": 18,
+          "precision_percent": 100.0,
+          "recall_percent": 100.0,
+          "f1_percent": 100.0
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold5_predictions.json",
+      "sha256": "f841658ebe8a72658ceacd825bf73e11d6ca1f534ba7749b1b16acbc943a6ed8"
+    },
+    {
+      "seed": 3407,
+      "fold": 1,
+      "rows": 147,
+      "metrics_percent": {
+        "accuracy": 85.03,
+        "macro_precision": 86.74,
+        "macro_recall": 85.81,
+        "macro_f1": 86.07,
+        "weighted_f1": 85.09,
+        "stab_wound_recall": 100.0
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 21,
+          "support": 23,
+          "predicted": 28,
+          "precision_percent": 75.0,
+          "recall_percent": 91.3,
+          "f1_percent": 82.35
+        },
+        "Bruises": {
+          "correct": 18,
+          "support": 21,
+          "predicted": 21,
+          "precision_percent": 85.71,
+          "recall_percent": 85.71,
+          "f1_percent": 85.71
+        },
+        "Burns": {
+          "correct": 15,
+          "support": 23,
+          "predicted": 22,
+          "precision_percent": 68.18,
+          "recall_percent": 65.22,
+          "f1_percent": 66.67
+        },
+        "Cut": {
+          "correct": 14,
+          "support": 16,
+          "predicted": 14,
+          "precision_percent": 100.0,
+          "recall_percent": 87.5,
+          "f1_percent": 93.33
+        },
+        "Ingrown_nails": {
+          "correct": 21,
+          "support": 25,
+          "predicted": 23,
+          "precision_percent": 91.3,
+          "recall_percent": 84.0,
+          "f1_percent": 87.5
+        },
+        "Laceration": {
+          "correct": 20,
+          "support": 23,
+          "predicted": 23,
+          "precision_percent": 86.96,
+          "recall_percent": 86.96,
+          "f1_percent": 86.96
+        },
+        "Stab_wound": {
+          "correct": 16,
+          "support": 16,
+          "predicted": 16,
+          "precision_percent": 100.0,
+          "recall_percent": 100.0,
+          "f1_percent": 100.0
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold1_predictions.json",
+      "sha256": "daf39f45f474f3604b70e52a28b8be2c3afd39cf287f502d1aac609daa09822a"
+    },
+    {
+      "seed": 3407,
+      "fold": 2,
+      "rows": 140,
+      "metrics_percent": {
+        "accuracy": 91.43,
+        "macro_precision": 93.32,
+        "macro_recall": 92.52,
+        "macro_f1": 92.64,
+        "weighted_f1": 91.55,
+        "stab_wound_recall": 100.0
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 21,
+          "support": 22,
+          "predicted": 23,
+          "precision_percent": 91.3,
+          "recall_percent": 95.45,
+          "f1_percent": 93.33
+        },
+        "Bruises": {
+          "correct": 18,
+          "support": 21,
+          "predicted": 18,
+          "precision_percent": 100.0,
+          "recall_percent": 85.71,
+          "f1_percent": 92.31
+        },
+        "Burns": {
+          "correct": 23,
+          "support": 25,
+          "predicted": 29,
+          "precision_percent": 79.31,
+          "recall_percent": 92.0,
+          "f1_percent": 85.19
+        },
+        "Cut": {
+          "correct": 14,
+          "support": 14,
+          "predicted": 14,
+          "precision_percent": 100.0,
+          "recall_percent": 100.0,
+          "f1_percent": 100.0
+        },
+        "Ingrown_nails": {
+          "correct": 21,
+          "support": 25,
+          "predicted": 21,
+          "precision_percent": 100.0,
+          "recall_percent": 84.0,
+          "f1_percent": 91.3
+        },
+        "Laceration": {
+          "correct": 19,
+          "support": 21,
+          "predicted": 23,
+          "precision_percent": 82.61,
+          "recall_percent": 90.48,
+          "f1_percent": 86.36
+        },
+        "Stab_wound": {
+          "correct": 12,
+          "support": 12,
+          "predicted": 12,
+          "precision_percent": 100.0,
+          "recall_percent": 100.0,
+          "f1_percent": 100.0
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold2_predictions.json",
+      "sha256": "4a7c42dfd05f6cda45a2ca76f489c2c7b87fa78e4becdde31944703a295a3aba"
+    },
+    {
+      "seed": 3407,
+      "fold": 3,
+      "rows": 152,
+      "metrics_percent": {
+        "accuracy": 84.87,
+        "macro_precision": 85.49,
+        "macro_recall": 86.1,
+        "macro_f1": 83.65,
+        "weighted_f1": 84.15,
+        "stab_wound_recall": 100.0
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 18,
+          "support": 20,
+          "predicted": 20,
+          "precision_percent": 90.0,
+          "recall_percent": 90.0,
+          "f1_percent": 90.0
+        },
+        "Bruises": {
+          "correct": 21,
+          "support": 21,
+          "predicted": 32,
+          "precision_percent": 65.62,
+          "recall_percent": 100.0,
+          "f1_percent": 79.25
+        },
+        "Burns": {
+          "correct": 12,
+          "support": 21,
+          "predicted": 12,
+          "precision_percent": 100.0,
+          "recall_percent": 57.14,
+          "f1_percent": 72.73
+        },
+        "Cut": {
+          "correct": 15,
+          "support": 27,
+          "predicted": 18,
+          "precision_percent": 83.33,
+          "recall_percent": 55.56,
+          "f1_percent": 66.67
+        },
+        "Ingrown_nails": {
+          "correct": 12,
+          "support": 12,
+          "predicted": 17,
+          "precision_percent": 70.59,
+          "recall_percent": 100.0,
+          "f1_percent": 82.76
+        },
+        "Laceration": {
+          "correct": 16,
+          "support": 16,
+          "predicted": 18,
+          "precision_percent": 88.89,
+          "recall_percent": 100.0,
+          "f1_percent": 94.12
+        },
+        "Stab_wound": {
+          "correct": 35,
+          "support": 35,
+          "predicted": 35,
+          "precision_percent": 100.0,
+          "recall_percent": 100.0,
+          "f1_percent": 100.0
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold3_predictions.json",
+      "sha256": "bdd3beb39dfc0ae196159314aecb75fe62f0f795d8d7263989ad494af6575c35"
+    },
+    {
+      "seed": 3407,
+      "fold": 4,
+      "rows": 142,
+      "metrics_percent": {
+        "accuracy": 88.73,
+        "macro_precision": 89.94,
+        "macro_recall": 89.73,
+        "macro_f1": 89.39,
+        "weighted_f1": 88.58,
+        "stab_wound_recall": 100.0
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 14,
+          "support": 21,
+          "predicted": 16,
+          "precision_percent": 87.5,
+          "recall_percent": 66.67,
+          "f1_percent": 75.68
+        },
+        "Bruises": {
+          "correct": 22,
+          "support": 22,
+          "predicted": 23,
+          "precision_percent": 95.65,
+          "recall_percent": 100.0,
+          "f1_percent": 97.78
+        },
+        "Burns": {
+          "correct": 15,
+          "support": 16,
+          "predicted": 17,
+          "precision_percent": 88.24,
+          "recall_percent": 93.75,
+          "f1_percent": 90.91
+        },
+        "Cut": {
+          "correct": 21,
+          "support": 26,
+          "predicted": 22,
+          "precision_percent": 95.45,
+          "recall_percent": 80.77,
+          "f1_percent": 87.5
+        },
+        "Ingrown_nails": {
+          "correct": 13,
+          "support": 13,
+          "predicted": 13,
+          "precision_percent": 100.0,
+          "recall_percent": 100.0,
+          "f1_percent": 100.0
+        },
+        "Laceration": {
+          "correct": 20,
+          "support": 23,
+          "predicted": 28,
+          "precision_percent": 71.43,
+          "recall_percent": 86.96,
+          "f1_percent": 78.43
+        },
+        "Stab_wound": {
+          "correct": 21,
+          "support": 21,
+          "predicted": 23,
+          "precision_percent": 91.3,
+          "recall_percent": 100.0,
+          "f1_percent": 95.45
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold4_predictions.json",
+      "sha256": "3085e0743917d33434a83ac1bff9ba164af2e9380c122085c4bd4635203bc998"
+    },
+    {
+      "seed": 3407,
+      "fold": 5,
+      "rows": 139,
+      "metrics_percent": {
+        "accuracy": 83.45,
+        "macro_precision": 86.32,
+        "macro_recall": 83.59,
+        "macro_f1": 83.14,
+        "weighted_f1": 82.9,
+        "stab_wound_recall": 100.0
+      },
+      "per_class": {
+        "Abrasions": {
+          "correct": 18,
+          "support": 19,
+          "predicted": 23,
+          "precision_percent": 78.26,
+          "recall_percent": 94.74,
+          "f1_percent": 85.71
+        },
+        "Bruises": {
+          "correct": 22,
+          "support": 24,
+          "predicted": 34,
+          "precision_percent": 64.71,
+          "recall_percent": 91.67,
+          "f1_percent": 75.86
+        },
+        "Burns": {
+          "correct": 11,
+          "support": 17,
+          "predicted": 12,
+          "precision_percent": 91.67,
+          "recall_percent": 64.71,
+          "f1_percent": 75.86
+        },
+        "Cut": {
+          "correct": 19,
+          "support": 19,
+          "predicted": 21,
+          "precision_percent": 90.48,
+          "recall_percent": 100.0,
+          "f1_percent": 95.0
+        },
+        "Ingrown_nails": {
+          "correct": 21,
+          "support": 25,
+          "predicted": 21,
+          "precision_percent": 100.0,
+          "recall_percent": 84.0,
+          "f1_percent": 91.3
+        },
+        "Laceration": {
+          "correct": 10,
+          "support": 20,
+          "predicted": 11,
+          "precision_percent": 90.91,
+          "recall_percent": 50.0,
+          "f1_percent": 64.52
+        },
+        "Stab_wound": {
+          "correct": 15,
+          "support": 15,
+          "predicted": 17,
+          "precision_percent": 88.24,
+          "recall_percent": 100.0,
+          "f1_percent": 93.75
+        }
+      },
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold5_predictions.json",
+      "sha256": "4ec1da413e418a3dae1bc822699c59aa517e63ff372c615e606cef08e89153c0"
+    }
+  ],
+  "seeds": [
+    {
+      "seed": 42,
+      "rows": 720,
+      "metrics_percent": {
+        "accuracy": 87.92,
+        "macro_precision": 88.73,
+        "macro_recall": 87.86,
+        "macro_f1": 88.07,
+        "weighted_f1": 88.04,
+        "stab_wound_recall": 89.9
+      },
+      "per_class_recall_percent": {
+        "Abrasions": 87.62,
+        "Bruises": 96.33,
+        "Burns": 81.37,
+        "Cut": 81.37,
+        "Ingrown_nails": 92.0,
+        "Laceration": 86.41,
+        "Stab_wound": 89.9
+      },
+      "per_class_counts": {
+        "Abrasions": {
+          "correct": 92,
+          "support": 105,
+          "predicted": 116
+        },
+        "Bruises": {
+          "correct": 105,
+          "support": 109,
+          "predicted": 118
+        },
+        "Burns": {
+          "correct": 83,
+          "support": 102,
+          "predicted": 91
+        },
+        "Cut": {
+          "correct": 83,
+          "support": 102,
+          "predicted": 90
+        },
+        "Ingrown_nails": {
+          "correct": 92,
+          "support": 100,
+          "predicted": 93
+        },
+        "Laceration": {
+          "correct": 89,
+          "support": 103,
+          "predicted": 119
+        },
+        "Stab_wound": {
+          "correct": 89,
+          "support": 99,
+          "predicted": 93
+        }
+      }
+    },
+    {
+      "seed": 123,
+      "rows": 720,
+      "metrics_percent": {
+        "accuracy": 87.92,
+        "macro_precision": 88.56,
+        "macro_recall": 87.89,
+        "macro_f1": 88.01,
+        "weighted_f1": 87.95,
+        "stab_wound_recall": 89.9
+      },
+      "per_class_recall_percent": {
+        "Abrasions": 90.48,
+        "Bruises": 93.58,
+        "Burns": 81.37,
+        "Cut": 82.35,
+        "Ingrown_nails": 96.0,
+        "Laceration": 81.55,
+        "Stab_wound": 89.9
+      },
+      "per_class_counts": {
+        "Abrasions": {
+          "correct": 95,
+          "support": 105,
+          "predicted": 109
+        },
+        "Bruises": {
+          "correct": 102,
+          "support": 109,
+          "predicted": 126
+        },
+        "Burns": {
+          "correct": 83,
+          "support": 102,
+          "predicted": 90
+        },
+        "Cut": {
+          "correct": 84,
+          "support": 102,
+          "predicted": 87
+        },
+        "Ingrown_nails": {
+          "correct": 96,
+          "support": 100,
+          "predicted": 104
+        },
+        "Laceration": {
+          "correct": 84,
+          "support": 103,
+          "predicted": 109
+        },
+        "Stab_wound": {
+          "correct": 89,
+          "support": 99,
+          "predicted": 95
+        }
+      }
+    },
+    {
+      "seed": 999,
+      "rows": 720,
+      "metrics_percent": {
+        "accuracy": 86.39,
+        "macro_precision": 87.63,
+        "macro_recall": 86.36,
+        "macro_f1": 86.54,
+        "weighted_f1": 86.52,
+        "stab_wound_recall": 89.9
+      },
+      "per_class_recall_percent": {
+        "Abrasions": 87.62,
+        "Bruises": 91.74,
+        "Burns": 75.49,
+        "Cut": 79.41,
+        "Ingrown_nails": 92.0,
+        "Laceration": 88.35,
+        "Stab_wound": 89.9
+      },
+      "per_class_counts": {
+        "Abrasions": {
+          "correct": 92,
+          "support": 105,
+          "predicted": 105
+        },
+        "Bruises": {
+          "correct": 100,
+          "support": 109,
+          "predicted": 119
+        },
+        "Burns": {
+          "correct": 77,
+          "support": 102,
+          "predicted": 82
+        },
+        "Cut": {
+          "correct": 81,
+          "support": 102,
+          "predicted": 83
+        },
+        "Ingrown_nails": {
+          "correct": 92,
+          "support": 100,
+          "predicted": 98
+        },
+        "Laceration": {
+          "correct": 91,
+          "support": 103,
+          "predicted": 130
+        },
+        "Stab_wound": {
+          "correct": 89,
+          "support": 99,
+          "predicted": 103
+        }
+      }
+    },
+    {
+      "seed": 2026,
+      "rows": 720,
+      "metrics_percent": {
+        "accuracy": 88.06,
+        "macro_precision": 88.49,
+        "macro_recall": 88.01,
+        "macro_f1": 88.03,
+        "weighted_f1": 88.02,
+        "stab_wound_recall": 89.9
+      },
+      "per_class_recall_percent": {
+        "Abrasions": 90.48,
+        "Bruises": 93.58,
+        "Burns": 79.41,
+        "Cut": 79.41,
+        "Ingrown_nails": 92.0,
+        "Laceration": 91.26,
+        "Stab_wound": 89.9
+      },
+      "per_class_counts": {
+        "Abrasions": {
+          "correct": 95,
+          "support": 105,
+          "predicted": 113
+        },
+        "Bruises": {
+          "correct": 102,
+          "support": 109,
+          "predicted": 116
+        },
+        "Burns": {
+          "correct": 81,
+          "support": 102,
+          "predicted": 90
+        },
+        "Cut": {
+          "correct": 81,
+          "support": 102,
+          "predicted": 86
+        },
+        "Ingrown_nails": {
+          "correct": 92,
+          "support": 100,
+          "predicted": 102
+        },
+        "Laceration": {
+          "correct": 94,
+          "support": 103,
+          "predicted": 117
+        },
+        "Stab_wound": {
+          "correct": 89,
+          "support": 99,
+          "predicted": 96
+        }
+      }
+    },
+    {
+      "seed": 3407,
+      "rows": 720,
+      "metrics_percent": {
+        "accuracy": 86.67,
+        "macro_precision": 87.1,
+        "macro_recall": 86.67,
+        "macro_f1": 86.7,
+        "weighted_f1": 86.61,
+        "stab_wound_recall": 100.0
+      },
+      "per_class_recall_percent": {
+        "Abrasions": 87.62,
+        "Bruises": 92.66,
+        "Burns": 74.51,
+        "Cut": 81.37,
+        "Ingrown_nails": 88.0,
+        "Laceration": 82.52,
+        "Stab_wound": 100.0
+      },
+      "per_class_counts": {
+        "Abrasions": {
+          "correct": 92,
+          "support": 105,
+          "predicted": 110
+        },
+        "Bruises": {
+          "correct": 101,
+          "support": 109,
+          "predicted": 128
+        },
+        "Burns": {
+          "correct": 76,
+          "support": 102,
+          "predicted": 92
+        },
+        "Cut": {
+          "correct": 83,
+          "support": 102,
+          "predicted": 89
+        },
+        "Ingrown_nails": {
+          "correct": 88,
+          "support": 100,
+          "predicted": 95
+        },
+        "Laceration": {
+          "correct": 85,
+          "support": 103,
+          "predicted": 103
+        },
+        "Stab_wound": {
+          "correct": 99,
+          "support": 99,
+          "predicted": 103
+        }
+      }
+    }
+  ],
+  "seed_aggregate_summary": {
+    "accuracy": {
+      "mean_percent": 87.392,
+      "sd_percent_sample_ddof1": 0.7952,
+      "n": 5
+    },
+    "macro_f1": {
+      "mean_percent": 87.47,
+      "sd_percent_sample_ddof1": 0.7783,
+      "n": 5
+    },
+    "weighted_f1": {
+      "mean_percent": 87.428,
+      "sd_percent_sample_ddof1": 0.7892,
+      "n": 5
+    },
+    "stab_wound_recall": {
+      "mean_percent": 91.92,
+      "sd_percent_sample_ddof1": 4.5169,
+      "n": 5
+    }
+  },
+  "descriptive_fold_distribution": {
+    "accuracy": {
+      "mean_percent": 87.398,
+      "sd_percent_sample_ddof1": 2.8354,
+      "n": 25
+    },
+    "macro_f1": {
+      "mean_percent": 87.356,
+      "sd_percent_sample_ddof1": 3.1789,
+      "n": 25
+    },
+    "weighted_f1": {
+      "mean_percent": 87.3516,
+      "sd_percent_sample_ddof1": 2.9058,
+      "n": 25
+    },
+    "stab_wound_recall": {
+      "mean_percent": 91.4596,
+      "sd_percent_sample_ddof1": 13.6325,
+      "n": 25
+    }
+  },
+  "historical_25_fold_mean_claim_check": {
+    "accuracy_87_40_supported_at_2dp": true,
+    "macro_f1_87_36_supported_at_2dp": true,
+    "note": "checks the historical mean of rounded fold scores, not the seed-pooled estimand"
+  },
+  "source_sha256": {
+    "experiments/results/predictions/val/C-Arch-05-MS_s42_fold1_predictions.json": "690fc4bb44103b3ae700a131e6cd3bd22dbee3c7cdc3b34130dda5db72bbda97",
+    "experiments/results/predictions/val/C-Arch-05-MS_s42_fold2_predictions.json": "509a89ba61a92390f0d82d115d2399b90ef440d379d4749a5a64b126a8e12a23",
+    "experiments/results/predictions/val/C-Arch-05-MS_s42_fold3_predictions.json": "cd9ffb67e331fa1f141c9ac29473ee840045468ff04e81f3f0377d97edb227ea",
+    "experiments/results/predictions/val/C-Arch-05-MS_s42_fold4_predictions.json": "361797469b1427abf8c6001619dc272a0123f132a44a84b7f6997f5f2d4e8b26",
+    "experiments/results/predictions/val/C-Arch-05-MS_s42_fold5_predictions.json": "84a214b46af631d649ef8b243afe6b2d52d8787749ff9713b810c9ffdab61003",
+    "experiments/results/predictions/val/C-Arch-05-MS_s123_fold1_predictions.json": "39a2788ccfd4584f4be86f5aa5e8265f7ac796fc53590d76c82743194d3ee5b3",
+    "experiments/results/predictions/val/C-Arch-05-MS_s123_fold2_predictions.json": "0a8848f7e1aeca063c5e1db2712703dc783eed9725c7e0acabc8b388c695f985",
+    "experiments/results/predictions/val/C-Arch-05-MS_s123_fold3_predictions.json": "22b5cbf5ef124bd5f1cadd613a07c988b69dd3e34d79904e256a134732bbcb21",
+    "experiments/results/predictions/val/C-Arch-05-MS_s123_fold4_predictions.json": "2548f4d9da1e4904d0cbbaa7c957956f96070f2ff251aed8223d544111533e96",
+    "experiments/results/predictions/val/C-Arch-05-MS_s123_fold5_predictions.json": "ee854f4a41a340e95903cce7d6c74282534b50bda7e2afff87e1009fa9a0961e",
+    "experiments/results/predictions/val/C-Arch-05-MS_s999_fold1_predictions.json": "1e226be52edbf4001587aba69b33a69cbcdf6452a3ddbd7da54d069d9a96d0b2",
+    "experiments/results/predictions/val/C-Arch-05-MS_s999_fold2_predictions.json": "d37bf1768192276f0b6f69a8e4512172fa07625066c66fb957249ce95d057784",
+    "experiments/results/predictions/val/C-Arch-05-MS_s999_fold3_predictions.json": "7e0e5f9fdb49161f69e9d2b61f4d5c4e51281fca23d5a6802a99f3f9dc64dfbb",
+    "experiments/results/predictions/val/C-Arch-05-MS_s999_fold4_predictions.json": "823fed0cf904c1ab79e3f41b6d7baa45941b9794f20bfe2e4835699e3a251008",
+    "experiments/results/predictions/val/C-Arch-05-MS_s999_fold5_predictions.json": "6ca9b0e2240704523d45a5ddecab8e7f29b545f0a2ff6a8dbb579fbc831e0dd7",
+    "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold1_predictions.json": "dccdaa31842aefd65fa952371eff58f5d763b2c98dbe63e2748c1c652d2695d6",
+    "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold2_predictions.json": "cdea30253eae239becd8b2479b75a1c72a9c1402c449cf20493f7d7ad65c3785",
+    "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold3_predictions.json": "a6c261d3240552ea0f84a281c4750290bf49876f1496c87c7affffd12586effc",
+    "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold4_predictions.json": "8a49807e3d74a37794fc51975fadbd3a641152cf84c1b3ef1ba925495fa2b84b",
+    "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold5_predictions.json": "f841658ebe8a72658ceacd825bf73e11d6ca1f534ba7749b1b16acbc943a6ed8",
+    "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold1_predictions.json": "daf39f45f474f3604b70e52a28b8be2c3afd39cf287f502d1aac609daa09822a",
+    "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold2_predictions.json": "4a7c42dfd05f6cda45a2ca76f489c2c7b87fa78e4becdde31944703a295a3aba",
+    "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold3_predictions.json": "bdd3beb39dfc0ae196159314aecb75fe62f0f795d8d7263989ad494af6575c35",
+    "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold4_predictions.json": "3085e0743917d33434a83ac1bff9ba164af2e9380c122085c4bd4635203bc998",
+    "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold5_predictions.json": "4ec1da413e418a3dae1bc822699c59aa517e63ff372c615e606cef08e89153c0"
+  }
+}

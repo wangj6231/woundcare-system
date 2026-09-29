@@ -14,6 +14,8 @@ from sklearn.metrics import (
     classification_report, confusion_matrix, f1_score,
     accuracy_score, roc_auc_score, roc_curve
 )
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from data_roles import require_source_role
 
 BASE_DIR = Path(__file__).parent.parent.parent
 CLASS_NAMES = ['Abrasions', 'Bruises', 'Burns', 'Cut',
@@ -23,6 +25,7 @@ FIGURES_DIR = Path(__file__).parent.parent / 'results' / 'figures'
 
 def predict_yolo(weights_path: str, data_dir: str) -> tuple:
     """YOLO 分類模型預測，回傳 (y_true, y_pred, y_prob)"""
+    require_source_role(None, 'development_evaluate', path=data_dir)
     from ultralytics import YOLO
     model = YOLO(weights_path)
     y_true, y_pred, y_prob = [], [], []
@@ -44,6 +47,7 @@ def predict_yolo(weights_path: str, data_dir: str) -> tuple:
 
 def predict_torch(weights_path: str, data_dir: str) -> tuple:
     """PyTorch 模型預測，回傳 (y_true, y_pred, y_prob)"""
+    require_source_role(None, 'development_evaluate', path=data_dir)
     import torch
     import torch.nn as nn
     from torchvision import datasets, transforms, models
@@ -181,6 +185,13 @@ def evaluate(weights_path: str, data_dir: str,
       exp_id: 實驗 ID（用於圖檔命名）
       split: 'val' 或 'test'（不影響計算，用於命名）
     """
+    if split != 'val':
+        raise ValueError("SOURCE_ROLE_FORBIDDEN: direct evaluator is development-only")
+    require_source_role(None, 'development_evaluate', path=data_dir)
+    preds_path = Path(__file__).parent.parent / 'results' / 'predictions' / split / f'{exp_id}_predictions.json'
+    fig_path = FIGURES_DIR / 'confusion_matrix' / f'{exp_id}_{split}_confusion_matrix.png'
+    if preds_path.exists() or (save_figures and fig_path.exists()):
+        raise FileExistsError('existing research evaluation artifact; use a new experiment ID')
     print(f"\n🔍 Evaluating [{exp_id}] on '{split}' split...")
     print(f"   Weights:  {weights_path}")
     print(f"   Data dir: {data_dir}")
@@ -212,7 +223,7 @@ def evaluate(weights_path: str, data_dir: str,
     preds_dir = Path(__file__).parent.parent / 'results' / 'predictions' / split
     preds_dir.mkdir(parents=True, exist_ok=True)
     preds_path = preds_dir / f'{exp_id}_predictions.json'
-    with open(preds_path, 'w') as f:
+    with open(preds_path, 'x') as f:
         json.dump({
             'y_true': y_true.tolist(),
             'y_pred': y_pred.tolist(),

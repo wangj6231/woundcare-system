@@ -203,6 +203,7 @@ def run_mcnemar_test(y_true: np.ndarray,
 # Main Function
 # ──────────────────────────────────────────────────────────────
 def run_phase8_analysis(exp_id: str = 'C-Arch-05-MS', n_boot: int = 2000) -> dict:
+    raise RuntimeError("ROW_WISE_BOOTSTRAP_SUPERSEDED: grouped CI requires verified historical row-to-group identity")
     print(f"\n{'='*62}")
     print(f"📊 Phase 8: Statistical Significance Testing")
     print(f"   Target Experiment: {exp_id}")

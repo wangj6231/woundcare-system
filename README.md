@@ -4,7 +4,7 @@
 
 ## 目前進度（2026-09-15）
 
-最新主報告：[完整進度、資料張數、訓練切分、驗證隔離與問題處理](docs/PROGRESS_AND_METHODS_20260915.md)。每一步附來源或方法依據，並公開[彙總證據 JSON](docs/evidence/progress_20260915.json)；缺少原始來源證據的資料明確標為待補，不冒稱已核實。
+最新主報告：[2026-09-29完整進度、實驗修正、分析圖與傷口案例](docs/PROJECT_PROGRESS_REPORT_20260929.md)。前一版[資料張數、訓練切分與隔離報告](docs/PROGRESS_AND_METHODS_20260915.md)及[彙總證據 JSON](docs/evidence/progress_20260915.json)保留作歷史快照；缺少原始來源證據的資料明確標為待補，不冒稱已核實。
 
 - 分類既有實驗與 48 張一次性測試結果保留封版；本輪不重新測試。
 - 分類模型在鎖定測試中答對 46/48 張（95.83%）；這是內部一次性結果，不代表臨床驗證。
@@ -25,11 +25,12 @@
 
 ## 建議閱讀順序
 
-1. [最新完整進度報告（2026-09-15）](docs/PROGRESS_AND_METHODS_20260915.md)
-2. [GitHub 公開版安全稽核](docs/GITHUB_SECURITY_AUDIT_20260906.md)
-3. [歷史實驗報告（新版限制與更正見最新報告）](docs/PROFESSOR_INTEGRATED_EXPERIMENT_REPORT_20260817.md)
-4. [分類結果總表](experiments/results/tables/Table5_Final_Blind_Test_Generalization.md)
-5. [專案結構](PROJECT_STRUCTURE_20260812.md)
+1. [最新完整進度、分析圖與問題處理報告（2026-09-29）](docs/PROJECT_PROGRESS_REPORT_20260929.md)
+2. [上一版完整白話方法與資料報告（2026-09-15）](docs/PROGRESS_AND_METHODS_20260915.md)
+3. [GitHub 公開版安全稽核](docs/GITHUB_SECURITY_AUDIT_20260906.md)
+4. [歷史教授實驗報告（新版限制與更正見最新報告）](docs/PROFESSOR_INTEGRATED_EXPERIMENT_REPORT_20260817.md)
+5. [分類修正後最終開發摘要](experiments/results/tables/Table2c_Final_Classification_Development_Summary.md)
+6. [專案結構](PROJECT_STRUCTURE_20260812.md)
 
 ## 本機啟動
 

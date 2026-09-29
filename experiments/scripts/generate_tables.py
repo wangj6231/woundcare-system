@@ -25,7 +25,6 @@ BASE_DIR  = Path(__file__).parent.parent.parent
 LOG_PATH  = Path(__file__).parent.parent / 'experiment_log.csv'
 STATS_DIR = Path(__file__).parent.parent / 'results' / 'statistics'
 OUT_DIR   = Path(__file__).parent.parent / 'results' / 'tables'
-OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 CLASS_NAMES = ['Abrasions', 'Bruises', 'Burns', 'Cut',
                'Ingrown_nails', 'Laceration', 'Stab_wound']
@@ -231,6 +230,9 @@ def generate_table4_leakage_impact():
 # Main Execution
 # ──────────────────────────────────────────────────────────────
 def run_phase9_table_generation():
+    if OUT_DIR.exists():
+        raise FileExistsError(f"historical table directory is immutable: {OUT_DIR}")
+    OUT_DIR.mkdir(parents=True, exist_ok=False)
     print(f"\n{'='*62}")
     print(f"📄 Phase 9: Paper Table Auto-Generation")
     print(f"   Output Directory: {OUT_DIR}")

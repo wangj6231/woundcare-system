@@ -21,6 +21,7 @@ from pathlib import Path
 from sklearn.model_selection import StratifiedGroupKFold
 
 sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from experiment_logger import log_start, log_done, log_failed
 from cross_validation_group import (
     collect_dev_set_with_groups,
@@ -32,6 +33,8 @@ from cross_validation_group import (
     CLASS_NAMES,
 )
 from evaluate import evaluate
+from resume_metrics import resume_stab_recall
+from data_roles import require_source_role
 
 BASE_DIR  = Path(__file__).parent.parent.parent
 STATS_DIR = Path(__file__).parent.parent / 'results' / 'statistics'
@@ -74,10 +77,16 @@ def run_multi_seed(cfg: dict, seeds: list = None) -> dict:
         seeds = DEFAULT_SEEDS
 
     dataset_path = BASE_DIR / cfg['dataset']['path']
+    require_source_role(None, 'train', path=dataset_path)
     orig_exp_id  = cfg['experiment']['id']
     exp_id       = f"{orig_exp_id}-MS"   # e.g. C-Arch-05-MS
     model_name   = cfg['model']['name']
     framework    = cfg['model']['framework']
+
+    # A sealed summary is not a resume target: never train and then overwrite it.
+    summary_path = STATS_DIR / f'{exp_id}_multiseed_summary.json'
+    if summary_path.exists():
+        raise FileExistsError(f"historical summary is immutable: {summary_path}")
 
     print(f"\n{'='*62}")
     print(f"🌱  Phase 7: Multi-Seed Group CV")
@@ -113,9 +122,11 @@ def run_multi_seed(cfg: dict, seeds: list = None) -> dict:
             reader = _csv.DictReader(f)
             for row in reader:
                 if row.get('experiment_id') == exp_id and row.get('status') == 'done':
-                    try:
-                        s = int(row['seed']); fo = int(row['fold'])
-                        rec = {
+                    s = int(row['seed']); fo = int(row['fold'])
+                    prediction_path = (Path(__file__).parent.parent / 'results' / 'predictions' / 'val'
+                                       / f'{exp_id}_s{s}_fold{fo}_predictions.json')
+                    prediction = json.loads(prediction_path.read_text(encoding='utf-8')) if prediction_path.is_file() else None
+                    rec = {
                             'seed':              s, 'fold': fo,
                             'gate_passed':       True,
                             'md5_overlap':       0,  'gid_overlap': 0,
@@ -124,15 +135,15 @@ def run_multi_seed(cfg: dict, seeds: list = None) -> dict:
                             'accuracy':          float(row.get('accuracy') or 0),
                             'macro_f1':          float(row.get('macro_f1') or 0),
                             'weighted_f1':       float(row.get('weighted_f1') or 0),
-                            'stab_wound_recall': float(row.get('recall') or 0),  # best proxy
+                            'stab_wound_recall': resume_stab_recall(row, prediction),
                             'training_time_min': float(row.get('training_time') or 0),
                             'status':            'done',
                         }
-                        overall_records.append(rec)
-                        seed_data = all_seed_results.setdefault(s, [])
-                        seed_data.append(rec)
-                    except Exception:
-                        pass
+                    if any(r['seed'] == s and r['fold'] == fo for r in overall_records):
+                        raise ValueError(f"duplicate completed fold in log: {s}/{fo}")
+                    overall_records.append(rec)
+                    seed_data = all_seed_results.setdefault(s, [])
+                    seed_data.append(rec)
 
     # Convert seed lists to summary dicts after reconstruction
     for s, recs in list(all_seed_results.items()):
@@ -258,7 +269,16 @@ def run_multi_seed(cfg: dict, seeds: list = None) -> dict:
                     save_figures=False   # Multi-Seed 不存圖，避免產生大量檔案
                 )
             except Exception as e:
-                print(f"  ⚠️  Evaluate failed: {e}")
+                log_failed(exp_id, seed_cfg, error=f"evaluation failed: {e}")
+                print(f"  ❌ Evaluate failed: {e}")
+                seed_fold_results.append({'seed': seed, 'fold': fold_idx,
+                                          'gate_passed': True, 'status': 'FAILED_EVALUATION'})
+                continue
+
+            required_metrics = ('accuracy', 'macro_f1', 'weighted_f1', 'stab_wound_recall')
+            if any(k not in metrics or not np.isfinite(metrics[k]) for k in required_metrics):
+                log_failed(exp_id, seed_cfg, error="evaluation missing finite required metrics")
+                raise ValueError("evaluation missing finite required metrics; fold cannot be logged done")
 
             metrics['training_time_min'] = round(elapsed, 1)
             metrics['model_path']    = weights_path
@@ -277,7 +297,7 @@ def run_multi_seed(cfg: dict, seeds: list = None) -> dict:
                 'accuracy':          metrics.get('accuracy', 0),
                 'macro_f1':          metrics.get('macro_f1', 0),
                 'weighted_f1':       metrics.get('weighted_f1', 0),
-                'stab_wound_recall': metrics.get('stab_wound_recall', 0),
+                'stab_wound_recall': metrics['stab_wound_recall'],
                 'training_time_min': round(elapsed, 1),
                 'status':            'done',
             }
@@ -381,8 +401,8 @@ def run_multi_seed(cfg: dict, seeds: list = None) -> dict:
 
     # 儲存 JSON
     STATS_DIR.mkdir(parents=True, exist_ok=True)
-    json_path = STATS_DIR / f'{exp_id}_multiseed_summary.json'
-    with open(json_path, 'w', encoding='utf-8') as f:
+    json_path = summary_path
+    with open(json_path, 'x', encoding='utf-8') as f:
         json.dump(summary, f, indent=2, ensure_ascii=False)
 
     # ── 最終輸出 ──────────────────────────────────────────────

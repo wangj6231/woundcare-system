@@ -1,3 +1,11 @@
 experiments/results/detection/YOLO11m_WSNet_official_baseline_20260812/weights/best.pt filter=lfs diff=lfs merge=lfs -text
 experiments/results/detection/YOLO11s_WSNet_official_common_batch4_20260812/weights/best.pt filter=lfs diff=lfs merge=lfs -text
 experiments/results/detection_groupkfold/YOLO11n_WSNet_groupkfold_fold01_seed42_202608123/weights/best.pt filter=lfs diff=lfs merge=lfs -text
+
+# Phase F0.1 records byte-level SHA-256 evidence for these files. Keep their
+# checkout representation stable across Windows and Unix so CRLF conversion
+# cannot masquerade as a frozen-source mutation.
+/docs/PHASE_F0_HIGHER_INPUT_SCALE_PREREGISTRATION_20260925.md text eol=lf
+/experiments/higher_scale_resource_smoke.py text eol=lf
+/experiments/phase_f0.py text eol=lf
+/tests/test_phase_f0.py text eol=lf

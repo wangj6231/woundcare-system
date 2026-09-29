@@ -1,0 +1,4604 @@
+{
+  "experiment_id": "C-Arch-05-MS",
+  "source": "SAVED_FOLD_PREDICTION_ARRAYS",
+  "source_prediction_files": [
+    "experiments/results/predictions/val/C-Arch-05-MS_s42_fold1_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s42_fold2_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s42_fold3_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s42_fold4_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s42_fold5_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s123_fold1_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s123_fold2_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s123_fold3_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s123_fold4_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s123_fold5_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s999_fold1_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s999_fold2_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s999_fold3_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s999_fold4_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s999_fold5_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold1_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold2_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold3_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold4_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold5_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold1_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold2_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold3_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold4_predictions.json",
+    "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold5_predictions.json"
+  ],
+  "source_sha256": {
+    "experiments/results/predictions/val/C-Arch-05-MS_s42_fold1_predictions.json": "690fc4bb44103b3ae700a131e6cd3bd22dbee3c7cdc3b34130dda5db72bbda97",
+    "experiments/results/predictions/val/C-Arch-05-MS_s42_fold2_predictions.json": "509a89ba61a92390f0d82d115d2399b90ef440d379d4749a5a64b126a8e12a23",
+    "experiments/results/predictions/val/C-Arch-05-MS_s42_fold3_predictions.json": "cd9ffb67e331fa1f141c9ac29473ee840045468ff04e81f3f0377d97edb227ea",
+    "experiments/results/predictions/val/C-Arch-05-MS_s42_fold4_predictions.json": "361797469b1427abf8c6001619dc272a0123f132a44a84b7f6997f5f2d4e8b26",
+    "experiments/results/predictions/val/C-Arch-05-MS_s42_fold5_predictions.json": "84a214b46af631d649ef8b243afe6b2d52d8787749ff9713b810c9ffdab61003",
+    "experiments/results/predictions/val/C-Arch-05-MS_s123_fold1_predictions.json": "39a2788ccfd4584f4be86f5aa5e8265f7ac796fc53590d76c82743194d3ee5b3",
+    "experiments/results/predictions/val/C-Arch-05-MS_s123_fold2_predictions.json": "0a8848f7e1aeca063c5e1db2712703dc783eed9725c7e0acabc8b388c695f985",
+    "experiments/results/predictions/val/C-Arch-05-MS_s123_fold3_predictions.json": "22b5cbf5ef124bd5f1cadd613a07c988b69dd3e34d79904e256a134732bbcb21",
+    "experiments/results/predictions/val/C-Arch-05-MS_s123_fold4_predictions.json": "2548f4d9da1e4904d0cbbaa7c957956f96070f2ff251aed8223d544111533e96",
+    "experiments/results/predictions/val/C-Arch-05-MS_s123_fold5_predictions.json": "ee854f4a41a340e95903cce7d6c74282534b50bda7e2afff87e1009fa9a0961e",
+    "experiments/results/predictions/val/C-Arch-05-MS_s999_fold1_predictions.json": "1e226be52edbf4001587aba69b33a69cbcdf6452a3ddbd7da54d069d9a96d0b2",
+    "experiments/results/predictions/val/C-Arch-05-MS_s999_fold2_predictions.json": "d37bf1768192276f0b6f69a8e4512172fa07625066c66fb957249ce95d057784",
+    "experiments/results/predictions/val/C-Arch-05-MS_s999_fold3_predictions.json": "7e0e5f9fdb49161f69e9d2b61f4d5c4e51281fca23d5a6802a99f3f9dc64dfbb",
+    "experiments/results/predictions/val/C-Arch-05-MS_s999_fold4_predictions.json": "823fed0cf904c1ab79e3f41b6d7baa45941b9794f20bfe2e4835699e3a251008",
+    "experiments/results/predictions/val/C-Arch-05-MS_s999_fold5_predictions.json": "6ca9b0e2240704523d45a5ddecab8e7f29b545f0a2ff6a8dbb579fbc831e0dd7",
+    "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold1_predictions.json": "dccdaa31842aefd65fa952371eff58f5d763b2c98dbe63e2748c1c652d2695d6",
+    "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold2_predictions.json": "cdea30253eae239becd8b2479b75a1c72a9c1402c449cf20493f7d7ad65c3785",
+    "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold3_predictions.json": "a6c261d3240552ea0f84a281c4750290bf49876f1496c87c7affffd12586effc",
+    "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold4_predictions.json": "8a49807e3d74a37794fc51975fadbd3a641152cf84c1b3ef1ba925495fa2b84b",
+    "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold5_predictions.json": "f841658ebe8a72658ceacd825bf73e11d6ca1f534ba7749b1b16acbc943a6ed8",
+    "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold1_predictions.json": "daf39f45f474f3604b70e52a28b8be2c3afd39cf287f502d1aac609daa09822a",
+    "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold2_predictions.json": "4a7c42dfd05f6cda45a2ca76f489c2c7b87fa78e4becdde31944703a295a3aba",
+    "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold3_predictions.json": "bdd3beb39dfc0ae196159314aecb75fe62f0f795d8d7263989ad494af6575c35",
+    "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold4_predictions.json": "3085e0743917d33434a83ac1bff9ba164af2e9380c122085c4bd4635203bc998",
+    "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold5_predictions.json": "4ec1da413e418a3dae1bc822699c59aa517e63ff372c615e606cef08e89153c0"
+  },
+  "num_seeds": 5,
+  "num_folds": 5,
+  "folds_per_seed": {
+    "42": 5,
+    "123": 5,
+    "3407": 5,
+    "2026": 5,
+    "999": 5
+  },
+  "rows_per_seed": {
+    "42": 720,
+    "123": 720,
+    "3407": 720,
+    "2026": 720,
+    "999": 720
+  },
+  "total_saved_rows": 3600,
+  "class_names": [
+    "Abrasions",
+    "Bruises",
+    "Burns",
+    "Cut",
+    "Ingrown_nails",
+    "Laceration",
+    "Stab_wound"
+  ],
+  "probability_integrity": "PASS; shape, finite, range, sum atol=1e-4, argmax checked",
+  "primary_estimand": "five seed-level aggregate evaluations; five held-out folds concatenated within each seed",
+  "seed_metrics": [
+    {
+      "seed": 42,
+      "folds": 5,
+      "rows": 720,
+      "metrics_percent": {
+        "accuracy": 87.91666666666667,
+        "macro_precision": 88.73399728377461,
+        "macro_recall": 87.85731111098603,
+        "macro_f1": 88.06613269625849,
+        "weighted_f1": 88.03882110881435
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 79.3103448275862,
+          "recall": 87.61904761904762,
+          "f1": 83.2579185520362,
+          "support": 105,
+          "correct": 92
+        },
+        "Bruises": {
+          "precision": 88.98305084745762,
+          "recall": 96.3302752293578,
+          "f1": 92.51101321585902,
+          "support": 109,
+          "correct": 105
+        },
+        "Burns": {
+          "precision": 91.20879120879121,
+          "recall": 81.37254901960785,
+          "f1": 86.01036269430051,
+          "support": 102,
+          "correct": 83
+        },
+        "Cut": {
+          "precision": 92.22222222222223,
+          "recall": 81.37254901960785,
+          "f1": 86.45833333333334,
+          "support": 102,
+          "correct": 83
+        },
+        "Ingrown_nails": {
+          "precision": 98.9247311827957,
+          "recall": 92.0,
+          "f1": 95.33678756476685,
+          "support": 100,
+          "correct": 92
+        },
+        "Laceration": {
+          "precision": 74.78991596638656,
+          "recall": 86.40776699029125,
+          "f1": 80.18018018018017,
+          "support": 103,
+          "correct": 89
+        },
+        "Stab_wound": {
+          "precision": 95.6989247311828,
+          "recall": 89.8989898989899,
+          "f1": 92.70833333333334,
+          "support": 99,
+          "correct": 89
+        }
+      },
+      "confusion_matrix": [
+        [
+          92,
+          3,
+          3,
+          3,
+          1,
+          3,
+          0
+        ],
+        [
+          2,
+          105,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          6,
+          2,
+          83,
+          2,
+          0,
+          7,
+          2
+        ],
+        [
+          14,
+          0,
+          0,
+          83,
+          0,
+          5,
+          0
+        ],
+        [
+          0,
+          4,
+          0,
+          0,
+          92,
+          4,
+          0
+        ],
+        [
+          2,
+          4,
+          4,
+          2,
+          0,
+          89,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          10,
+          89
+        ]
+      ]
+    },
+    {
+      "seed": 123,
+      "folds": 5,
+      "rows": 720,
+      "metrics_percent": {
+        "accuracy": 87.91666666666667,
+        "macro_precision": 88.5626305189687,
+        "macro_recall": 87.89029289726962,
+        "macro_f1": 88.00804099811018,
+        "weighted_f1": 87.95487256145572
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 87.1559633027523,
+          "recall": 90.47619047619048,
+          "f1": 88.78504672897196,
+          "support": 105,
+          "correct": 95
+        },
+        "Bruises": {
+          "precision": 80.95238095238095,
+          "recall": 93.57798165137615,
+          "f1": 86.80851063829788,
+          "support": 109,
+          "correct": 102
+        },
+        "Burns": {
+          "precision": 92.22222222222223,
+          "recall": 81.37254901960785,
+          "f1": 86.45833333333334,
+          "support": 102,
+          "correct": 83
+        },
+        "Cut": {
+          "precision": 96.55172413793103,
+          "recall": 82.35294117647058,
+          "f1": 88.8888888888889,
+          "support": 102,
+          "correct": 84
+        },
+        "Ingrown_nails": {
+          "precision": 92.3076923076923,
+          "recall": 96.0,
+          "f1": 94.11764705882352,
+          "support": 100,
+          "correct": 96
+        },
+        "Laceration": {
+          "precision": 77.06422018348624,
+          "recall": 81.55339805825243,
+          "f1": 79.24528301886792,
+          "support": 103,
+          "correct": 84
+        },
+        "Stab_wound": {
+          "precision": 93.6842105263158,
+          "recall": 89.8989898989899,
+          "f1": 91.75257731958763,
+          "support": 99,
+          "correct": 89
+        }
+      },
+      "confusion_matrix": [
+        [
+          95,
+          4,
+          1,
+          1,
+          0,
+          4,
+          0
+        ],
+        [
+          4,
+          102,
+          3,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          6,
+          5,
+          83,
+          0,
+          2,
+          6,
+          0
+        ],
+        [
+          4,
+          3,
+          0,
+          84,
+          6,
+          5,
+          0
+        ],
+        [
+          0,
+          4,
+          0,
+          0,
+          96,
+          0,
+          0
+        ],
+        [
+          0,
+          8,
+          3,
+          2,
+          0,
+          84,
+          6
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          10,
+          89
+        ]
+      ]
+    },
+    {
+      "seed": 3407,
+      "folds": 5,
+      "rows": 720,
+      "metrics_percent": {
+        "accuracy": 86.66666666666667,
+        "macro_precision": 87.09744170017532,
+        "macro_recall": 86.6694604090857,
+        "macro_f1": 86.69649388128137,
+        "weighted_f1": 86.61474629895346
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 83.63636363636363,
+          "recall": 87.61904761904762,
+          "f1": 85.5813953488372,
+          "support": 105,
+          "correct": 92
+        },
+        "Bruises": {
+          "precision": 78.90625,
+          "recall": 92.66055045871559,
+          "f1": 85.23206751054852,
+          "support": 109,
+          "correct": 101
+        },
+        "Burns": {
+          "precision": 82.6086956521739,
+          "recall": 74.50980392156863,
+          "f1": 78.35051546391752,
+          "support": 102,
+          "correct": 76
+        },
+        "Cut": {
+          "precision": 93.25842696629213,
+          "recall": 81.37254901960785,
+          "f1": 86.9109947643979,
+          "support": 102,
+          "correct": 83
+        },
+        "Ingrown_nails": {
+          "precision": 92.63157894736842,
+          "recall": 88.0,
+          "f1": 90.25641025641025,
+          "support": 100,
+          "correct": 88
+        },
+        "Laceration": {
+          "precision": 82.52427184466019,
+          "recall": 82.52427184466019,
+          "f1": 82.52427184466019,
+          "support": 103,
+          "correct": 85
+        },
+        "Stab_wound": {
+          "precision": 96.11650485436894,
+          "recall": 100.0,
+          "f1": 98.01980198019803,
+          "support": 99,
+          "correct": 99
+        }
+      },
+      "confusion_matrix": [
+        [
+          92,
+          3,
+          2,
+          0,
+          0,
+          8,
+          0
+        ],
+        [
+          3,
+          101,
+          4,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          6,
+          9,
+          76,
+          3,
+          4,
+          4,
+          0
+        ],
+        [
+          6,
+          5,
+          0,
+          83,
+          3,
+          5,
+          0
+        ],
+        [
+          0,
+          4,
+          8,
+          0,
+          88,
+          0,
+          0
+        ],
+        [
+          3,
+          6,
+          2,
+          3,
+          0,
+          85,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          99
+        ]
+      ]
+    },
+    {
+      "seed": 2026,
+      "folds": 5,
+      "rows": 720,
+      "metrics_percent": {
+        "accuracy": 88.05555555555556,
+        "macro_precision": 88.49059565159281,
+        "macro_recall": 88.00554676580734,
+        "macro_f1": 88.02764976898061,
+        "weighted_f1": 88.02403703529679
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 84.070796460177,
+          "recall": 90.47619047619048,
+          "f1": 87.1559633027523,
+          "support": 105,
+          "correct": 95
+        },
+        "Bruises": {
+          "precision": 87.93103448275862,
+          "recall": 93.57798165137615,
+          "f1": 90.66666666666666,
+          "support": 109,
+          "correct": 102
+        },
+        "Burns": {
+          "precision": 90.0,
+          "recall": 79.41176470588235,
+          "f1": 84.375,
+          "support": 102,
+          "correct": 81
+        },
+        "Cut": {
+          "precision": 94.18604651162791,
+          "recall": 79.41176470588235,
+          "f1": 86.17021276595744,
+          "support": 102,
+          "correct": 81
+        },
+        "Ingrown_nails": {
+          "precision": 90.19607843137256,
+          "recall": 92.0,
+          "f1": 91.0891089108911,
+          "support": 100,
+          "correct": 92
+        },
+        "Laceration": {
+          "precision": 80.34188034188034,
+          "recall": 91.2621359223301,
+          "f1": 85.45454545454545,
+          "support": 103,
+          "correct": 94
+        },
+        "Stab_wound": {
+          "precision": 92.70833333333334,
+          "recall": 89.8989898989899,
+          "f1": 91.28205128205128,
+          "support": 99,
+          "correct": 89
+        }
+      },
+      "confusion_matrix": [
+        [
+          95,
+          4,
+          0,
+          4,
+          0,
+          1,
+          1
+        ],
+        [
+          4,
+          102,
+          3,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          4,
+          81,
+          0,
+          7,
+          2,
+          0
+        ],
+        [
+          6,
+          0,
+          2,
+          81,
+          3,
+          10,
+          0
+        ],
+        [
+          0,
+          4,
+          4,
+          0,
+          92,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          0,
+          94,
+          6
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          10,
+          89
+        ]
+      ]
+    },
+    {
+      "seed": 999,
+      "folds": 5,
+      "rows": 720,
+      "metrics_percent": {
+        "accuracy": 86.38888888888889,
+        "macro_precision": 87.63296850647123,
+        "macro_recall": 86.35894744735901,
+        "macro_f1": 86.53732262849371,
+        "weighted_f1": 86.51727382472451
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 87.61904761904762,
+          "recall": 87.61904761904762,
+          "f1": 87.61904761904762,
+          "support": 105,
+          "correct": 92
+        },
+        "Bruises": {
+          "precision": 84.03361344537815,
+          "recall": 91.74311926605505,
+          "f1": 87.71929824561404,
+          "support": 109,
+          "correct": 100
+        },
+        "Burns": {
+          "precision": 93.90243902439023,
+          "recall": 75.49019607843137,
+          "f1": 83.69565217391305,
+          "support": 102,
+          "correct": 77
+        },
+        "Cut": {
+          "precision": 97.59036144578313,
+          "recall": 79.41176470588235,
+          "f1": 87.56756756756758,
+          "support": 102,
+          "correct": 81
+        },
+        "Ingrown_nails": {
+          "precision": 93.87755102040816,
+          "recall": 92.0,
+          "f1": 92.92929292929293,
+          "support": 100,
+          "correct": 92
+        },
+        "Laceration": {
+          "precision": 70.0,
+          "recall": 88.3495145631068,
+          "f1": 78.11158798283262,
+          "support": 103,
+          "correct": 91
+        },
+        "Stab_wound": {
+          "precision": 86.40776699029125,
+          "recall": 89.8989898989899,
+          "f1": 88.11881188118812,
+          "support": 99,
+          "correct": 89
+        }
+      },
+      "confusion_matrix": [
+        [
+          92,
+          4,
+          0,
+          0,
+          0,
+          7,
+          2
+        ],
+        [
+          4,
+          100,
+          1,
+          0,
+          0,
+          3,
+          1
+        ],
+        [
+          2,
+          5,
+          77,
+          0,
+          6,
+          10,
+          2
+        ],
+        [
+          7,
+          2,
+          0,
+          81,
+          0,
+          9,
+          3
+        ],
+        [
+          0,
+          4,
+          4,
+          0,
+          92,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          0,
+          2,
+          0,
+          91,
+          6
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          10,
+          89
+        ]
+      ]
+    }
+  ],
+  "seed_mean": {
+    "accuracy": 87.38888888888889,
+    "macro_precision": 88.10352673219654,
+    "macro_recall": 87.35631172610154,
+    "macro_f1": 87.46712799462487,
+    "weighted_f1": 87.42995016584896
+  },
+  "seed_sample_sd": {
+    "accuracy": 0.7942210253053239,
+    "macro_precision": 0.7056422406668236,
+    "macro_recall": 0.778482923350996,
+    "macro_f1": 0.7784589142948721,
+    "weighted_f1": 0.7900541125924687
+  },
+  "seed_min": {
+    "accuracy": 86.38888888888889,
+    "macro_precision": 87.09744170017532,
+    "macro_recall": 86.35894744735901,
+    "macro_f1": 86.53732262849371,
+    "weighted_f1": 86.51727382472451
+  },
+  "seed_max": {
+    "accuracy": 88.05555555555556,
+    "macro_precision": 88.73399728377461,
+    "macro_recall": 88.00554676580734,
+    "macro_f1": 88.06613269625849,
+    "weighted_f1": 88.03882110881435
+  },
+  "stab_wound_seed_summary": {
+    "mean": 91.91919191919192,
+    "sample_sd_ddof1": 4.517309045454122,
+    "minimum": 89.8989898989899,
+    "maximum": 100.0,
+    "n": 5
+  },
+  "fold_metrics": [
+    {
+      "seed": 42,
+      "fold": 1,
+      "rows": 150,
+      "metrics_percent": {
+        "accuracy": 84.66666666666667,
+        "macro_precision": 85.85114678282379,
+        "macro_recall": 84.18126143738128,
+        "macro_f1": 84.4426858848608,
+        "weighted_f1": 84.64505616639183
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 73.33333333333333,
+          "recall": 95.65217391304348,
+          "f1": 83.01886792452831,
+          "support": 23,
+          "correct": 22
+        },
+        "Bruises": {
+          "precision": 83.33333333333334,
+          "recall": 95.23809523809523,
+          "f1": 88.8888888888889,
+          "support": 21,
+          "correct": 20
+        },
+        "Burns": {
+          "precision": 91.30434782608695,
+          "recall": 91.30434782608695,
+          "f1": 91.30434782608695,
+          "support": 23,
+          "correct": 21
+        },
+        "Cut": {
+          "precision": 90.0,
+          "recall": 78.26086956521739,
+          "f1": 83.72093023255815,
+          "support": 23,
+          "correct": 18
+        },
+        "Ingrown_nails": {
+          "precision": 100.0,
+          "recall": 80.95238095238095,
+          "f1": 89.47368421052632,
+          "support": 21,
+          "correct": 17
+        },
+        "Laceration": {
+          "precision": 77.27272727272727,
+          "recall": 77.27272727272727,
+          "f1": 77.27272727272727,
+          "support": 22,
+          "correct": 17
+        },
+        "Stab_wound": {
+          "precision": 85.71428571428571,
+          "recall": 70.58823529411765,
+          "f1": 77.41935483870968,
+          "support": 17,
+          "correct": 12
+        }
+      },
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          20,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          21,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          18,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          0,
+          0,
+          17,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          1,
+          0,
+          17,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          12
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s42_fold1_predictions.json",
+      "sha256": "690fc4bb44103b3ae700a131e6cd3bd22dbee3c7cdc3b34130dda5db72bbda97"
+    },
+    {
+      "seed": 42,
+      "fold": 2,
+      "rows": 133,
+      "metrics_percent": {
+        "accuracy": 86.46616541353383,
+        "macro_precision": 90.00206143063286,
+        "macro_recall": 85.26587301587301,
+        "macro_f1": 85.62496169639026,
+        "weighted_f1": 86.22654609496715
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 71.42857142857143,
+          "recall": 93.75,
+          "f1": 81.08108108108108,
+          "support": 16,
+          "correct": 15
+        },
+        "Bruises": {
+          "precision": 100.0,
+          "recall": 92.0,
+          "f1": 95.83333333333334,
+          "support": 25,
+          "correct": 23
+        },
+        "Burns": {
+          "precision": 88.88888888888889,
+          "recall": 88.88888888888889,
+          "f1": 88.88888888888889,
+          "support": 18,
+          "correct": 16
+        },
+        "Cut": {
+          "precision": 100.0,
+          "recall": 55.55555555555556,
+          "f1": 71.42857142857143,
+          "support": 18,
+          "correct": 10
+        },
+        "Ingrown_nails": {
+          "precision": 100.0,
+          "recall": 100.0,
+          "f1": 100.0,
+          "support": 18,
+          "correct": 18
+        },
+        "Laceration": {
+          "precision": 69.6969696969697,
+          "recall": 100.0,
+          "f1": 82.14285714285715,
+          "support": 23,
+          "correct": 23
+        },
+        "Stab_wound": {
+          "precision": 100.0,
+          "recall": 66.66666666666666,
+          "f1": 80.0,
+          "support": 15,
+          "correct": 10
+        }
+      },
+      "confusion_matrix": [
+        [
+          15,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          23,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          16,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          10,
+          0,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          18,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          23,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          10
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s42_fold2_predictions.json",
+      "sha256": "509a89ba61a92390f0d82d115d2399b90ef440d379d4749a5a64b126a8e12a23"
+    },
+    {
+      "seed": 42,
+      "fold": 3,
+      "rows": 145,
+      "metrics_percent": {
+        "accuracy": 91.72413793103448,
+        "macro_precision": 92.71099407504938,
+        "macro_recall": 91.74722520587181,
+        "macro_f1": 91.79879857081171,
+        "weighted_f1": 91.68285108782509
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 90.47619047619048,
+          "recall": 90.47619047619048,
+          "f1": 90.47619047619048,
+          "support": 21,
+          "correct": 19
+        },
+        "Bruises": {
+          "precision": 84.0,
+          "recall": 100.0,
+          "f1": 91.30434782608697,
+          "support": 21,
+          "correct": 21
+        },
+        "Burns": {
+          "precision": 100.0,
+          "recall": 78.94736842105263,
+          "f1": 88.23529411764706,
+          "support": 19,
+          "correct": 15
+        },
+        "Cut": {
+          "precision": 100.0,
+          "recall": 83.33333333333334,
+          "f1": 90.9090909090909,
+          "support": 24,
+          "correct": 20
+        },
+        "Ingrown_nails": {
+          "precision": 100.0,
+          "recall": 100.0,
+          "f1": 100.0,
+          "support": 12,
+          "correct": 12
+        },
+        "Laceration": {
+          "precision": 80.95238095238095,
+          "recall": 89.47368421052632,
+          "f1": 85.00000000000001,
+          "support": 19,
+          "correct": 17
+        },
+        "Stab_wound": {
+          "precision": 93.54838709677419,
+          "recall": 100.0,
+          "f1": 96.66666666666666,
+          "support": 29,
+          "correct": 29
+        }
+      },
+      "confusion_matrix": [
+        [
+          19,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          21,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          15,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          2,
+          0,
+          0,
+          20,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          12,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          0,
+          0,
+          17,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          29
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s42_fold3_predictions.json",
+      "sha256": "cd9ffb67e331fa1f141c9ac29473ee840045468ff04e81f3f0377d97edb227ea"
+    },
+    {
+      "seed": 42,
+      "fold": 4,
+      "rows": 147,
+      "metrics_percent": {
+        "accuracy": 85.71428571428571,
+        "macro_precision": 87.71861471861472,
+        "macro_recall": 84.85666994070355,
+        "macro_f1": 85.21788034513116,
+        "weighted_f1": 85.80473440980559
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 76.0,
+          "recall": 86.36363636363636,
+          "f1": 80.85106382978724,
+          "support": 22,
+          "correct": 19
+        },
+        "Bruises": {
+          "precision": 91.66666666666666,
+          "recall": 100.0,
+          "f1": 95.65217391304348,
+          "support": 22,
+          "correct": 22
+        },
+        "Burns": {
+          "precision": 100.0,
+          "recall": 58.82352941176471,
+          "f1": 74.07407407407408,
+          "support": 17,
+          "correct": 10
+        },
+        "Cut": {
+          "precision": 86.36363636363636,
+          "recall": 90.47619047619048,
+          "f1": 88.37209302325581,
+          "support": 21,
+          "correct": 19
+        },
+        "Ingrown_nails": {
+          "precision": 100.0,
+          "recall": 83.33333333333334,
+          "f1": 90.9090909090909,
+          "support": 24,
+          "correct": 20
+        },
+        "Laceration": {
+          "precision": 60.0,
+          "recall": 75.0,
+          "f1": 66.66666666666666,
+          "support": 20,
+          "correct": 15
+        },
+        "Stab_wound": {
+          "precision": 100.0,
+          "recall": 100.0,
+          "f1": 100.0,
+          "support": 21,
+          "correct": 21
+        }
+      },
+      "confusion_matrix": [
+        [
+          19,
+          0,
+          0,
+          2,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          22,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          10,
+          0,
+          0,
+          5,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          19,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          20,
+          4,
+          0
+        ],
+        [
+          2,
+          2,
+          0,
+          1,
+          0,
+          15,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          21
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s42_fold4_predictions.json",
+      "sha256": "361797469b1427abf8c6001619dc272a0123f132a44a84b7f6997f5f2d4e8b26"
+    },
+    {
+      "seed": 42,
+      "fold": 5,
+      "rows": 145,
+      "metrics_percent": {
+        "accuracy": 91.0344827586207,
+        "macro_precision": 91.33207143733459,
+        "macro_recall": 91.76953252696958,
+        "macro_f1": 91.35390372365163,
+        "weighted_f1": 90.85680870670728
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 89.47368421052632,
+          "recall": 73.91304347826086,
+          "f1": 80.95238095238095,
+          "support": 23,
+          "correct": 17
+        },
+        "Bruises": {
+          "precision": 86.36363636363636,
+          "recall": 95.0,
+          "f1": 90.47619047619048,
+          "support": 20,
+          "correct": 19
+        },
+        "Burns": {
+          "precision": 84.0,
+          "recall": 84.0,
+          "f1": 83.99999999999999,
+          "support": 25,
+          "correct": 21
+        },
+        "Cut": {
+          "precision": 88.88888888888889,
+          "recall": 100.0,
+          "f1": 94.11764705882352,
+          "support": 16,
+          "correct": 16
+        },
+        "Ingrown_nails": {
+          "precision": 96.15384615384616,
+          "recall": 100.0,
+          "f1": 98.0392156862745,
+          "support": 25,
+          "correct": 25
+        },
+        "Laceration": {
+          "precision": 94.44444444444444,
+          "recall": 89.47368421052632,
+          "f1": 91.8918918918919,
+          "support": 19,
+          "correct": 17
+        },
+        "Stab_wound": {
+          "precision": 100.0,
+          "recall": 100.0,
+          "f1": 100.0,
+          "support": 17,
+          "correct": 17
+        }
+      },
+      "confusion_matrix": [
+        [
+          17,
+          3,
+          2,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          19,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          0,
+          21,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          16,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          25,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          17,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          17
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s42_fold5_predictions.json",
+      "sha256": "84a214b46af631d649ef8b243afe6b2d52d8787749ff9713b810c9ffdab61003"
+    },
+    {
+      "seed": 123,
+      "fold": 1,
+      "rows": 145,
+      "metrics_percent": {
+        "accuracy": 88.27586206896552,
+        "macro_precision": 88.68560011417154,
+        "macro_recall": 88.32815734989649,
+        "macro_f1": 88.04883972292467,
+        "weighted_f1": 88.42558171887603
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 88.46153846153845,
+          "recall": 95.83333333333334,
+          "f1": 92.0,
+          "support": 24,
+          "correct": 23
+        },
+        "Bruises": {
+          "precision": 90.9090909090909,
+          "recall": 86.95652173913044,
+          "f1": 88.8888888888889,
+          "support": 23,
+          "correct": 20
+        },
+        "Burns": {
+          "precision": 71.42857142857143,
+          "recall": 83.33333333333334,
+          "f1": 76.92307692307692,
+          "support": 12,
+          "correct": 10
+        },
+        "Cut": {
+          "precision": 95.0,
+          "recall": 82.6086956521739,
+          "f1": 88.37209302325583,
+          "support": 23,
+          "correct": 19
+        },
+        "Ingrown_nails": {
+          "precision": 100.0,
+          "recall": 100.0,
+          "f1": 100.0,
+          "support": 17,
+          "correct": 17
+        },
+        "Laceration": {
+          "precision": 75.0,
+          "recall": 91.30434782608695,
+          "f1": 82.35294117647058,
+          "support": 23,
+          "correct": 21
+        },
+        "Stab_wound": {
+          "precision": 100.0,
+          "recall": 78.26086956521739,
+          "f1": 87.8048780487805,
+          "support": 23,
+          "correct": 18
+        }
+      },
+      "confusion_matrix": [
+        [
+          23,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          20,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          10,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          19,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          17,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          21,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          18
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s123_fold1_predictions.json",
+      "sha256": "39a2788ccfd4584f4be86f5aa5e8265f7ac796fc53590d76c82743194d3ee5b3"
+    },
+    {
+      "seed": 123,
+      "fold": 2,
+      "rows": 155,
+      "metrics_percent": {
+        "accuracy": 85.16129032258064,
+        "macro_precision": 87.10505181093417,
+        "macro_recall": 84.86951144094002,
+        "macro_f1": 84.98846445759645,
+        "weighted_f1": 85.10685632422424
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 88.46153846153845,
+          "recall": 92.0,
+          "f1": 90.19607843137256,
+          "support": 25,
+          "correct": 23
+        },
+        "Bruises": {
+          "precision": 66.66666666666666,
+          "recall": 95.23809523809523,
+          "f1": 78.43137254901961,
+          "support": 21,
+          "correct": 20
+        },
+        "Burns": {
+          "precision": 100.0,
+          "recall": 72.0,
+          "f1": 83.72093023255813,
+          "support": 25,
+          "correct": 18
+        },
+        "Cut": {
+          "precision": 92.3076923076923,
+          "recall": 66.66666666666666,
+          "f1": 77.41935483870968,
+          "support": 18,
+          "correct": 12
+        },
+        "Ingrown_nails": {
+          "precision": 100.0,
+          "recall": 100.0,
+          "f1": 100.0,
+          "support": 12,
+          "correct": 12
+        },
+        "Laceration": {
+          "precision": 68.18181818181817,
+          "recall": 68.18181818181817,
+          "f1": 68.18181818181817,
+          "support": 22,
+          "correct": 15
+        },
+        "Stab_wound": {
+          "precision": 94.11764705882352,
+          "recall": 100.0,
+          "f1": 96.96969696969697,
+          "support": 32,
+          "correct": 32
+        }
+      },
+      "confusion_matrix": [
+        [
+          23,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          20,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          3,
+          18,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          3,
+          0,
+          12,
+          0,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          12,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          0,
+          1,
+          0,
+          15,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          32
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s123_fold2_predictions.json",
+      "sha256": "0a8848f7e1aeca063c5e1db2712703dc783eed9725c7e0acabc8b388c695f985"
+    },
+    {
+      "seed": 123,
+      "fold": 3,
+      "rows": 141,
+      "metrics_percent": {
+        "accuracy": 85.1063829787234,
+        "macro_precision": 86.13245234297865,
+        "macro_recall": 85.47660276231704,
+        "macro_f1": 85.36635863253042,
+        "weighted_f1": 85.46728956342909
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 88.88888888888889,
+          "recall": 88.88888888888889,
+          "f1": 88.88888888888889,
+          "support": 18,
+          "correct": 16
+        },
+        "Bruises": {
+          "precision": 76.0,
+          "recall": 95.0,
+          "f1": 84.44444444444444,
+          "support": 20,
+          "correct": 19
+        },
+        "Burns": {
+          "precision": 89.47368421052632,
+          "recall": 80.95238095238095,
+          "f1": 85.00000000000001,
+          "support": 21,
+          "correct": 17
+        },
+        "Cut": {
+          "precision": 100.0,
+          "recall": 100.0,
+          "f1": 100.0,
+          "support": 17,
+          "correct": 17
+        },
+        "Ingrown_nails": {
+          "precision": 100.0,
+          "recall": 84.0,
+          "f1": 91.30434782608697,
+          "support": 25,
+          "correct": 21
+        },
+        "Laceration": {
+          "precision": 59.09090909090909,
+          "recall": 72.22222222222221,
+          "f1": 65.0,
+          "support": 18,
+          "correct": 13
+        },
+        "Stab_wound": {
+          "precision": 89.47368421052632,
+          "recall": 77.27272727272727,
+          "f1": 82.92682926829269,
+          "support": 22,
+          "correct": 17
+        }
+      },
+      "confusion_matrix": [
+        [
+          16,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          19,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          17,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          17,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          0,
+          0,
+          21,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          1,
+          0,
+          0,
+          13,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          17
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s123_fold3_predictions.json",
+      "sha256": "22b5cbf5ef124bd5f1cadd613a07c988b69dd3e34d79904e256a134732bbcb21"
+    },
+    {
+      "seed": 123,
+      "fold": 4,
+      "rows": 133,
+      "metrics_percent": {
+        "accuracy": 90.97744360902256,
+        "macro_precision": 92.33124018838305,
+        "macro_recall": 92.26588870067131,
+        "macro_f1": 91.87512663321591,
+        "weighted_f1": 91.01516837223116
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 100.0,
+          "recall": 88.88888888888889,
+          "f1": 94.11764705882352,
+          "support": 18,
+          "correct": 16
+        },
+        "Bruises": {
+          "precision": 88.46153846153845,
+          "recall": 100.0,
+          "f1": 93.87755102040816,
+          "support": 23,
+          "correct": 23
+        },
+        "Burns": {
+          "precision": 95.0,
+          "recall": 82.6086956521739,
+          "f1": 88.37209302325583,
+          "support": 23,
+          "correct": 19
+        },
+        "Cut": {
+          "precision": 95.0,
+          "recall": 86.36363636363636,
+          "f1": 90.47619047619048,
+          "support": 22,
+          "correct": 19
+        },
+        "Ingrown_nails": {
+          "precision": 76.19047619047619,
+          "recall": 100.0,
+          "f1": 86.48648648648648,
+          "support": 16,
+          "correct": 16
+        },
+        "Laceration": {
+          "precision": 91.66666666666666,
+          "recall": 88.0,
+          "f1": 89.79591836734694,
+          "support": 25,
+          "correct": 22
+        },
+        "Stab_wound": {
+          "precision": 100.0,
+          "recall": 100.0,
+          "f1": 100.0,
+          "support": 6,
+          "correct": 6
+        }
+      },
+      "confusion_matrix": [
+        [
+          16,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          23,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          19,
+          0,
+          2,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          19,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          16,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          0,
+          22,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s123_fold4_predictions.json",
+      "sha256": "2548f4d9da1e4904d0cbbaa7c957956f96070f2ff251aed8223d544111533e96"
+    },
+    {
+      "seed": 123,
+      "fold": 5,
+      "rows": 146,
+      "metrics_percent": {
+        "accuracy": 90.41095890410958,
+        "macro_precision": 91.52393500219588,
+        "macro_recall": 90.04638218923934,
+        "macro_f1": 90.33586123775689,
+        "weighted_f1": 90.45056147453876
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 73.91304347826086,
+          "recall": 85.0,
+          "f1": 79.06976744186046,
+          "support": 20,
+          "correct": 17
+        },
+        "Bruises": {
+          "precision": 86.95652173913044,
+          "recall": 90.9090909090909,
+          "f1": 88.8888888888889,
+          "support": 22,
+          "correct": 20
+        },
+        "Burns": {
+          "precision": 100.0,
+          "recall": 90.47619047619048,
+          "f1": 95.0,
+          "support": 21,
+          "correct": 19
+        },
+        "Cut": {
+          "precision": 100.0,
+          "recall": 77.27272727272727,
+          "f1": 87.17948717948718,
+          "support": 22,
+          "correct": 17
+        },
+        "Ingrown_nails": {
+          "precision": 90.9090909090909,
+          "recall": 100.0,
+          "f1": 95.23809523809523,
+          "support": 30,
+          "correct": 30
+        },
+        "Laceration": {
+          "precision": 100.0,
+          "recall": 86.66666666666667,
+          "f1": 92.85714285714286,
+          "support": 15,
+          "correct": 13
+        },
+        "Stab_wound": {
+          "precision": 88.88888888888889,
+          "recall": 100.0,
+          "f1": 94.11764705882352,
+          "support": 16,
+          "correct": 16
+        }
+      },
+      "confusion_matrix": [
+        [
+          17,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          20,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          19,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          17,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          30,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          13,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          16
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s123_fold5_predictions.json",
+      "sha256": "ee854f4a41a340e95903cce7d6c74282534b50bda7e2afff87e1009fa9a0961e"
+    },
+    {
+      "seed": 999,
+      "fold": 1,
+      "rows": 137,
+      "metrics_percent": {
+        "accuracy": 89.05109489051095,
+        "macro_precision": 89.75919221443517,
+        "macro_recall": 89.22068827531012,
+        "macro_f1": 88.88368081824188,
+        "weighted_f1": 88.95447358096837
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 95.0,
+          "recall": 79.16666666666666,
+          "f1": 86.36363636363636,
+          "support": 24,
+          "correct": 19
+        },
+        "Bruises": {
+          "precision": 95.65217391304348,
+          "recall": 91.66666666666666,
+          "f1": 93.61702127659574,
+          "support": 24,
+          "correct": 22
+        },
+        "Burns": {
+          "precision": 100.0,
+          "recall": 75.0,
+          "f1": 85.71428571428571,
+          "support": 16,
+          "correct": 12
+        },
+        "Cut": {
+          "precision": 88.23529411764706,
+          "recall": 88.23529411764706,
+          "f1": 88.23529411764706,
+          "support": 17,
+          "correct": 15
+        },
+        "Ingrown_nails": {
+          "precision": 81.81818181818183,
+          "recall": 100.0,
+          "f1": 90.0,
+          "support": 18,
+          "correct": 18
+        },
+        "Laceration": {
+          "precision": 82.6086956521739,
+          "recall": 90.47619047619048,
+          "f1": 86.36363636363636,
+          "support": 21,
+          "correct": 19
+        },
+        "Stab_wound": {
+          "precision": 85.0,
+          "recall": 100.0,
+          "f1": 91.89189189189189,
+          "support": 17,
+          "correct": 17
+        }
+      },
+      "confusion_matrix": [
+        [
+          19,
+          1,
+          0,
+          0,
+          0,
+          2,
+          2
+        ],
+        [
+          1,
+          22,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          12,
+          0,
+          4,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          15,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          18,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          0,
+          19,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          17
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s999_fold1_predictions.json",
+      "sha256": "1e226be52edbf4001587aba69b33a69cbcdf6452a3ddbd7da54d069d9a96d0b2"
+    },
+    {
+      "seed": 999,
+      "fold": 2,
+      "rows": 133,
+      "metrics_percent": {
+        "accuracy": 82.70676691729322,
+        "macro_precision": 83.82604237867396,
+        "macro_recall": 80.74960127591707,
+        "macro_f1": 81.25636268493412,
+        "weighted_f1": 82.78333195626429
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 85.0,
+          "recall": 89.47368421052632,
+          "f1": 87.17948717948718,
+          "support": 19,
+          "correct": 17
+        },
+        "Bruises": {
+          "precision": 90.0,
+          "recall": 90.0,
+          "f1": 90.0,
+          "support": 20,
+          "correct": 18
+        },
+        "Burns": {
+          "precision": 94.73684210526315,
+          "recall": 90.0,
+          "f1": 92.3076923076923,
+          "support": 20,
+          "correct": 18
+        },
+        "Cut": {
+          "precision": 100.0,
+          "recall": 57.89473684210527,
+          "f1": 73.33333333333334,
+          "support": 19,
+          "correct": 11
+        },
+        "Ingrown_nails": {
+          "precision": 100.0,
+          "recall": 100.0,
+          "f1": 100.0,
+          "support": 20,
+          "correct": 20
+        },
+        "Laceration": {
+          "precision": 62.5,
+          "recall": 83.33333333333334,
+          "f1": 71.42857142857143,
+          "support": 24,
+          "correct": 20
+        },
+        "Stab_wound": {
+          "precision": 54.54545454545454,
+          "recall": 54.54545454545454,
+          "f1": 54.54545454545454,
+          "support": 11,
+          "correct": 6
+        }
+      },
+      "confusion_matrix": [
+        [
+          17,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          18,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          18,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          11,
+          0,
+          3,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          20,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          0,
+          0,
+          20,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          6
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s999_fold2_predictions.json",
+      "sha256": "d37bf1768192276f0b6f69a8e4512172fa07625066c66fb957249ce95d057784"
+    },
+    {
+      "seed": 999,
+      "fold": 3,
+      "rows": 148,
+      "metrics_percent": {
+        "accuracy": 88.51351351351352,
+        "macro_precision": 91.01966873706004,
+        "macro_recall": 89.00267836603241,
+        "macro_f1": 89.08674663204782,
+        "weighted_f1": 88.70313680388773
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 87.5,
+          "recall": 91.30434782608695,
+          "f1": 89.36170212765957,
+          "support": 23,
+          "correct": 21
+        },
+        "Bruises": {
+          "precision": 91.30434782608695,
+          "recall": 91.30434782608695,
+          "f1": 91.30434782608695,
+          "support": 23,
+          "correct": 21
+        },
+        "Burns": {
+          "precision": 100.0,
+          "recall": 71.42857142857143,
+          "f1": 83.33333333333333,
+          "support": 21,
+          "correct": 15
+        },
+        "Cut": {
+          "precision": 100.0,
+          "recall": 87.5,
+          "f1": 93.33333333333333,
+          "support": 16,
+          "correct": 14
+        },
+        "Ingrown_nails": {
+          "precision": 100.0,
+          "recall": 100.0,
+          "f1": 100.0,
+          "support": 18,
+          "correct": 18
+        },
+        "Laceration": {
+          "precision": 66.66666666666666,
+          "recall": 100.0,
+          "f1": 80.0,
+          "support": 20,
+          "correct": 20
+        },
+        "Stab_wound": {
+          "precision": 91.66666666666666,
+          "recall": 81.48148148148148,
+          "f1": 86.27450980392156,
+          "support": 27,
+          "correct": 22
+        }
+      },
+      "confusion_matrix": [
+        [
+          21,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          21,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          0,
+          15,
+          0,
+          0,
+          2,
+          2
+        ],
+        [
+          0,
+          2,
+          0,
+          14,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          18,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          20,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          22
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s999_fold3_predictions.json",
+      "sha256": "7e0e5f9fdb49161f69e9d2b61f4d5c4e51281fca23d5a6802a99f3f9dc64dfbb"
+    },
+    {
+      "seed": 999,
+      "fold": 4,
+      "rows": 139,
+      "metrics_percent": {
+        "accuracy": 82.73381294964028,
+        "macro_precision": 85.48336096452311,
+        "macro_recall": 84.16202953633486,
+        "macro_f1": 82.58616968494587,
+        "weighted_f1": 82.2848406780416
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 68.42105263157895,
+          "recall": 92.85714285714286,
+          "f1": 78.78787878787878,
+          "support": 14,
+          "correct": 13
+        },
+        "Bruises": {
+          "precision": 86.95652173913044,
+          "recall": 86.95652173913044,
+          "f1": 86.95652173913044,
+          "support": 23,
+          "correct": 20
+        },
+        "Burns": {
+          "precision": 100.0,
+          "recall": 52.63157894736842,
+          "f1": 68.96551724137932,
+          "support": 19,
+          "correct": 10
+        },
+        "Cut": {
+          "precision": 100.0,
+          "recall": 65.38461538461539,
+          "f1": 79.06976744186048,
+          "support": 26,
+          "correct": 17
+        },
+        "Ingrown_nails": {
+          "precision": 85.71428571428571,
+          "recall": 100.0,
+          "f1": 92.3076923076923,
+          "support": 12,
+          "correct": 12
+        },
+        "Laceration": {
+          "precision": 65.625,
+          "recall": 91.30434782608695,
+          "f1": 76.36363636363635,
+          "support": 23,
+          "correct": 21
+        },
+        "Stab_wound": {
+          "precision": 91.66666666666666,
+          "recall": 100.0,
+          "f1": 95.65217391304348,
+          "support": 22,
+          "correct": 22
+        }
+      },
+      "confusion_matrix": [
+        [
+          13,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          20,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          3,
+          10,
+          0,
+          2,
+          4,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          17,
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          12,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          21,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          22
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s999_fold4_predictions.json",
+      "sha256": "823fed0cf904c1ab79e3f41b6d7baa45941b9794f20bfe2e4835699e3a251008"
+    },
+    {
+      "seed": 999,
+      "fold": 5,
+      "rows": 163,
+      "metrics_percent": {
+        "accuracy": 88.34355828220859,
+        "macro_precision": 89.17582417582418,
+        "macro_recall": 88.7069597069597,
+        "macro_f1": 87.96018778555734,
+        "weighted_f1": 88.5869405962302
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 100.0,
+          "recall": 88.0,
+          "f1": 93.61702127659575,
+          "support": 25,
+          "correct": 22
+        },
+        "Bruises": {
+          "precision": 63.33333333333333,
+          "recall": 100.0,
+          "f1": 77.55102040816327,
+          "support": 19,
+          "correct": 19
+        },
+        "Burns": {
+          "precision": 84.61538461538461,
+          "recall": 84.61538461538461,
+          "f1": 84.61538461538461,
+          "support": 26,
+          "correct": 22
+        },
+        "Cut": {
+          "precision": 100.0,
+          "recall": 100.0,
+          "f1": 100.0,
+          "support": 24,
+          "correct": 24
+        },
+        "Ingrown_nails": {
+          "precision": 100.0,
+          "recall": 75.0,
+          "f1": 85.71428571428571,
+          "support": 32,
+          "correct": 24
+        },
+        "Laceration": {
+          "precision": 84.61538461538461,
+          "recall": 73.33333333333333,
+          "f1": 78.57142857142856,
+          "support": 15,
+          "correct": 11
+        },
+        "Stab_wound": {
+          "precision": 91.66666666666666,
+          "recall": 100.0,
+          "f1": 95.65217391304348,
+          "support": 22,
+          "correct": 22
+        }
+      },
+      "confusion_matrix": [
+        [
+          22,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          19,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          22,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          24,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          4,
+          0,
+          24,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          0,
+          0,
+          11,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          22
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s999_fold5_predictions.json",
+      "sha256": "6ca9b0e2240704523d45a5ddecab8e7f29b545f0a2ff6a8dbb579fbc831e0dd7"
+    },
+    {
+      "seed": 2026,
+      "fold": 1,
+      "rows": 155,
+      "metrics_percent": {
+        "accuracy": 86.45161290322581,
+        "macro_precision": 87.57672299689105,
+        "macro_recall": 86.91472101083086,
+        "macro_f1": 86.56722514451654,
+        "weighted_f1": 86.67206154342644
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 85.71428571428571,
+          "recall": 92.3076923076923,
+          "f1": 88.8888888888889,
+          "support": 26,
+          "correct": 24
+        },
+        "Bruises": {
+          "precision": 90.0,
+          "recall": 94.73684210526315,
+          "f1": 92.3076923076923,
+          "support": 19,
+          "correct": 18
+        },
+        "Burns": {
+          "precision": 94.11764705882352,
+          "recall": 72.72727272727273,
+          "f1": 82.05128205128204,
+          "support": 22,
+          "correct": 16
+        },
+        "Cut": {
+          "precision": 90.0,
+          "recall": 78.26086956521739,
+          "f1": 83.72093023255815,
+          "support": 23,
+          "correct": 18
+        },
+        "Ingrown_nails": {
+          "precision": 100.0,
+          "recall": 100.0,
+          "f1": 100.0,
+          "support": 20,
+          "correct": 20
+        },
+        "Laceration": {
+          "precision": 61.53846153846154,
+          "recall": 88.88888888888889,
+          "f1": 72.72727272727273,
+          "support": 18,
+          "correct": 16
+        },
+        "Stab_wound": {
+          "precision": 91.66666666666666,
+          "recall": 81.48148148148148,
+          "f1": 86.27450980392156,
+          "support": 27,
+          "correct": 22
+        }
+      },
+      "confusion_matrix": [
+        [
+          24,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          18,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          2,
+          16,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          18,
+          0,
+          5,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          20,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          16,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          22
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold1_predictions.json",
+      "sha256": "dccdaa31842aefd65fa952371eff58f5d763b2c98dbe63e2748c1c652d2695d6"
+    },
+    {
+      "seed": 2026,
+      "fold": 2,
+      "rows": 146,
+      "metrics_percent": {
+        "accuracy": 86.98630136986301,
+        "macro_precision": 88.78292078292078,
+        "macro_recall": 85.09833024118738,
+        "macro_f1": 85.9694378682965,
+        "weighted_f1": 86.97764723268821
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 86.36363636363636,
+          "recall": 90.47619047619048,
+          "f1": 88.37209302325581,
+          "support": 21,
+          "correct": 19
+        },
+        "Bruises": {
+          "precision": 76.0,
+          "recall": 90.47619047619048,
+          "f1": 82.6086956521739,
+          "support": 21,
+          "correct": 19
+        },
+        "Burns": {
+          "precision": 96.15384615384616,
+          "recall": 100.0,
+          "f1": 98.0392156862745,
+          "support": 25,
+          "correct": 25
+        },
+        "Cut": {
+          "precision": 100.0,
+          "recall": 63.63636363636363,
+          "f1": 77.77777777777779,
+          "support": 11,
+          "correct": 7
+        },
+        "Ingrown_nails": {
+          "precision": 100.0,
+          "recall": 84.0,
+          "f1": 91.30434782608697,
+          "support": 25,
+          "correct": 21
+        },
+        "Laceration": {
+          "precision": 74.07407407407408,
+          "recall": 90.9090909090909,
+          "f1": 81.63265306122449,
+          "support": 22,
+          "correct": 20
+        },
+        "Stab_wound": {
+          "precision": 88.88888888888889,
+          "recall": 76.19047619047619,
+          "f1": 82.05128205128204,
+          "support": 21,
+          "correct": 16
+        }
+      },
+      "confusion_matrix": [
+        [
+          19,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          19,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          25,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          7,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          4,
+          0,
+          0,
+          21,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          20,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          16
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold2_predictions.json",
+      "sha256": "cdea30253eae239becd8b2479b75a1c72a9c1402c449cf20493f7d7ad65c3785"
+    },
+    {
+      "seed": 2026,
+      "fold": 3,
+      "rows": 140,
+      "metrics_percent": {
+        "accuracy": 87.85714285714286,
+        "macro_precision": 89.02965541933654,
+        "macro_recall": 88.2398456458607,
+        "macro_f1": 88.50137805025024,
+        "weighted_f1": 87.89694378980093
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 90.47619047619048,
+          "recall": 90.47619047619048,
+          "f1": 90.47619047619048,
+          "support": 21,
+          "correct": 19
+        },
+        "Bruises": {
+          "precision": 85.0,
+          "recall": 85.0,
+          "f1": 85.0,
+          "support": 20,
+          "correct": 17
+        },
+        "Burns": {
+          "precision": 73.68421052631578,
+          "recall": 73.68421052631578,
+          "f1": 73.68421052631578,
+          "support": 19,
+          "correct": 14
+        },
+        "Cut": {
+          "precision": 100.0,
+          "recall": 83.33333333333334,
+          "f1": 90.9090909090909,
+          "support": 18,
+          "correct": 15
+        },
+        "Ingrown_nails": {
+          "precision": 79.3103448275862,
+          "recall": 85.18518518518519,
+          "f1": 82.14285714285715,
+          "support": 27,
+          "correct": 23
+        },
+        "Laceration": {
+          "precision": 94.73684210526315,
+          "recall": 100.0,
+          "f1": 97.2972972972973,
+          "support": 18,
+          "correct": 18
+        },
+        "Stab_wound": {
+          "precision": 100.0,
+          "recall": 100.0,
+          "f1": 100.0,
+          "support": 17,
+          "correct": 17
+        }
+      },
+      "confusion_matrix": [
+        [
+          19,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          17,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          14,
+          0,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          15,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4,
+          0,
+          23,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          18,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          17
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold3_predictions.json",
+      "sha256": "a6c261d3240552ea0f84a281c4750290bf49876f1496c87c7affffd12586effc"
+    },
+    {
+      "seed": 2026,
+      "fold": 4,
+      "rows": 141,
+      "metrics_percent": {
+        "accuracy": 87.2340425531915,
+        "macro_precision": 87.66063510424414,
+        "macro_recall": 88.47354159054926,
+        "macro_f1": 87.69525661018304,
+        "weighted_f1": 87.14057396896514
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 71.42857142857143,
+          "recall": 83.33333333333334,
+          "f1": 76.92307692307692,
+          "support": 18,
+          "correct": 15
+        },
+        "Bruises": {
+          "precision": 88.46153846153845,
+          "recall": 100.0,
+          "f1": 93.87755102040816,
+          "support": 23,
+          "correct": 23
+        },
+        "Burns": {
+          "precision": 86.66666666666667,
+          "recall": 76.47058823529412,
+          "f1": 81.25,
+          "support": 17,
+          "correct": 13
+        },
+        "Cut": {
+          "precision": 92.85714285714286,
+          "recall": 81.25,
+          "f1": 86.66666666666666,
+          "support": 32,
+          "correct": 26
+        },
+        "Ingrown_nails": {
+          "precision": 100.0,
+          "recall": 100.0,
+          "f1": 100.0,
+          "support": 12,
+          "correct": 12
+        },
+        "Laceration": {
+          "precision": 90.0,
+          "recall": 78.26086956521739,
+          "f1": 83.72093023255815,
+          "support": 23,
+          "correct": 18
+        },
+        "Stab_wound": {
+          "precision": 84.21052631578947,
+          "recall": 100.0,
+          "f1": 91.42857142857143,
+          "support": 16,
+          "correct": 16
+        }
+      },
+      "confusion_matrix": [
+        [
+          15,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          23,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          13,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          4,
+          0,
+          2,
+          26,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          12,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          0,
+          18,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          16
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold4_predictions.json",
+      "sha256": "8a49807e3d74a37794fc51975fadbd3a641152cf84c1b3ef1ba925495fa2b84b"
+    },
+    {
+      "seed": 2026,
+      "fold": 5,
+      "rows": 138,
+      "metrics_percent": {
+        "accuracy": 92.02898550724638,
+        "macro_precision": 92.49489795918367,
+        "macro_recall": 91.80643917486023,
+        "macro_f1": 91.4329171384866,
+        "weighted_f1": 91.83189559614574
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 85.71428571428571,
+          "recall": 94.73684210526315,
+          "f1": 90.0,
+          "support": 19,
+          "correct": 18
+        },
+        "Bruises": {
+          "precision": 100.0,
+          "recall": 96.15384615384616,
+          "f1": 98.0392156862745,
+          "support": 26,
+          "correct": 25
+        },
+        "Burns": {
+          "precision": 100.0,
+          "recall": 68.42105263157895,
+          "f1": 81.25000000000001,
+          "support": 19,
+          "correct": 13
+        },
+        "Cut": {
+          "precision": 93.75,
+          "recall": 83.33333333333334,
+          "f1": 88.23529411764706,
+          "support": 18,
+          "correct": 15
+        },
+        "Ingrown_nails": {
+          "precision": 80.0,
+          "recall": 100.0,
+          "f1": 88.8888888888889,
+          "support": 16,
+          "correct": 16
+        },
+        "Laceration": {
+          "precision": 88.0,
+          "recall": 100.0,
+          "f1": 93.61702127659575,
+          "support": 22,
+          "correct": 22
+        },
+        "Stab_wound": {
+          "precision": 100.0,
+          "recall": 100.0,
+          "f1": 100.0,
+          "support": 18,
+          "correct": 18
+        }
+      },
+      "confusion_matrix": [
+        [
+          18,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          25,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          13,
+          0,
+          4,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          15,
+          0,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          16,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          22,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          18
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s2026_fold5_predictions.json",
+      "sha256": "f841658ebe8a72658ceacd825bf73e11d6ca1f534ba7749b1b16acbc943a6ed8"
+    },
+    {
+      "seed": 3407,
+      "fold": 1,
+      "rows": 147,
+      "metrics_percent": {
+        "accuracy": 85.03401360544217,
+        "macro_precision": 86.73671049447448,
+        "macro_recall": 85.81322094055014,
+        "macro_f1": 86.07482123284097,
+        "weighted_f1": 85.09036948112578
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 75.0,
+          "recall": 91.30434782608695,
+          "f1": 82.35294117647058,
+          "support": 23,
+          "correct": 21
+        },
+        "Bruises": {
+          "precision": 85.71428571428571,
+          "recall": 85.71428571428571,
+          "f1": 85.71428571428571,
+          "support": 21,
+          "correct": 18
+        },
+        "Burns": {
+          "precision": 68.18181818181817,
+          "recall": 65.21739130434783,
+          "f1": 66.66666666666666,
+          "support": 23,
+          "correct": 15
+        },
+        "Cut": {
+          "precision": 100.0,
+          "recall": 87.5,
+          "f1": 93.33333333333333,
+          "support": 16,
+          "correct": 14
+        },
+        "Ingrown_nails": {
+          "precision": 91.30434782608695,
+          "recall": 84.0,
+          "f1": 87.49999999999999,
+          "support": 25,
+          "correct": 21
+        },
+        "Laceration": {
+          "precision": 86.95652173913044,
+          "recall": 86.95652173913044,
+          "f1": 86.95652173913044,
+          "support": 23,
+          "correct": 20
+        },
+        "Stab_wound": {
+          "precision": 100.0,
+          "recall": 100.0,
+          "f1": 100.0,
+          "support": 16,
+          "correct": 16
+        }
+      },
+      "confusion_matrix": [
+        [
+          21,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          18,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          2,
+          15,
+          0,
+          2,
+          2,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          14,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4,
+          0,
+          21,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          2,
+          0,
+          0,
+          20,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          16
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold1_predictions.json",
+      "sha256": "daf39f45f474f3604b70e52a28b8be2c3afd39cf287f502d1aac609daa09822a"
+    },
+    {
+      "seed": 3407,
+      "fold": 2,
+      "rows": 140,
+      "metrics_percent": {
+        "accuracy": 91.42857142857143,
+        "macro_precision": 93.31762690083531,
+        "macro_recall": 92.52071737786024,
+        "macro_f1": 92.64202785941916,
+        "weighted_f1": 91.5547825765217
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 91.30434782608695,
+          "recall": 95.45454545454545,
+          "f1": 93.33333333333333,
+          "support": 22,
+          "correct": 21
+        },
+        "Bruises": {
+          "precision": 100.0,
+          "recall": 85.71428571428571,
+          "f1": 92.3076923076923,
+          "support": 21,
+          "correct": 18
+        },
+        "Burns": {
+          "precision": 79.3103448275862,
+          "recall": 92.0,
+          "f1": 85.18518518518519,
+          "support": 25,
+          "correct": 23
+        },
+        "Cut": {
+          "precision": 100.0,
+          "recall": 100.0,
+          "f1": 100.0,
+          "support": 14,
+          "correct": 14
+        },
+        "Ingrown_nails": {
+          "precision": 100.0,
+          "recall": 84.0,
+          "f1": 91.30434782608697,
+          "support": 25,
+          "correct": 21
+        },
+        "Laceration": {
+          "precision": 82.6086956521739,
+          "recall": 90.47619047619048,
+          "f1": 86.36363636363636,
+          "support": 21,
+          "correct": 19
+        },
+        "Stab_wound": {
+          "precision": 100.0,
+          "recall": 100.0,
+          "f1": 100.0,
+          "support": 12,
+          "correct": 12
+        }
+      },
+      "confusion_matrix": [
+        [
+          21,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          18,
+          2,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          23,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          14,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4,
+          0,
+          21,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0,
+          0,
+          19,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          12
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold2_predictions.json",
+      "sha256": "4a7c42dfd05f6cda45a2ca76f489c2c7b87fa78e4becdde31944703a295a3aba"
+    },
+    {
+      "seed": 3407,
+      "fold": 3,
+      "rows": 152,
+      "metrics_percent": {
+        "accuracy": 84.86842105263158,
+        "macro_precision": 85.49077964519142,
+        "macro_recall": 86.09977324263039,
+        "macro_f1": 83.64507002304087,
+        "weighted_f1": 84.14743073609206
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 90.0,
+          "recall": 90.0,
+          "f1": 90.0,
+          "support": 20,
+          "correct": 18
+        },
+        "Bruises": {
+          "precision": 65.625,
+          "recall": 100.0,
+          "f1": 79.24528301886792,
+          "support": 21,
+          "correct": 21
+        },
+        "Burns": {
+          "precision": 100.0,
+          "recall": 57.14285714285714,
+          "f1": 72.72727272727273,
+          "support": 21,
+          "correct": 12
+        },
+        "Cut": {
+          "precision": 83.33333333333334,
+          "recall": 55.55555555555556,
+          "f1": 66.66666666666667,
+          "support": 27,
+          "correct": 15
+        },
+        "Ingrown_nails": {
+          "precision": 70.58823529411765,
+          "recall": 100.0,
+          "f1": 82.75862068965517,
+          "support": 12,
+          "correct": 12
+        },
+        "Laceration": {
+          "precision": 88.88888888888889,
+          "recall": 100.0,
+          "f1": 94.11764705882352,
+          "support": 16,
+          "correct": 16
+        },
+        "Stab_wound": {
+          "precision": 100.0,
+          "recall": 100.0,
+          "f1": 100.0,
+          "support": 35,
+          "correct": 35
+        }
+      },
+      "confusion_matrix": [
+        [
+          18,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          21,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          12,
+          3,
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          5,
+          0,
+          15,
+          3,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          12,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          16,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          35
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold3_predictions.json",
+      "sha256": "bdd3beb39dfc0ae196159314aecb75fe62f0f795d8d7263989ad494af6575c35"
+    },
+    {
+      "seed": 3407,
+      "fold": 4,
+      "rows": 142,
+      "metrics_percent": {
+        "accuracy": 88.73239436619718,
+        "macro_precision": 89.9392761056992,
+        "macro_recall": 89.73463131071827,
+        "macro_f1": 89.39263748087278,
+        "weighted_f1": 88.57966745083564
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 87.5,
+          "recall": 66.66666666666666,
+          "f1": 75.67567567567566,
+          "support": 21,
+          "correct": 14
+        },
+        "Bruises": {
+          "precision": 95.65217391304348,
+          "recall": 100.0,
+          "f1": 97.77777777777777,
+          "support": 22,
+          "correct": 22
+        },
+        "Burns": {
+          "precision": 88.23529411764706,
+          "recall": 93.75,
+          "f1": 90.9090909090909,
+          "support": 16,
+          "correct": 15
+        },
+        "Cut": {
+          "precision": 95.45454545454545,
+          "recall": 80.76923076923077,
+          "f1": 87.5,
+          "support": 26,
+          "correct": 21
+        },
+        "Ingrown_nails": {
+          "precision": 100.0,
+          "recall": 100.0,
+          "f1": 100.0,
+          "support": 13,
+          "correct": 13
+        },
+        "Laceration": {
+          "precision": 71.42857142857143,
+          "recall": 86.95652173913044,
+          "f1": 78.43137254901961,
+          "support": 23,
+          "correct": 20
+        },
+        "Stab_wound": {
+          "precision": 91.30434782608695,
+          "recall": 100.0,
+          "f1": 95.45454545454545,
+          "support": 21,
+          "correct": 21
+        }
+      },
+      "confusion_matrix": [
+        [
+          14,
+          0,
+          2,
+          0,
+          0,
+          5,
+          0
+        ],
+        [
+          0,
+          22,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          15,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          21,
+          0,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          13,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          20,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          21
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold4_predictions.json",
+      "sha256": "3085e0743917d33434a83ac1bff9ba164af2e9380c122085c4bd4635203bc998"
+    },
+    {
+      "seed": 3407,
+      "fold": 5,
+      "rows": 139,
+      "metrics_percent": {
+        "accuracy": 83.45323741007195,
+        "macro_precision": 86.32199915539339,
+        "macro_recall": 83.58705587498157,
+        "macro_f1": 83.14412864338074,
+        "weighted_f1": 82.89998224787749
+      },
+      "per_class": {
+        "Abrasions": {
+          "precision": 78.26086956521739,
+          "recall": 94.73684210526315,
+          "f1": 85.71428571428571,
+          "support": 19,
+          "correct": 18
+        },
+        "Bruises": {
+          "precision": 64.70588235294117,
+          "recall": 91.66666666666666,
+          "f1": 75.86206896551724,
+          "support": 24,
+          "correct": 22
+        },
+        "Burns": {
+          "precision": 91.66666666666666,
+          "recall": 64.70588235294117,
+          "f1": 75.86206896551724,
+          "support": 17,
+          "correct": 11
+        },
+        "Cut": {
+          "precision": 90.47619047619048,
+          "recall": 100.0,
+          "f1": 95.0,
+          "support": 19,
+          "correct": 19
+        },
+        "Ingrown_nails": {
+          "precision": 100.0,
+          "recall": 84.0,
+          "f1": 91.30434782608697,
+          "support": 25,
+          "correct": 21
+        },
+        "Laceration": {
+          "precision": 90.9090909090909,
+          "recall": 50.0,
+          "f1": 64.51612903225806,
+          "support": 20,
+          "correct": 10
+        },
+        "Stab_wound": {
+          "precision": 88.23529411764706,
+          "recall": 100.0,
+          "f1": 93.75,
+          "support": 15,
+          "correct": 15
+        }
+      },
+      "confusion_matrix": [
+        [
+          18,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          22,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          2,
+          11,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          19,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          0,
+          0,
+          21,
+          0,
+          0
+        ],
+        [
+          0,
+          6,
+          0,
+          2,
+          0,
+          10,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          15
+        ]
+      ],
+      "source_file": "experiments/results/predictions/val/C-Arch-05-MS_s3407_fold5_predictions.json",
+      "sha256": "4ec1da413e418a3dae1bc822699c59aa517e63ff372c615e606cef08e89153c0"
+    }
+  ],
+  "fold_descriptive_metrics": {
+    "accuracy": {
+      "mean": 87.39844583897174,
+      "sample_sd_ddof1": 2.8355998493866146,
+      "minimum": 82.70676691729322,
+      "maximum": 92.02898550724638,
+      "n": 25
+    },
+    "macro_precision": {
+      "mean": 88.8003392375122,
+      "sample_sd_ddof1": 2.6155981944761018,
+      "minimum": 83.82604237867396,
+      "maximum": 93.31762690083531,
+      "n": 25
+    },
+    "macro_recall": {
+      "mean": 87.55749352561787,
+      "sample_sd_ddof1": 3.161814801353361,
+      "minimum": 80.74960127591707,
+      "maximum": 92.52071737786024,
+      "n": 25
+    },
+    "macro_f1": {
+      "mean": 87.35563714247537,
+      "sample_sd_ddof1": 3.1794231410690457,
+      "minimum": 81.25636268493412,
+      "maximum": 92.64202785941916,
+      "n": 25
+    },
+    "weighted_f1": {
+      "mean": 87.3514212863147,
+      "sample_sd_ddof1": 2.90581078046679,
+      "minimum": 82.2848406780416,
+      "maximum": 91.83189559614574,
+      "n": 25
+    }
+  },
+  "fold_interpretation": "DESCRIPTIVE_FOLD_VARIABILITY_ONLY; not 25 independent experiments",
+  "per_class_seed_metrics": {
+    "42": {
+      "Abrasions": {
+        "precision": 79.3103448275862,
+        "recall": 87.61904761904762,
+        "f1": 83.2579185520362,
+        "support": 105,
+        "correct": 92
+      },
+      "Bruises": {
+        "precision": 88.98305084745762,
+        "recall": 96.3302752293578,
+        "f1": 92.51101321585902,
+        "support": 109,
+        "correct": 105
+      },
+      "Burns": {
+        "precision": 91.20879120879121,
+        "recall": 81.37254901960785,
+        "f1": 86.01036269430051,
+        "support": 102,
+        "correct": 83
+      },
+      "Cut": {
+        "precision": 92.22222222222223,
+        "recall": 81.37254901960785,
+        "f1": 86.45833333333334,
+        "support": 102,
+        "correct": 83
+      },
+      "Ingrown_nails": {
+        "precision": 98.9247311827957,
+        "recall": 92.0,
+        "f1": 95.33678756476685,
+        "support": 100,
+        "correct": 92
+      },
+      "Laceration": {
+        "precision": 74.78991596638656,
+        "recall": 86.40776699029125,
+        "f1": 80.18018018018017,
+        "support": 103,
+        "correct": 89
+      },
+      "Stab_wound": {
+        "precision": 95.6989247311828,
+        "recall": 89.8989898989899,
+        "f1": 92.70833333333334,
+        "support": 99,
+        "correct": 89
+      }
+    },
+    "123": {
+      "Abrasions": {
+        "precision": 87.1559633027523,
+        "recall": 90.47619047619048,
+        "f1": 88.78504672897196,
+        "support": 105,
+        "correct": 95
+      },
+      "Bruises": {
+        "precision": 80.95238095238095,
+        "recall": 93.57798165137615,
+        "f1": 86.80851063829788,
+        "support": 109,
+        "correct": 102
+      },
+      "Burns": {
+        "precision": 92.22222222222223,
+        "recall": 81.37254901960785,
+        "f1": 86.45833333333334,
+        "support": 102,
+        "correct": 83
+      },
+      "Cut": {
+        "precision": 96.55172413793103,
+        "recall": 82.35294117647058,
+        "f1": 88.8888888888889,
+        "support": 102,
+        "correct": 84
+      },
+      "Ingrown_nails": {
+        "precision": 92.3076923076923,
+        "recall": 96.0,
+        "f1": 94.11764705882352,
+        "support": 100,
+        "correct": 96
+      },
+      "Laceration": {
+        "precision": 77.06422018348624,
+        "recall": 81.55339805825243,
+        "f1": 79.24528301886792,
+        "support": 103,
+        "correct": 84
+      },
+      "Stab_wound": {
+        "precision": 93.6842105263158,
+        "recall": 89.8989898989899,
+        "f1": 91.75257731958763,
+        "support": 99,
+        "correct": 89
+      }
+    },
+    "3407": {
+      "Abrasions": {
+        "precision": 83.63636363636363,
+        "recall": 87.61904761904762,
+        "f1": 85.5813953488372,
+        "support": 105,
+        "correct": 92
+      },
+      "Bruises": {
+        "precision": 78.90625,
+        "recall": 92.66055045871559,
+        "f1": 85.23206751054852,
+        "support": 109,
+        "correct": 101
+      },
+      "Burns": {
+        "precision": 82.6086956521739,
+        "recall": 74.50980392156863,
+        "f1": 78.35051546391752,
+        "support": 102,
+        "correct": 76
+      },
+      "Cut": {
+        "precision": 93.25842696629213,
+        "recall": 81.37254901960785,
+        "f1": 86.9109947643979,
+        "support": 102,
+        "correct": 83
+      },
+      "Ingrown_nails": {
+        "precision": 92.63157894736842,
+        "recall": 88.0,
+        "f1": 90.25641025641025,
+        "support": 100,
+        "correct": 88
+      },
+      "Laceration": {
+        "precision": 82.52427184466019,
+        "recall": 82.52427184466019,
+        "f1": 82.52427184466019,
+        "support": 103,
+        "correct": 85
+      },
+      "Stab_wound": {
+        "precision": 96.11650485436894,
+        "recall": 100.0,
+        "f1": 98.01980198019803,
+        "support": 99,
+        "correct": 99
+      }
+    },
+    "2026": {
+      "Abrasions": {
+        "precision": 84.070796460177,
+        "recall": 90.47619047619048,
+        "f1": 87.1559633027523,
+        "support": 105,
+        "correct": 95
+      },
+      "Bruises": {
+        "precision": 87.93103448275862,
+        "recall": 93.57798165137615,
+        "f1": 90.66666666666666,
+        "support": 109,
+        "correct": 102
+      },
+      "Burns": {
+        "precision": 90.0,
+        "recall": 79.41176470588235,
+        "f1": 84.375,
+        "support": 102,
+        "correct": 81
+      },
+      "Cut": {
+        "precision": 94.18604651162791,
+        "recall": 79.41176470588235,
+        "f1": 86.17021276595744,
+        "support": 102,
+        "correct": 81
+      },
+      "Ingrown_nails": {
+        "precision": 90.19607843137256,
+        "recall": 92.0,
+        "f1": 91.0891089108911,
+        "support": 100,
+        "correct": 92
+      },
+      "Laceration": {
+        "precision": 80.34188034188034,
+        "recall": 91.2621359223301,
+        "f1": 85.45454545454545,
+        "support": 103,
+        "correct": 94
+      },
+      "Stab_wound": {
+        "precision": 92.70833333333334,
+        "recall": 89.8989898989899,
+        "f1": 91.28205128205128,
+        "support": 99,
+        "correct": 89
+      }
+    },
+    "999": {
+      "Abrasions": {
+        "precision": 87.61904761904762,
+        "recall": 87.61904761904762,
+        "f1": 87.61904761904762,
+        "support": 105,
+        "correct": 92
+      },
+      "Bruises": {
+        "precision": 84.03361344537815,
+        "recall": 91.74311926605505,
+        "f1": 87.71929824561404,
+        "support": 109,
+        "correct": 100
+      },
+      "Burns": {
+        "precision": 93.90243902439023,
+        "recall": 75.49019607843137,
+        "f1": 83.69565217391305,
+        "support": 102,
+        "correct": 77
+      },
+      "Cut": {
+        "precision": 97.59036144578313,
+        "recall": 79.41176470588235,
+        "f1": 87.56756756756758,
+        "support": 102,
+        "correct": 81
+      },
+      "Ingrown_nails": {
+        "precision": 93.87755102040816,
+        "recall": 92.0,
+        "f1": 92.92929292929293,
+        "support": 100,
+        "correct": 92
+      },
+      "Laceration": {
+        "precision": 70.0,
+        "recall": 88.3495145631068,
+        "f1": 78.11158798283262,
+        "support": 103,
+        "correct": 91
+      },
+      "Stab_wound": {
+        "precision": 86.40776699029125,
+        "recall": 89.8989898989899,
+        "f1": 88.11881188118812,
+        "support": 99,
+        "correct": 89
+      }
+    }
+  },
+  "per_class_summary": {
+    "Abrasions": {
+      "precision": {
+        "mean": 84.35850316918535,
+        "sample_sd_ddof1": 3.3371056548135196,
+        "minimum": 79.3103448275862,
+        "maximum": 87.61904761904762,
+        "n": 5
+      },
+      "recall": {
+        "mean": 88.76190476190476,
+        "sample_sd_ddof1": 1.5649215928719054,
+        "minimum": 87.61904761904762,
+        "maximum": 90.47619047619048,
+        "n": 5
+      },
+      "f1": {
+        "mean": 86.47987431032905,
+        "sample_sd_ddof1": 2.136404420123015,
+        "minimum": 83.2579185520362,
+        "maximum": 88.78504672897196,
+        "n": 5
+      },
+      "support_per_seed": {
+        "42": 105,
+        "123": 105,
+        "3407": 105,
+        "2026": 105,
+        "999": 105
+      }
+    },
+    "Bruises": {
+      "precision": {
+        "mean": 84.16126594559506,
+        "sample_sd_ddof1": 4.341347576287883,
+        "minimum": 78.90625,
+        "maximum": 88.98305084745762,
+        "n": 5
+      },
+      "recall": {
+        "mean": 93.57798165137615,
+        "sample_sd_ddof1": 1.7163565994375873,
+        "minimum": 91.74311926605505,
+        "maximum": 96.3302752293578,
+        "n": 5
+      },
+      "f1": {
+        "mean": 88.58751125539722,
+        "sample_sd_ddof1": 2.9535738778977367,
+        "minimum": 85.23206751054852,
+        "maximum": 92.51101321585902,
+        "n": 5
+      },
+      "support_per_seed": {
+        "42": 109,
+        "123": 109,
+        "3407": 109,
+        "2026": 109,
+        "999": 109
+      }
+    },
+    "Burns": {
+      "precision": {
+        "mean": 89.98842962151552,
+        "sample_sd_ddof1": 4.366325363631716,
+        "minimum": 82.6086956521739,
+        "maximum": 93.90243902439023,
+        "n": 5
+      },
+      "recall": {
+        "mean": 78.43137254901961,
+        "sample_sd_ddof1": 3.2515929317209804,
+        "minimum": 74.50980392156863,
+        "maximum": 81.37254901960785,
+        "n": 5
+      },
+      "f1": {
+        "mean": 83.77797273309288,
+        "sample_sd_ddof1": 3.239923167562804,
+        "minimum": 78.35051546391752,
+        "maximum": 86.45833333333334,
+        "n": 5
+      },
+      "support_per_seed": {
+        "42": 102,
+        "123": 102,
+        "3407": 102,
+        "2026": 102,
+        "999": 102
+      }
+    },
+    "Cut": {
+      "precision": {
+        "mean": 94.76175625677129,
+        "sample_sd_ddof1": 2.249759215437669,
+        "minimum": 92.22222222222223,
+        "maximum": 97.59036144578313,
+        "n": 5
+      },
+      "recall": {
+        "mean": 80.7843137254902,
+        "sample_sd_ddof1": 1.3153341044116416,
+        "minimum": 79.41176470588235,
+        "maximum": 82.35294117647058,
+        "n": 5
+      },
+      "f1": {
+        "mean": 87.19919946402904,
+        "sample_sd_ddof1": 1.0818391296188172,
+        "minimum": 86.17021276595744,
+        "maximum": 88.8888888888889,
+        "n": 5
+      },
+      "support_per_seed": {
+        "42": 102,
+        "123": 102,
+        "3407": 102,
+        "2026": 102,
+        "999": 102
+      }
+    },
+    "Ingrown_nails": {
+      "precision": {
+        "mean": 93.58752637792743,
+        "sample_sd_ddof1": 3.264337579581546,
+        "minimum": 90.19607843137256,
+        "maximum": 98.9247311827957,
+        "n": 5
+      },
+      "recall": {
+        "mean": 92.0,
+        "sample_sd_ddof1": 2.8284271247461903,
+        "minimum": 88.0,
+        "maximum": 96.0,
+        "n": 5
+      },
+      "f1": {
+        "mean": 92.74584934403693,
+        "sample_sd_ddof1": 2.095861232091012,
+        "minimum": 90.25641025641025,
+        "maximum": 95.33678756476685,
+        "n": 5
+      },
+      "support_per_seed": {
+        "42": 100,
+        "123": 100,
+        "3407": 100,
+        "2026": 100,
+        "999": 100
+      }
+    },
+    "Laceration": {
+      "precision": {
+        "mean": 76.94405766728266,
+        "sample_sd_ddof1": 4.8877063019836395,
+        "minimum": 70.0,
+        "maximum": 82.52427184466019,
+        "n": 5
+      },
+      "recall": {
+        "mean": 86.01941747572815,
+        "sample_sd_ddof1": 4.038181425841832,
+        "minimum": 81.55339805825243,
+        "maximum": 91.2621359223301,
+        "n": 5
+      },
+      "f1": {
+        "mean": 81.10317369621727,
+        "sample_sd_ddof1": 2.924346764956206,
+        "minimum": 78.11158798283262,
+        "maximum": 85.45454545454545,
+        "n": 5
+      },
+      "support_per_seed": {
+        "42": 103,
+        "123": 103,
+        "3407": 103,
+        "2026": 103,
+        "999": 103
+      }
+    },
+    "Stab_wound": {
+      "precision": {
+        "mean": 92.92314808709843,
+        "sample_sd_ddof1": 3.9044210733593916,
+        "minimum": 86.40776699029125,
+        "maximum": 96.11650485436894,
+        "n": 5
+      },
+      "recall": {
+        "mean": 91.91919191919192,
+        "sample_sd_ddof1": 4.517309045454122,
+        "minimum": 89.8989898989899,
+        "maximum": 100.0,
+        "n": 5
+      },
+      "f1": {
+        "mean": 92.37631515927168,
+        "sample_sd_ddof1": 3.594161100118217,
+        "minimum": 88.11881188118812,
+        "maximum": 98.01980198019803,
+        "n": 5
+      },
+      "support_per_seed": {
+        "42": 99,
+        "123": 99,
+        "3407": 99,
+        "2026": 99,
+        "999": 99
+      }
+    }
+  },
+  "descriptive_pooled_confusion_counts": [
+    [
+      466,
+      18,
+      6,
+      8,
+      1,
+      23,
+      3
+    ],
+    [
+      17,
+      510,
+      12,
+      0,
+      0,
+      5,
+      1
+    ],
+    [
+      28,
+      25,
+      400,
+      5,
+      19,
+      29,
+      4
+    ],
+    [
+      37,
+      10,
+      2,
+      412,
+      12,
+      34,
+      3
+    ],
+    [
+      0,
+      20,
+      16,
+      0,
+      460,
+      4,
+      0
+    ],
+    [
+      5,
+      24,
+      9,
+      10,
+      0,
+      443,
+      24
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      40,
+      455
+    ]
+  ],
+  "pooled_confusion_interpretation": "repeated predictions over the same development set under five random-seed evaluation procedures; not 3600 independent clinical observations",
+  "historical_corrections": {
+    "accuracy_25_fold_mean_percent": 87.39844583897174,
+    "macro_f1_25_fold_mean_percent": 87.35563714247537,
+    "stab_historical_claim": "88.98 ± 9.30%; HISTORICAL_METRIC_SEMANTICS_ERROR; SUPERSEDED_FOR_STAB_WOUND_RECALL; 17/25 fold summary values affected",
+    "fold_mean_vs_seed_pooled": "different estimands; Macro-F1 is nonlinear"
+  },
+  "ci_status": "BLOCKED_BY_MISSING_HISTORICAL_ROW_IDENTITY",
+  "patient_independence_status": "NOT_VERIFIED",
+  "external_7class_validation_status": "NOT_AVAILABLE",
+  "clinical_validation_status": "NOT_CLINICALLY_VALIDATED",
+  "locked_test_used": false,
+  "external_dataset_used": false,
+  "model_training_performed": false,
+  "model_inference_performed": false,
+  "bootstrap_CI_generated": false,
+  "probability_based_metrics": "NOT_RECOMPUTED"
+}

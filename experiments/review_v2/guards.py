@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import math
 from pathlib import Path
+from experiments.data_roles import require_source_role
 
 
 def validate_optimizer_settings(settings: dict) -> None:
@@ -56,6 +57,7 @@ def validate_new_development_run(config: dict, source_gates: dict, *,
     if not isinstance(sources, list) or not sources:
         raise ValueError("explicit data sources required")
     for name in sources:
+        require_source_role(name, 'train')
         evidence = source_gates.get(name, {})
         if (evidence.get("development_allowed") is not True or not evidence.get("evidence_file")
                 or not Path(evidence["evidence_file"]).is_file()):

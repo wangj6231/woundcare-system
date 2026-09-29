@@ -12,6 +12,8 @@ import argparse
 import yaml
 import numpy as np
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from data_roles import require_source_role
 
 import torch
 import torch.nn as nn
@@ -104,6 +106,9 @@ def train_torch_cls(flat_cfg: dict) -> dict:
     weight_decay = flat_cfg.get('weight_decay', 0.0005)
     optimizer_name = flat_cfg.get('optimizer', 'adam')
     dataset      = flat_cfg.get('dataset', '')
+    require_source_role(None, 'train', path=dataset)
+    if (BASE_DIR / 'experiments' / 'results' / 'raw' / run_name).exists():
+        raise FileExistsError('existing Torch classification run; overwrite forbidden')
     aug          = flat_cfg.get('augmentation', {})
 
     torch.manual_seed(seed)
