@@ -1,6 +1,6 @@
 # 智慧型傷口分級與照護對應系統：完整進度與問題處理報告
 
-資料截止：2026-09-29（Asia/Taipei）
+資料截止：2026-10-03（Asia/Taipei；初版2026-09-29，本次補入分類5 seeds × 5 folds逐模型與逐類別證據）
 用途：教授進度報告、畢業專題佐證、履歷作品說明
 Repository：[wangj6231/woundcare-system](https://github.com/wangj6231/woundcare-system)
 
@@ -132,6 +132,36 @@ Phase B1只讀25個保存prediction arrays，不載入模型、不重跑48張tes
 圖1：每個seed先合併五fold，再算一次指標；縱軸為82–91%，用於看小幅seed差異，不表示從0開始的絕對幅度。歷史25-fold mean Accuracy 87.40%與Macro-F1 87.36%可保留為次要描述，但不是25個獨立實驗。舊Stab_wound 88.98±9.30%來自欄位語義錯誤，已由保存陣列的91.92±4.52%取代。
 
 舊Bootstrap把預測列當獨立抽樣單位，而且舊報告是3,622列。雖已重建3,600列，仍缺原ordered row→image／MD5 group身分，所以沒有製造新的grouped CI；B2維持BLOCKED。歷史48張一次性內部holdout為46/48＝95.83%，本輪未讀取、未重跑，也不當作外部臨床驗證。
+
+### 5.4 教授要求的25個模型、七類分數與驗證影像
+
+這裡的「25個模型」是同一個C-Arch-05／YOLOv8n-cls架構，在5個random seeds下各跑5個fold所留下的25個模型實例，不是25種架構，也不是25套彼此獨立的資料。每一列分數都重新由既有validation prediction arrays計算，沒有載入模型、沒有重新推論，也沒有開啟48張locked test。
+
+- [25個seed/fold模型的完整總體分數](../experiments/results/tables/Table_CV25_Overall_Performance.md)：逐列列出validation張數、Accuracy、Macro-Precision、Macro-Recall、Macro-F1、Weighted-F1及Macro ROC-AUC。
+- [25模型 × 7類＝175筆逐類別分數](../experiments/results/tables/Table_CV25_PerClass_Performance.md)：逐列列出Precision、Recall、F1及該fold真實樣本數support。
+- 可機器讀取版本：[整體CSV](../experiments/results/tables/Table_CV25_Overall_Performance.csv)、[逐類別CSV](../experiments/results/tables/Table_CV25_PerClass_Performance.csv)。
+
+25次驗證的Accuracy平均為87.40%，單次fold範圍為82.71–92.03%。逐類別F1的25-run平均與範圍如下。範圍較寬不一定表示訓練故障；因完整MD5群組不能拆開，不同fold的validation張數與各類support本來就不會完全相等，小類別尤其容易波動。
+
+| 類別 | 25-run F1平均 | 最低 | 最高 |
+|---|---:|---:|---:|
+| Abrasions | 86.31% | 75.68% | 94.12% |
+| Bruises | 88.75% | 75.86% | 98.04% |
+| Burns | 83.12% | 66.67% | 98.04% |
+| Cut | 87.03% | 66.67% | 100.00% |
+| Ingrown_nails | 93.39% | 82.14% | 100.00% |
+| Laceration | 81.33% | 64.52% | 97.30% |
+| Stab_wound | 91.56% | 54.55% | 100.00% |
+
+![25個模型的Accuracy與Macro-F1熱圖](report_assets/classification_5x5_20261003/classification_5x5_overall_heatmaps.png)
+
+圖2：橫軸是fold、縱軸是seed，每一格是一個模型實例。這張圖把平均數背後的差異直接攤開，避免只報一個87.40%而看不到最低82.71%與最高92.03%。
+
+![25個模型的七類F1熱圖](report_assets/classification_5x5_20261003/classification_5x5_per_class_f1_heatmaps.png)
+
+圖3：每個小圖是一個傷口類別，每格顯示該seed/fold模型的F1。Laceration平均最低，Stab_wound雖平均高，但seed999/fold2降到54.55%，說明小類別不能只看整體Accuracy。
+
+分類器本身接收完整影像並輸出七類機率，**不會切出ROI或產生傷口bbox**。Ultralytics在每次fold保存的`val_batch*_pred.jpg`，是在拼圖中替每張影像標示預測類別；拼圖格線不是傷口框。本機教授版`docs/private/PROFESSOR_CLASSIFICATION_PREDICTION_GALLERY_20261003.md`已放入25個seed/fold模型各自保存的第一張validation預測montage，並在每張圖前列出該run的Validation N、Accuracy與Macro-F1。由於舊分類資料的原始發布URL、版本、授權及逐圖來源尚未核實，且圖中可見第三方圖庫浮水印與人物，這些原圖只在受控環境提供教授檢視，不上傳公開GitHub；公開版只放上述統計圖與完整數值表。網路上雖找到[採用相同七類名稱的Hugging Face模型](https://huggingface.co/Hemg/Wound-Image-classification)，其模型卡仍明寫training data需要補充、資料集未知；模型頁的Apache-2.0也不能證明原始照片可再散布，因此不能拿來補作本專案圖片授權。若教授要看真正圈住傷口位置的框，那是第十一節YOLO11m-seg的GT／prediction／ROI圖，而不是分類模型輸出。
 
 ## 六、YOLO11m-seg怎麼訓練與驗證
 
@@ -323,7 +353,7 @@ C4只匹配其中一個GT，裁切保留率0.7455；H4-R匹配兩個並把crop�
 
 ## 十三、驗證、安全與公開界線
 
-本輪完整`unittest discover`在首次發佈檢查時找到1個測試順序隔離問題；最小重現證明先import torch會讓E1.1父程序guard誤報。修正後重新執行完整套件，**262項測試全部通過（43.827秒）**。這個數字是GitHub提交前的本機驗證結果；它證明目前自動測試未發現回歸，不等同臨床驗證或實際部署驗收。
+本輪完整`unittest discover`在首次發佈檢查時找到1個測試順序隔離問題；最小重現證明先import torch會讓E1.1父程序guard誤報。2026-10-03加入5×5報告資產稽核並整合GitHub最新版本後重新執行完整套件，**264項測試全部通過（37.824秒）**。這個數字是GitHub提交前的本機驗證結果；它證明目前自動測試未發現回歸，不等同臨床驗證或實際部署驗收。
 
 公開內容只包含程式、設定、方法、聚合數字、FUSeg公開開發案例與SHA256。不得加入：本機密鑰、`.env`實值、資料庫、模型權重、場域影像、分類48張、FUSeg test200、CO2逐圖資料或完整資料集。
 

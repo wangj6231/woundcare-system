@@ -79,6 +79,10 @@ experiments/results/statistics/**
 !experiments/results/statistics/C-Arch-05-MS_phase_b1_final_summary.json
 !experiments/results/tables/
 experiments/results/tables/**
+!experiments/results/tables/Table_CV25_Overall_Performance.md
+!experiments/results/tables/Table_CV25_Overall_Performance.csv
+!experiments/results/tables/Table_CV25_PerClass_Performance.md
+!experiments/results/tables/Table_CV25_PerClass_Performance.csv
 !experiments/results/tables/Table1b_Dataset_Definition_Correction.md
 !experiments/results/tables/Table2b_Classification_Performance_Recomputed_From_Saved_Arrays.md
 !experiments/results/tables/Table2c_Final_Classification_Development_Summary.md
@@ -88,6 +92,7 @@ experiments/results/tables/**
 experiments/manifests/
 experiments/experiment_log.csv
 docs/figures/
+docs/private/
 
 # Per-run preregistration evidence is retained locally. These files contain
 # machine-specific paths and per-sample manifests; publish only the compact

@@ -1,0 +1,35 @@
+{
+  "schema": "CLASSIFICATION_5X5_APPENDIX_V1",
+  "date": "2026-10-03",
+  "saved_prediction_files": 25,
+  "overall_rows": 25,
+  "per_class_rows": 175,
+  "seeds": [
+    42,
+    123,
+    3407,
+    2026,
+    999
+  ],
+  "folds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "classes": [
+    "Abrasions",
+    "Bruises",
+    "Burns",
+    "Cut",
+    "Ingrown_nails",
+    "Laceration",
+    "Stab_wound"
+  ],
+  "model_inference_performed": false,
+  "locked_test_enumerated": false,
+  "locked_test_images_used": 0,
+  "image_row_prediction_mapping": "UNAVAILABLE",
+  "private_prediction_montages": 25
+}
