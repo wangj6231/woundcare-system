@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">ML-SEG-CMP-01 aggregate comparison</title>
+  <desc id="desc">Development-only comparison of three wound segmentation models on 191 FUSeg validation images.</desc>
+  <rect width="1200" height="720" fill="#f7fafc"/>
+  <text x="70" y="66" font-family="PMingLiU, serif" font-size="34" font-weight="700" fill="#17365d">三模型分割比較：同一批 191 張 FUSeg validation</text>
+  <text x="70" y="104" font-family="PMingLiU, serif" font-size="20" fill="#4a5568">Development-only 探索比較；不是獨立測試，也不構成 App 權重替換授權</text>
+
+  <text x="70" y="166" font-family="PMingLiU, serif" font-size="24" font-weight="700" fill="#1f4e79">正樣本 Macro IoU（186 張）</text>
+  <line x1="250" y1="200" x2="1080" y2="200" stroke="#cbd5e0"/>
+  <rect x="250" y="220" width="126" height="56" rx="6" fill="#a0aec0"/>
+  <rect x="250" y="298" width="767" height="56" rx="6" fill="#2f75b5"/>
+  <rect x="250" y="376" width="765" height="56" rx="6" fill="#38a169"/>
+  <text x="70" y="257" font-family="PMingLiU, serif" font-size="22" fill="#2d3748">A App / 384</text>
+  <text x="70" y="335" font-family="PMingLiU, serif" font-size="22" fill="#2d3748">B ISIC-FUSeg / 768</text>
+  <text x="70" y="413" font-family="PMingLiU, serif" font-size="22" fill="#2d3748">C FUSeg candidate / 768</text>
+  <text x="390" y="257" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#2d3748">12.63%</text>
+  <text x="1030" y="335" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#1f4e79">76.66%</text>
+  <text x="1028" y="413" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#276749">76.50%</text>
+
+  <rect x="70" y="482" width="1060" height="138" rx="12" fill="#edf2f7" stroke="#cbd5e0"/>
+  <text x="96" y="522" font-family="PMingLiU, serif" font-size="22" font-weight="700" fill="#17365d">小區域 proxy（IoU &gt;= 0.50）</text>
+  <text x="96" y="562" font-family="PMingLiU, serif" font-size="21" fill="#2d3748">A：2 / 144（1.39%）　 B：100 / 144（69.44%）　 C：98 / 144（68.06%）</text>
+  <text x="96" y="598" font-family="PMingLiU, serif" font-size="19" fill="#4a5568">B 與 C 的逐圖 Macro IoU：B 勝 89、負 93、平 4；兩者差異不足以宣稱穩定優勢。</text>
+
+  <text x="70" y="670" font-family="PMingLiU, serif" font-size="18" fill="#718096">資料角色：191 validation（186 正、5 空）；test_images_used = 0；classification_inference = 0。</text>
+</svg>

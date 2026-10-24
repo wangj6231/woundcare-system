@@ -33,6 +33,7 @@ from starlette.middleware.base import BaseHTTPMiddleware
 from ultralytics import YOLO
 
 from woundcare_inference import CascadeConfig, classify_image, infer_segmentation_cascade
+from woundcare_contract import PredictResponseV2, build_response_v2_fields
 from woundcare_safety import validate_startup
 
 
@@ -644,7 +645,7 @@ def retrieve_rag_guidance(query: str, limit: int = 5, *, include_pending: bool =
     ]
 
 
-@app.post("/api/predict")
+@app.post("/api/predict", response_model=PredictResponseV2)
 async def predict_wound(file: UploadFile = File(...), user: dict[str, Any] = Depends(current_user)) -> dict[str, Any]:
     if file.content_type not in ALLOWED_IMAGE_TYPES:
         raise HTTPException(status_code=415, detail="僅接受 JPG、PNG 或 WebP 圖片")
@@ -660,6 +661,11 @@ async def predict_wound(file: UploadFile = File(...), user: dict[str, Any] = Dep
         raise HTTPException(status_code=503, detail="AI 模型尚未就緒，請稍後再試")
 
     try:
+        # Capture already computed Results for additive serialization, never rerun inference.
+        response_results: dict[str, Any] = {}
+        def capture_result(kind: str, result: Any) -> None:
+            response_results[kind] = result
+
         annotated = image.copy()
         detections: list[dict[str, Any]] = []
         height, width = image.shape[:2]
@@ -672,11 +678,11 @@ async def predict_wound(file: UploadFile = File(...), user: dict[str, Any] = Dep
 
         if seg_model is not None:
             try:
-                cascade = infer_segmentation_cascade(image, seg_model, cls_model, CASCADE_CONFIG)
+                cascade = infer_segmentation_cascade(image, seg_model, cls_model, CASCADE_CONFIG, result_observer=capture_result)
             except Exception:
                 # A segmentation failure must not make the clinical API
                 # unavailable.  Classify the original image and require review.
-                fallback_label, fallback_confidence = classify_image(cls_model, image, CASCADE_CONFIG)
+                fallback_label, fallback_confidence = classify_image(cls_model, image, CASCADE_CONFIG, result_observer=capture_result)
                 cascade = {
                     "mode": "full_image_fallback",
                     "fallback_used": True,
@@ -719,7 +725,7 @@ async def predict_wound(file: UploadFile = File(...), user: dict[str, Any] = Dep
                 label = "Wound"
                 box_class_confidence = None
                 if crop.size:
-                    label, box_class_confidence = classify_image(cls_model, crop, CASCADE_CONFIG)
+                    label, box_class_confidence = classify_image(cls_model, crop, CASCADE_CONFIG, result_observer=capture_result)
                 detections.append({"box": {"x1": x1, "y1": y1, "x2": x2, "y2": y2}, "confidence": round(confidence, 4), "label": label or "Wound", "class_confidence": round(box_class_confidence, 4) if box_class_confidence is not None else None, "source": "legacy_detection"})
                 cv2.rectangle(annotated, (x1, y1), (x2, y2), (24, 160, 147), 3)
                 cv2.putText(annotated, f"{label or 'Wound'} {confidence:.0%}", (x1, max(20, y1 - 10)), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (24, 160, 147), 2)
@@ -749,7 +755,7 @@ async def predict_wound(file: UploadFile = File(...), user: dict[str, Any] = Dep
         rag_guidance = retrieve_rag_guidance(" ".join(classes), limit=3) if classes and not advice_blocked else []
         advice = ("目前不能確認可靠的傷口定位或分類。高分類信心不代表影像一定有傷口；暫不提供類別對應處置與 RAG 建議，請先由護理人員確認影像、位置與分類。"
                   if advice_blocked else _clinical_advice(classes, len(detections)))
-        return {
+        response = {
             "image": "data:image/jpeg;base64," + base64.b64encode(buffer).decode("ascii"),
             "detected_boxes": len(detections),
             "detections": detections,
@@ -774,6 +780,18 @@ async def predict_wound(file: UploadFile = File(...), user: dict[str, Any] = Dep
                 "inference_mode": inference_mode,
             },
         }
+        response.update(build_response_v2_fields(
+            classification_result=response_results.get("classification"),
+            segmentation_result=response_results.get("segmentation"),
+            original_shape=(height, width),
+            classification_threshold=CLS_CONFIDENCE,
+            classification_model_identity={**model_identity(CLS_MODEL_PATH), "task": getattr(cls_model, "task", None), "input_size": CASCADE_CONFIG.classifier_imgsz},
+            segmentation_model_identity={**model_identity(SEG_MODEL_PATH), "task": getattr(seg_model, "task", None), "input_size": SEG_IMGSZ},
+            merged_roi=crop_box,
+            review_required=True,
+            classification_source="full_image" if inference_mode in {"full_image_primary", "full_image_fallback"} else "segmentation_crop",
+        ))
+        return response
     except HTTPException:
         raise
     except Exception:

@@ -1,0 +1,84 @@
+{
+  "as_of": "2026-10-24T00:00:00+08:00",
+  "scope": "public-safe aggregate evidence only",
+  "classification": {
+    "development_protocol": "5 seeds x 5 group-aware folds",
+    "saved_prediction_rows": 3600,
+    "accuracy_percent": 87.39,
+    "locked_test": {
+      "images": 48,
+      "correct": 46,
+      "accuracy_percent": 95.83,
+      "one_shot": true,
+      "not_reopened_in_this_update": true
+    }
+  },
+  "segmentation_comparison": {
+    "phase": "ML-SEG-CMP-01",
+    "cohort_role": "FUSeg development validation",
+    "images": 191,
+    "positive_images": 186,
+    "empty_gt_images": 5,
+    "test_images_used": 0,
+    "quality": "EXPLORATORY_NOT_DEPLOYMENT_ACCEPTANCE",
+    "models": {
+      "A_app_384": {
+        "positive_macro_iou_percent": 12.63,
+        "micro_iou_percent": 9.69,
+        "small_region_proxy_matched": 2,
+        "small_region_proxy_total": 144,
+        "region_proxy_fp": 296,
+        "region_proxy_fn": 236
+      },
+      "B_isic_fuseg_768": {
+        "positive_macro_iou_percent": 76.66,
+        "micro_iou_percent": 82.85,
+        "small_region_proxy_matched": 100,
+        "small_region_proxy_total": 144,
+        "region_proxy_fp": 44,
+        "region_proxy_fn": 49
+      },
+      "C_fuseg_candidate_768": {
+        "positive_macro_iou_percent": 76.50,
+        "micro_iou_percent": 82.51,
+        "small_region_proxy_matched": 98,
+        "small_region_proxy_total": 144,
+        "region_proxy_fp": 33,
+        "region_proxy_fn": 52
+      }
+    },
+    "b_vs_c_positive_pairwise": {
+      "b_wins": 89,
+      "b_losses": 93,
+      "ties": 4
+    },
+    "model_replacement_authorized": false
+  },
+  "api_v2": {
+    "schema_version": "2.0.0",
+    "backend_contract_tests_passed": 14,
+    "backward_compatibility": "PASS",
+    "review_required": true,
+    "care_mapping_status": "NOT_CONFIGURED",
+    "ood_rejection_status": "NOT_VALIDATED",
+    "measurement_status": "NOT_VALIDATED_NO_CALIBRATED_SCALE"
+  },
+  "app_ux_safety": {
+    "frontend_tests_passed": 23,
+    "frontend_tests_failed": 0,
+    "typescript": "PASS",
+    "vite_production_build": "PASS",
+    "post_change_browser_visual_qa": "NOT_EXECUTED",
+    "post_change_http_model_smoke": "NOT_EXECUTED",
+    "development_images_used": 0,
+    "test_images_used": 0,
+    "model_inference_calls": 0
+  },
+  "publication_boundary": {
+    "raw_clinical_images_published": false,
+    "datasets_published": false,
+    "weights_published": false,
+    "raw_predictions_published": false,
+    "secrets_or_databases_published": false
+  }
+}

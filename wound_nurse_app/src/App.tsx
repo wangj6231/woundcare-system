@@ -1,6 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { ChangeEvent, FormEvent, RefObject } from 'react'
 import './App.css'
+import { PredictionV2Panel } from './PredictionV2Panel'
+import type { ResponseV2Fields } from './predictionV2'
+import { ResearchCareDisplay } from './ResearchCareDisplay'
+import { useUploadSession } from './useUploadSession'
+import { UploadStatusDisplay } from './UploadStatusDisplay'
 
 type Role = 'admin' | 'head_nurse' | 'nurse'
 type Status = 'red' | 'yellow' | 'green'
@@ -51,7 +56,7 @@ interface Detection {
   class_confidence: number | null
 }
 
-interface Prediction {
+interface Prediction extends Partial<ResponseV2Fields> {
   image: string
   detected_boxes: number
   detections: Detection[]
@@ -151,9 +156,10 @@ function App() {
   const [shift, setShift] = useState('白班')
   const [search, setSearch] = useState('')
   const [statusFilter, setStatusFilter] = useState<'all' | Status>('all')
-  const [imagePreview, setImagePreview] = useState<string | null>(null)
-  const [prediction, setPrediction] = useState<Prediction | null>(null)
-  const [analysisFile, setAnalysisFile] = useState<File | null>(null)
+  const {session:uploadSession,snapshot:upload} = useUploadSession<Prediction>()
+  const imagePreview = upload.previewUrl
+  const prediction = upload.status === 'success' ? upload.result : null
+  const analysisBusy = upload.status === 'validating' || upload.status === 'loading'
   const [treatment, setTreatment] = useState('')
   const [status, setStatus] = useState<Status>('yellow')
   const [reviewStatus, setReviewStatus] = useState<'reviewed' | 'needs_review'>('needs_review')
@@ -165,7 +171,6 @@ function App() {
   const fileInput = useRef<HTMLInputElement>(null)
   const assessmentRevision = useRef(0)
   const activeToken = useRef(token)
-  useEffect(() => () => { if (imagePreview?.startsWith('blob:')) URL.revokeObjectURL(imagePreview) }, [imagePreview])
 
   const api = async (path: string, init: RequestInit = {}) => {
     const headers = new Headers(init.headers)
@@ -231,37 +236,44 @@ function App() {
     activeToken.current = ''
     assessmentRevision.current += 1
     setPatients([]); setRecords([]); setUsers([]); setAudit([]); setFeedback([]); setRagGuidance([]); setSystemHealth(null)
-    setAnalysisFile(null); setImagePreview(null); setTreatment(''); setHumanReviewConfirmed(false); setLoading(false)
+    uploadSession.reset(); setTreatment(''); setHumanReviewConfirmed(false); setLoading(false)
     if (token) void fetch(`${API_BASE}/api/logout`, { method: 'POST', headers: { Authorization: `Bearer ${token}` } }).catch(() => undefined)
-    sessionStorage.removeItem('woundcare_token'); sessionStorage.removeItem('woundcare_user'); setToken(''); setUser(null); setSelectedPatient(null); setPrediction(null)
+    sessionStorage.removeItem('woundcare_token'); sessionStorage.removeItem('woundcare_user'); setToken(''); setUser(null); setSelectedPatient(null)
   }
 
   const handleImage = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
+    event.target.value = '' // Choosing the same file again must still emit a change.
     if (!file) return
-    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type) || file.size > 10 * 1024 * 1024) { showToast('請選擇 10 MB 以內的 JPG、PNG 或 WebP 圖片'); return }
     assessmentRevision.current += 1
-    setAnalysisFile(file); setPrediction(null); setHumanReviewConfirmed(false); setReviewStatus('needs_review'); setImagePreview(URL.createObjectURL(file))
+    setHumanReviewConfirmed(false); setReviewStatus('needs_review')
+    void uploadSession.select(file)
   }
 
   const runAnalysis = async () => {
-    if (!analysisFile || !selectedPatient) { showToast('請先選擇病人並上傳影像'); return }
-    const revision = assessmentRevision.current
-    setLoading(true)
-    try { const form = new FormData(); form.append('file', analysisFile); const result = await api('/api/predict', { method: 'POST', body: form }) as Prediction; if (revision !== assessmentRevision.current) return; setPrediction(result); setHumanReviewConfirmed(false); if (result.low_confidence || result.fallback_used || result.advice_blocked) setReviewStatus('needs_review'); showToast(result.low_confidence || result.fallback_used || result.advice_blocked ? '此結果需要護理長或臨床人員進一步覆核' : '分析完成，請由護理人員確認後存檔') } catch (error) { showToast(error instanceof Error ? error.message : '影像分析失敗') } finally { if (revision === assessmentRevision.current) setLoading(false) }
+    if (!upload.input || !selectedPatient || analysisBusy) { showToast('請先選擇病人並完成影像檢查'); return }
+    setHumanReviewConfirmed(false); setReviewStatus('needs_review')
+    const accepted=await uploadSession.run(async(file,signal)=>{
+      const form=new FormData(); form.append('file',file)
+      return await api('/api/predict',{method:'POST',body:form,signal}) as Prediction
+    })
+    if (!accepted) return // An older request must not even emit a stale toast.
+    const current=uploadSession.getSnapshot()
+    if (current.status==='error') showToast(current.error ?? '影像分析失敗')
+    else if (current.status==='success') showToast('研究性分析完成，仍需人工覆核；不是診斷或照護建議')
   }
 
   const saveAssessment = async () => {
     if (!selectedPatient || !treatment.trim()) { showToast('請選擇病人並完成處置紀錄'); return }
     if (reviewStatus === 'reviewed' && !humanReviewConfirmed) { showToast('請先明確確認已完成人工覆核'); return }
-    if (loading) { showToast('請等待目前操作完成'); return }
+    if (loading || analysisBusy) { showToast('請等待目前操作完成'); return }
     const revision = assessmentRevision.current
     setLoading(true)
     try {
       await api(`/api/patients/${selectedPatient.id}/emr`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ shift, wound_image: prediction?.image ?? null, ai_analysis: prediction?.llm_advice ?? null, treatment, status, review_status: reviewStatus, human_review_confirmed: humanReviewConfirmed }) })
       if (revision !== assessmentRevision.current) return
-      assessmentRevision.current += 1; setAnalysisFile(null)
-      showToast('評估已安全儲存'); setTreatment(''); setPrediction(null); setImagePreview(null); setHumanReviewConfirmed(false); setReviewStatus('needs_review'); setView('board'); await refresh()
+      assessmentRevision.current += 1; uploadSession.reset()
+      showToast('評估已安全儲存'); setTreatment(''); setHumanReviewConfirmed(false); setReviewStatus('needs_review'); setView('board'); await refresh()
     } catch (error) { showToast(error instanceof Error ? error.message : '儲存失敗') } finally { setLoading(false) }
   }
 
@@ -302,7 +314,7 @@ function App() {
   const selectPatient = (patient: Patient | null) => {
     const revision = ++assessmentRevision.current
     setSelectedPatient(patient); setView('assessment'); setRecords([]); setLoading(false)
-    setPrediction(null); setAnalysisFile(null); setImagePreview(null); setTreatment('')
+    uploadSession.reset(); setTreatment('')
     setHumanReviewConfirmed(false); setReviewStatus('needs_review')
     if (fileInput.current) fileInput.current.value = ''
     if (patient) void api(`/api/patients/${patient.id}/emr`).then(data => {
@@ -337,10 +349,12 @@ function App() {
     </aside>
     <main className="main">
       <header className="topbar"><div><p className="eyebrow">{systemHealth?.professor_preview ? 'INVITATION-ONLY PROFESSOR PREVIEW' : 'WARD OPERATIONS / TODAY'}</p><h1>{view === 'board' ? '照護總覽' : view === 'assessment' ? '新增傷口評估' : view === 'patients' ? '病人名單' : view === 'audit' ? '覆核與稽核' : view === 'feedback' ? '教授測試回饋' : '系統管理'}</h1></div><div className="top-actions"><select value={shift} onChange={e => setShift(e.target.value)} aria-label="目前班別"><option>白班</option><option>小夜</option><option>大夜</option></select><span className="date-label">{new Date().toLocaleDateString('zh-TW', { month: 'long', day: 'numeric', weekday: 'short' })}</span></div></header>
-      {view === 'assessment' && prediction && <section className={`preview-safety ${prediction.low_confidence || prediction.fallback_used || prediction.advice_blocked ? 'attention' : ''}`}><div><strong>{prediction.low_confidence || prediction.fallback_used || prediction.advice_blocked ? '需要進一步覆核' : '人工覆核仍為必要步驟'}</strong><p>{prediction.low_confidence || prediction.fallback_used || prediction.advice_blocked ? '尚無可靠定位、分類信心不足或已使用原圖 fallback；請先人工確認，不要直接採用分類或處置建議。' : 'AI 輸出僅供決策支援，儲存前請確認傷口位置、分類與處置。'}</p>{prediction.model && <small>模型：{prediction.model.file} · SHA-256：{prediction.model.sha256?.slice(0, 12) ?? '未取得'} · 輸入 {prediction.model.input_size}px</small>}</div><label className="review-attestation"><input type="checkbox" checked={humanReviewConfirmed} onChange={e => setHumanReviewConfirmed(e.target.checked)} />我已親自覆核影像、AI 輸出與處置內容。</label></section>}
+      {view === 'assessment' && prediction && <section className={`preview-safety ${prediction.low_confidence || prediction.fallback_used || prediction.advice_blocked ? 'attention' : ''}`}><div><strong>{prediction.low_confidence || prediction.fallback_used || prediction.advice_blocked ? '需要進一步覆核' : '人工覆核仍為必要步驟'}</strong><p>{prediction.low_confidence || prediction.fallback_used || prediction.advice_blocked ? '尚無可靠定位、分類信心不足或已使用原圖 fallback；請先人工確認，不要直接採用分類或處置建議。' : 'AI 輸出僅供研究展示與人工覆核；高 confidence 不等於診斷確認，尚無經審定的照護規則。'}</p>{prediction.model && <small>模型：{prediction.model.file} · SHA-256：{prediction.model.sha256?.slice(0, 12) ?? '未取得'} · 輸入 {prediction.model.input_size}px</small>}</div><label className="review-attestation"><input type="checkbox" checked={humanReviewConfirmed} onChange={e => setHumanReviewConfirmed(e.target.checked)} />我已親自覆核影像、AI 輸出與處置內容。</label></section>}
       {view === 'board' && <Board patients={filteredPatients} counts={counts} search={search} setSearch={setSearch} statusFilter={statusFilter} setStatusFilter={setStatusFilter} onSelect={selectPatient} onNew={() => setView('assessment')} loading={loading} />}
       {view === 'patients' && <Patients patients={filteredPatients} search={search} setSearch={setSearch} onNew={user.role === 'nurse' ? undefined : () => setView('admin')} onSelect={selectPatient} />}
-      {view === 'assessment' && <Assessment patient={selectedPatient} patients={patients} setPatient={selectPatient} imagePreview={imagePreview} prediction={prediction} fileInput={fileInput} onImage={handleImage} runAnalysis={runAnalysis} loading={loading} treatment={treatment} setTreatment={setTreatment} status={status} setStatus={setStatus} reviewStatus={reviewStatus} setReviewStatus={setReviewStatus} humanReviewConfirmed={humanReviewConfirmed} setHumanReviewConfirmed={setHumanReviewConfirmed} save={saveAssessment} records={records.filter(record => record.patient_id === selectedPatient?.id)} />}
+      {view === 'assessment' && <UploadStatusDisplay snapshot={upload} />}
+      {view === 'assessment' && <Assessment patient={selectedPatient} patients={patients} setPatient={selectPatient} imagePreview={imagePreview} prediction={prediction} fileInput={fileInput} onImage={handleImage} runAnalysis={runAnalysis} loading={loading || analysisBusy} treatment={treatment} setTreatment={setTreatment} status={status} setStatus={setStatus} reviewStatus={reviewStatus} setReviewStatus={setReviewStatus} humanReviewConfirmed={humanReviewConfirmed} setHumanReviewConfirmed={setHumanReviewConfirmed} save={saveAssessment} records={records.filter(record => record.patient_id === selectedPatient?.id)} />}
+      {view === 'assessment' && prediction && imagePreview && <PredictionV2Panel prediction={prediction} originalUrl={imagePreview} />}
       {view === 'audit' && <Audit records={records} audit={audit} ragGuidance={ragGuidance} guidanceDraft={guidanceDraft} setGuidanceDraft={setGuidanceDraft} saveGuidance={saveGuidance} deactivateGuidance={deactivateGuidance} reactivateGuidance={reactivateGuidance} />}
       {view === 'admin' && <Admin users={users} newPatient={newPatient} setNewPatient={setNewPatient} createPatient={createPatient} newUser={newUser} setNewUser={setNewUser} createUser={createUser} />}
       {view === 'feedback' && <ProfessorFeedback draft={feedbackDraft} setDraft={setFeedbackDraft} submit={submitFeedback} health={systemHealth} />}
@@ -427,8 +441,7 @@ function PatientCard({ patient, onClick }: { patient: Patient; onClick: () => vo
 function Patients({ patients, search, setSearch, onNew, onSelect }: { patients: Patient[]; search: string; setSearch: (v: string) => void; onNew?: () => void; onSelect: (p: Patient) => void }) { return <div className="content-stack"><section className="section-head prominent"><div><p className="eyebrow">PATIENT DIRECTORY</p><h2>病人名單</h2><p className="muted">點選病人即可查看評估與照護歷程。</p></div>{onNew && <button className="primary-button compact" onClick={onNew}>＋ 新增病人</button>}</section><div className="search wide"><span aria-hidden="true">⌕</span><input aria-label="搜尋病人" value={search} onChange={e => setSearch(e.target.value)} placeholder="搜尋姓名、床號或病歷編號" /></div><section className="patient-grid">{patients.map(patient => <PatientCard key={patient.id} patient={patient} onClick={() => onSelect(patient)} />)}</section></div> }
 
 function Assessment({ patient, patients, setPatient, imagePreview, prediction, fileInput, onImage, runAnalysis, loading, treatment, setTreatment, status, setStatus, reviewStatus, setReviewStatus, humanReviewConfirmed, setHumanReviewConfirmed, save, records }: { patient: Patient | null; patients: Patient[]; setPatient: (p: Patient | null) => void; imagePreview: string | null; prediction: Prediction | null; fileInput: RefObject<HTMLInputElement>; onImage: (event: ChangeEvent<HTMLInputElement>) => void; runAnalysis: () => void; loading: boolean; treatment: string; setTreatment: (v: string) => void; status: Status; setStatus: (v: Status) => void; reviewStatus: 'reviewed' | 'needs_review'; setReviewStatus: (v: 'reviewed' | 'needs_review') => void; humanReviewConfirmed: boolean; setHumanReviewConfirmed: (v: boolean) => void; save: () => void; records: EMRRecord[] }) {
-  const rag = prediction?.rag_guidance ?? []
- return <div className="content-stack"><section className="section-head prominent"><div><p className="eyebrow">ASSESSMENT WORKFLOW / HUMAN REVIEW REQUIRED</p><h2>新增傷口評估</h2><p className="muted">先選擇病人，再上傳影像。AI 結果必須經人工確認後才能存入紀錄。</p></div></section><div className="workflow-grid"><section className="panel"><div className="panel-title"><span className="step">01</span><div><h3>選擇照護對象</h3><p>評估紀錄會與此病人綁定</p></div></div><select className="field" value={patient?.id ?? ''} onChange={e => setPatient(patients.find(item => item.id === Number(e.target.value)) ?? null)}><option value="">選擇病人或床號</option>{patients.map(item => <option key={item.id} value={item.id}>{item.room} · {item.name} · #{item.id}</option>)}</select>{patient && <div className={`selected-patient ${patient.status}`}><span className={`status-dot ${patient.status}`} /><div><strong>{patient.name}</strong><small>{patient.room} · 目前狀態：{statusLabel[patient.status]}</small></div></div>}</section><section className="panel"><div className="panel-title"><span className="step">02</span><div><h3>上傳傷口影像</h3><p>支援 JPG、PNG、WebP，最大 10 MB</p></div></div><input ref={fileInput} type="file" accept="image/jpeg,image/png,image/webp" onChange={onImage} hidden /><div className={`upload-zone ${imagePreview ? 'has-image' : ''}`} onClick={() => fileInput.current?.click()}>{imagePreview ? <img src={prediction?.image ?? imagePreview} alt="待評估傷口影像" /> : <><div className="upload-icon">↑</div><strong>拖曳或點擊上傳影像</strong><span>請確保傷口完整、光線均勻</span></>}</div>{imagePreview && <div className="upload-actions"><button className="text-button" onClick={() => fileInput.current?.click()}>更換影像</button><button className="primary-button compact" onClick={runAnalysis} disabled={loading}>{loading ? '分析中…' : '開始影像分析 →'}</button></div>}</section><section className="panel review-panel"><div className="panel-title"><span className="step">03</span><div><h3>人工覆核與處置</h3><p>AI 不能取代臨床判斷，請完成下方確認</p></div></div>{prediction ? <><div className="ai-result"><div className="result-head"><span className="result-badge">AI 分析完成</span><span>{prediction.detected_boxes} 個候選區域</span></div><div className="mode-row"><span className="secure-tag">{prediction.inference_mode === 'segmentation_crop' ? '已使用 ROI 裁切' : prediction.inference_mode === 'full_image_primary' ? '原圖分類＋ROI 標示' : prediction.inference_mode === 'full_image_fallback' ? '已回退原圖分類' : '物件偵測分類'}</span>{prediction.class_confidence != null && <span className="muted">分類信心 {Math.round(prediction.class_confidence * 100)}%</span>}</div><div className="class-row">{prediction.classes.length ? prediction.classes.map(item => <span key={item} className="class-chip">{item}</span>) : <span className="muted">未偵測到可信區域</span>}</div><p>{prediction.llm_advice}</p></div>{rag.length > 0 && <div className="rag-context"><div className="rag-context-title"><span>RAG</span><strong>護理長核准的相關建議</strong></div>{rag.map(item => <div className="rag-mini" key={item.id}><strong>{item.title}</strong><p>{item.recommendation}</p>{item.precautions && <small>注意：{item.precautions}</small>}</div>)}<small className="rag-disclaimer">僅供參考；請依病人實際狀況與院內規範覆核。</small></div>}</> : <div className="review-placeholder">完成影像分析後，這裡會顯示模型結果、RAG 建議與臨床確認欄位。</div>}<label className="field-label">護理處置與觀察紀錄<textarea className="field textarea" rows={4} value={treatment} onChange={e => setTreatment(e.target.value)} placeholder="例如：清潔傷口、覆蓋敷料、觀察滲液與周圍皮膚…" /></label><div className="choice-row"><div><span className="field-label">病人狀態</span><div className="choice-group">{(['red', 'yellow', 'green'] as Status[]).map(item => <button key={item} className={`choice ${status === item ? 'selected' : ''} ${item}`} onClick={() => setStatus(item)}>{statusLabel[item]}</button>)}</div></div><div><span className="field-label">覆核狀態</span><select className="field compact-field" value={reviewStatus} onChange={e => setReviewStatus(e.target.value as 'reviewed' | 'needs_review')}><option value="reviewed">我已完成人工確認</option><option value="needs_review">交由護理長覆核</option></select></div></div><label className="review-confirmation"><input type="checkbox" checked={humanReviewConfirmed} onChange={e => setHumanReviewConfirmed(e.target.checked)} />我已確認照護對象、影像與處置內容；模型結果不取代我的判斷。</label><button className="primary-button save-button" disabled={loading} onClick={save}>儲存評估紀錄 <span>→</span></button></section></div>{records.length > 0 && <section className="panel history-panel"><div className="panel-title"><span className="step">04</span><div><h3>近期照護紀錄</h3><p>{patient?.name ?? '目前病人'} 的時間軸</p></div></div>{records.slice(0, 5).map(record => <div className="timeline-item" key={record.id}><span className={`status-dot ${record.status}`} /><div><strong>{record.treatment}</strong><small>{record.timestamp} · {record.nurse_name} · {record.shift}</small></div><span className={`status-pill ${record.status}`}>{statusLabel[record.status]}</span></div>)}</section>}</div>
+ return <div className="content-stack"><section className="section-head prominent"><div><p className="eyebrow">ASSESSMENT WORKFLOW / HUMAN REVIEW REQUIRED</p><h2>新增傷口評估</h2><p className="muted">先選擇病人，再上傳影像。AI 結果必須經人工確認後才能存入紀錄。</p></div></section><div className="workflow-grid"><section className="panel"><div className="panel-title"><span className="step">01</span><div><h3>選擇照護對象</h3><p>評估紀錄會與此病人綁定</p></div></div><select className="field" value={patient?.id ?? ''} onChange={e => setPatient(patients.find(item => item.id === Number(e.target.value)) ?? null)}><option value="">選擇病人或床號</option>{patients.map(item => <option key={item.id} value={item.id}>{item.room} · {item.name} · #{item.id}</option>)}</select>{patient && <div className={`selected-patient ${patient.status}`}><span className={`status-dot ${patient.status}`} /><div><strong>{patient.name}</strong><small>{patient.room} · 目前狀態：{statusLabel[patient.status]}</small></div></div>}</section><section className="panel"><div className="panel-title"><span className="step">02</span><div><h3>上傳傷口影像</h3><p>支援 JPG、PNG、WebP，最大 10 MB</p></div></div><input ref={fileInput} type="file" accept="image/jpeg,image/png,image/webp" onChange={onImage} hidden /><div className={`upload-zone ${imagePreview ? 'has-image' : ''}`} onClick={() => fileInput.current?.click()}>{imagePreview ? <img src={prediction?.image ?? imagePreview} alt="待評估傷口影像" /> : <><div className="upload-icon">↑</div><strong>拖曳或點擊上傳影像</strong><span>請確保傷口完整、光線均勻</span></>}</div>{imagePreview && <div className="upload-actions"><button className="text-button" onClick={() => fileInput.current?.click()}>更換影像</button><button className="primary-button compact" onClick={runAnalysis} disabled={loading}>{loading ? '分析中…' : '開始影像分析 →'}</button></div>}</section><section className="panel review-panel"><div className="panel-title"><span className="step">03</span><div><h3>人工覆核與處置</h3><p>AI 不能取代臨床判斷，請完成下方確認</p></div></div>{prediction ? <><div className="ai-result"><div className="result-head"><span className="result-badge">AI 分析完成</span><span>{prediction.detected_boxes} 個候選區域</span></div><div className="mode-row"><span className="secure-tag">{prediction.inference_mode === 'segmentation_crop' ? '已使用 ROI 裁切' : prediction.inference_mode === 'full_image_primary' ? '原圖分類＋ROI 標示' : prediction.inference_mode === 'full_image_fallback' ? '已回退原圖分類' : '物件偵測分類'}</span>{prediction.class_confidence != null && <span className="muted">分類信心 {Math.round(prediction.class_confidence * 100)}%</span>}</div><div className="class-row">{prediction.classes.length ? prediction.classes.map(item => <span key={item} className="class-chip">{item}</span>) : <span className="muted">未偵測到可信區域</span>}</div><ResearchCareDisplay prediction={prediction} /></div></> : <div className="review-placeholder">完成影像分析後，這裡會顯示研究性模型結果與人工覆核欄位。</div>}<label className="field-label">護理處置與觀察紀錄<textarea className="field textarea" rows={4} value={treatment} onChange={e => setTreatment(e.target.value)} placeholder="例如：清潔傷口、覆蓋敷料、觀察滲液與周圍皮膚…" /></label><div className="choice-row"><div><span className="field-label">病人狀態</span><div className="choice-group">{(['red', 'yellow', 'green'] as Status[]).map(item => <button key={item} className={`choice ${status === item ? 'selected' : ''} ${item}`} onClick={() => setStatus(item)}>{statusLabel[item]}</button>)}</div></div><div><span className="field-label">覆核狀態</span><select className="field compact-field" value={reviewStatus} onChange={e => setReviewStatus(e.target.value as 'reviewed' | 'needs_review')}><option value="reviewed">我已完成人工確認</option><option value="needs_review">交由護理長覆核</option></select></div></div><label className="review-confirmation"><input type="checkbox" checked={humanReviewConfirmed} onChange={e => setHumanReviewConfirmed(e.target.checked)} />我已確認照護對象、影像與處置內容；模型結果不取代我的判斷。</label><button className="primary-button save-button" disabled={loading} onClick={save}>儲存評估紀錄 <span>→</span></button></section></div>{records.length > 0 && <section className="panel history-panel"><div className="panel-title"><span className="step">04</span><div><h3>近期照護紀錄</h3><p>{patient?.name ?? '目前病人'} 的時間軸</p></div></div>{records.slice(0, 5).map(record => <div className="timeline-item" key={record.id}><span className={`status-dot ${record.status}`} /><div><strong>{record.treatment}</strong><small>{record.timestamp} · {record.nurse_name} · {record.shift}</small></div><span className={`status-pill ${record.status}`}>{statusLabel[record.status]}</span></div>)}</section>}</div>
 }
 
 function Audit({ records, audit, ragGuidance, guidanceDraft, setGuidanceDraft, saveGuidance, deactivateGuidance, reactivateGuidance }: { records: EMRRecord[]; audit: Array<{ id: number; username?: string; action: string; resource?: string; created_at: string }>; ragGuidance: RAGGuidance[]; guidanceDraft: GuidanceDraft; setGuidanceDraft: (draft: GuidanceDraft) => void; saveGuidance: () => void; deactivateGuidance: (id: number) => void; reactivateGuidance: (id: number) => void }) {

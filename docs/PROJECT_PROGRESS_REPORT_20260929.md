@@ -1,6 +1,6 @@
 # 智慧型傷口分級與照護對應系統：完整進度與問題處理報告
 
-資料截止：2026-10-03（Asia/Taipei；初版2026-09-29，本次補入分類5 seeds × 5 folds逐模型與逐類別證據）
+資料截止：2026-10-24（Asia/Taipei；初版2026-09-29；本次補入三模型分割比較、API Response V2與App上傳安全改動）
 用途：教授進度報告、畢業專題佐證、履歷作品說明
 Repository：[wangj6231/woundcare-system](https://github.com/wangj6231/woundcare-system)
 
@@ -8,7 +8,7 @@ Repository：[wangj6231/woundcare-system](https://github.com/wangj6231/woundcare
 
 ## 一、目前結論
 
-本專案已建立「傷口定位／分割 → 七類分類 → 護理師覆核 → 經覆核建議進入可追溯知識庫」的研究原型。分類結果已完成保存資料重建；分割模型完成多輪受控比較；App具備人工覆核、角色權限、病人切換保護與RAG來源追溯。
+本專案已建立「傷口定位／分割 → 七類分類 → 護理師覆核 → 經覆核建議進入可追溯知識庫」的研究原型。分類結果已完成保存資料重建；分割模型完成多輪受控比較；App具備人工覆核、角色權限、病人切換保護、RAG來源追溯、Response V2模型證據顯示，以及不沿用舊結果的上傳狀態隔離。
 
 但目前不能說模型已達臨床落地：最新分割候選仍未通過預先固定的 development gate，七類分類資料來源仍缺完整上游授權證據，也沒有新的獨立七類外部驗證。研究價值在於已找到並量化多個真實問題，而不是只保留最高分：
 
@@ -395,3 +395,62 @@ GitHub歷史曾有舊Fernet key事件；本機換key與分支重置已完成，�
 5. 本報告是回溯整合；沒有證據證明的地方明確標為BLOCKED、FAIL或尚未開始，不冒稱所有歷史實驗都事前完成預註冊。
 
 > 我先重新核對分類與分割的資料角色、預測列和程式輸入，發現分類舊統計多了22列，分割驗收則有RGB/BGR通道錯誤。修正後分類以3,600個保存預測列重建，五seed的Accuracy為87.39±0.79個百分點；分割F1由錯誤輸入下的20.06%恢復到86.01%，但仍未通過Precision與裁切完整率門檻。接著我用五seed測試小傷口加權抽樣，只有2/5通過完整安全門檻；再做768與1024配對，1024沒有增加總TP，反而very-small少1個、FP多5個。配對錯誤稽核顯示問題主要是偵測重新分配與其他區域FP增加。目前已找到18張有原始全零mask的可信training negatives，但它們原本已參與每輪訓練，因此下一步必須先預登錄一個真正單一因素的假陽性控制實驗，而不是直接宣布加入負樣本就會改善。整個過程未重開分類48張、未讀FUSeg test pixels、未重用CO2選模，也未替換App模型。
+
+## 十五、2026-10-22至2026-10-24最新進度增補
+
+這一輪沒有重開分類48張locked test、沒有使用FUSeg test200、沒有重新訓練，也沒有替換App模型。工作分成「確認哪個分割候選值得進入獨立驗證規劃」與「把模型輸出安全、可追溯地呈現在App」兩條線。公開的機器可讀彙總見[progress_20261024.json](evidence/progress_20261024.json)。
+
+### 15.1 三模型分割比較：找到候選，但不能直接換模型
+
+在相同191張FUSeg development validation（186正、5張空GT）上，比較：A＝目前App分割模型／384、B＝ISIC→FUSeg color-fix baseline／768、C＝FUSeg model-card candidate／768。A沿用封存輸出，B/C各做191次推論；`test_images_used=0`。
+
+![三模型分割聚合比較](report_assets/progress_20261024/ml_seg_cmp_01_aggregate.svg)
+
+| 指標 | A App／384 | B ISIC-FUSeg／768 | C FUSeg candidate／768 |
+|---|---:|---:|---:|
+| 正樣本macro IoU | 12.63% | 76.66% | 76.50% |
+| 全圖micro IoU | 9.69% | 82.85% | 82.51% |
+| Pixel Precision | 9.71% | 88.73% | 88.32% |
+| Pixel Recall | 97.36% | 92.59% | 92.61% |
+| Small-region proxy匹配 | 2/144 | 100/144 | 98/144 |
+| Region proxy FP／FN | 296／236 | 44／49 | 33／52 |
+
+最重要的發現不是只看76.66%最高，而是A的高Recall來自大面積過覆蓋：prediction pixels約為GT的10.026倍。B/C大幅降低背景過覆蓋，但增加一部分漏失。B比C只高0.156個百分點；186張正圖逐圖比較為B勝89、負93、平4，因此不能宣稱B穩定優於C。這一輪結論是`EXPLORATORY_NOT_DEPLOYMENT_ACCEPTANCE`：可規劃新的獨立確認資料，但沒有App換權重授權。
+
+既有第十一節已放入5張來自`f_higher_scale_v2_paired_error_audit/paired_error_visualizations`的模型框選／裁切案例，用於說明新增FP、定位重分配、多傷口、very-small退步與局部crop改善。完整35張圖未整包上傳，避免把公開報告變成資料集再發布；本次也不新增來源權利尚未完全釐清的原圖。
+
+### 15.2 API Response V2：把「模型真正輸出什麼」交代清楚
+
+新增[woundcare_contract.py](../woundcare_contract.py)，並以最小改動接到[backend_main.py](../backend_main.py)與[woundcare_inference.py](../woundcare_inference.py)。V2保留舊V1必要欄位，同時補上：
+
+- 七類原始分數、Top-1 index/name與既有0.60信心門檻；不重新softmax或捏造分數。
+- 真實Mask instance count、native RLE、polygon與boxes；不把合併ROI冒充Mask。
+- 原圖尺寸、Mask native grid、座標系與模型basename／SHA-256／task／input size。
+- `review_required=true`、`care_mapping_status=NOT_CONFIGURED`、`ood_rejection_status=NOT_VALIDATED`、`measurement_status=NOT_VALIDATED_NO_CALIBRATED_SCALE`。
+
+14項後端契約測試通過，包含非有限分數、空Mask、boxes-without-masks、RLE孔洞、模型類別順序、路徑隱私、V1回歸與人工覆核不可自動解除。這證明序列化與相容性符合目前程式契約，不代表模型品質、診斷、OOD、cm²量測或照護政策已驗收。
+
+### 15.3 App V2與上傳安全：修正「舊結果黏到新圖片」風險
+
+App新增[PredictionV2Panel.tsx](../wound_nurse_app/src/PredictionV2Panel.tsx)、[maskMapping.ts](../wound_nurse_app/src/maskMapping.ts)與[predictionV2.ts](../wound_nurse_app/src/predictionV2.ts)，可並列原圖、Mask overlay、框、polygon、七類分數、門檻與模型身分。其後再加入[uploadSession.ts](../wound_nurse_app/src/uploadSession.ts)、[useUploadSession.ts](../wound_nurse_app/src/useUploadSession.ts)、[UploadStatusDisplay.tsx](../wound_nurse_app/src/UploadStatusDisplay.tsx)與[ResearchCareDisplay.tsx](../wound_nurse_app/src/ResearchCareDisplay.tsx)，處理兩項實際風險：
+
+1. 未經審定的舊`llm_advice`／RAG文字不再被畫面呈現為正式照護規則；V1缺少審定欄位時同樣fail closed。
+2. 選擇任何新檔案就清除前一次結果；MIME／大小／解碼失敗、HTTP失敗、重試、病人切換與登出均不沿用舊Mask或分類。晚到的舊請求以input generation與request ID拒絕提交，避免覆蓋新結果。
+
+目前測試為：後端14/14、前端23/23、Python compile、TypeScript及Vite production build皆PASS。前一版App V2做過真實development HTTP與桌面瀏覽器檢視；但本次上傳安全修正後尚未重做瀏覽器／真實HTTP，因此狀態必須寫成`NOT_EXECUTED`，不能拿單元測試冒充最新瀏覽器驗收。
+
+### 15.4 最新問題、目前處理與預計步驟
+
+| 發現問題 | 目前怎麼處理 | 完成度 | 下一個完成標準 |
+|---|---|---:|---|
+| App舊模型在FUSeg上大面積過覆蓋 | 三模型同cohort、同GT語義做像素與region proxy比較 | 探索比較100%；部署0% | 新的合法未見cohort，先凍結門檻與候選，再一次確認 |
+| B/C結果接近且各有得失 | 保留逐圖89勝／93負／4平，不只報最高平均 | 100% | 不在這191張繼續選模；補獨立annotation QC與確認 |
+| API只回傳舊摘要，無法追查Mask與七類分數 | Response V2保留真實RLE、polygon、boxes、scores與模型身分 | 契約100% | 新環境重跑HTTP與前端E2E；仍不可等同模型品質驗收 |
+| 新圖片可能短暫顯示舊結果 | upload session隔離input/request，錯誤與晚到回應fail closed | 單元／建置100%；瀏覽器待辦 | 手機、跨瀏覽器、慢網路、取消與真實HTTP回歸 |
+| 照護文字可能被誤解為已核准政策 | `NOT_CONFIGURED`時隱藏未審定建議並顯示研究限制 | 顯示契約100%；政策0% | 由護理專家版本化核准、可撤回且保留audit trail |
+| OOD與面積未驗證 | API與UI明列NOT_VALIDATED；高confidence不解除覆核 | 邊界標示100%；能力0% | 獨立OOD資料、可信比例尺與預定驗收規格 |
+| 公開資料來源／再發布界線 | GitHub只放程式、聚合表、既有精選FUSeg開發案例與hash | 持續稽核 | 補齊來源版本與權利；不公開場域圖、資料集、權重、DB、密鑰、原始預測 |
+
+### 15.5 本次GitHub公開範圍
+
+本次提交只納入可重跑的API／前端原始碼、測試、聚合JSON、比較SVG與更新後報告。`deployment/`保留本機，因其中包含機器路徑、逐圖輸出、快取、日誌與暫時性私有執行證據；`deliverables/`包含甄試文件，也不進公開repo。`.gitignore`新增這兩個目錄作預防。公開前會對實際staged檔案做密鑰與高熵掃描，不能以「整個工作目錄很乾淨」代替發布集合檢查。

@@ -104,3 +104,9 @@ dseg*_review_project_*/
 dseg*_yasin_wound_annotation_*/
 yolo_wound_cls_dataset_*/
 wound_nurse_app/dist-*/
+
+# Local admission deliverables and phase execution evidence can contain
+# personal documents, machine paths, per-image outputs, caches, or temporary
+# credentials. Publish only manually reviewed summaries copied into docs/.
+deliverables/
+deployment/

@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "npm run test:ux-safety",
+    "test:live-v2": "node tests/run-live-v2.mjs",
+    "test:ux-safety": "node tests/run-ux-safety.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

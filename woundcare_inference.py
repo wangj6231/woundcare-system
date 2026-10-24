@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import math
-from typing import Any, Optional
+from typing import Any, Callable, Optional
 
 import numpy as np
 
@@ -57,7 +57,8 @@ def _class_name(model: Any, index: int) -> str:
     return str(names[index] if isinstance(names, dict) else names[index])
 
 
-def classify_image(model: Any, image: np.ndarray, config: CascadeConfig) -> tuple[Optional[str], Optional[float]]:
+def classify_image(model: Any, image: np.ndarray, config: CascadeConfig, *,
+                   result_observer: Optional[Callable[[str, Any], None]] = None) -> tuple[Optional[str], Optional[float]]:
     """Return a finite top-1 class/confidence for a uint8 BGR image."""
 
     _validate_bgr_image(image)
@@ -67,6 +68,8 @@ def classify_image(model: Any, image: np.ndarray, config: CascadeConfig) -> tupl
         device=config.device,
         verbose=False,
     )[0]
+    if result_observer is not None:
+        result_observer("classification", result)
     probabilities = getattr(result, "probs", None)
     if probabilities is None:
         return None, None
@@ -128,6 +131,8 @@ def infer_segmentation_cascade(
     segmenter: Any,
     classifier: Any,
     config: CascadeConfig = CascadeConfig(),
+    *,
+    result_observer: Optional[Callable[[str, Any], None]] = None,
 ) -> dict[str, Any]:
     """Run ROI proposal and classification on a uint8 BGR image.
 
@@ -145,6 +150,8 @@ def infer_segmentation_cascade(
         device=config.device,
         verbose=False,
     )[0]
+    if result_observer is not None:
+        result_observer("segmentation", segment_result)
     raw_box, segment_confidence, instance_count = _segmentation_box(segment_result, width, height)
     crop_box = _padded_box(raw_box, width, height, config.crop_margin) if raw_box else None
     if crop_box:
@@ -158,7 +165,7 @@ def infer_segmentation_cascade(
     if config.classification_source == "full_image":
         # Development-supported default: classify the original image
         # and use segmentation only to provide a visual ROI when available.
-        label, class_confidence = classify_image(classifier, image, config)
+        label, class_confidence = classify_image(classifier, image, config, result_observer=result_observer)
         low_confidence = label is None or class_confidence is None or class_confidence < config.classifier_confidence
         if label is not None and not low_confidence:
             detections = 1 if crop_box else 0
@@ -191,7 +198,7 @@ def infer_segmentation_cascade(
         raise ValueError("classification_source must be full_image or segmentation_crop")
 
     if crop is not None and crop.size and segment_confidence >= config.segmenter_confidence:
-        label, class_confidence = classify_image(classifier, crop, config)
+        label, class_confidence = classify_image(classifier, crop, config, result_observer=result_observer)
         if label is not None and class_confidence is not None and class_confidence >= config.classifier_confidence:
             return {
                 "mode": "segmentation_crop",
@@ -206,7 +213,7 @@ def infer_segmentation_cascade(
                 "classification_source": "segmentation_crop",
             }
 
-    fallback_label, fallback_confidence = classify_image(classifier, image, config)
+    fallback_label, fallback_confidence = classify_image(classifier, image, config, result_observer=result_observer)
     low_confidence = fallback_label is None or fallback_confidence is None or fallback_confidence < config.classifier_confidence
     return {
         "mode": "full_image_fallback",

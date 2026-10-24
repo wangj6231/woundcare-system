@@ -1,6 +1,6 @@
 # Professor Review Index
 
-Updated: 2026-08-12
+Updated: 2026-10-24
 
 This index is the public, reproducible entry point for the wound detection and
 classification experiments. Raw clinical images and third-party dataset copies
@@ -9,6 +9,13 @@ retrieve data from the original providers.
 
 For the complete phase-by-phase protocol, image counts, metrics, and governance
 status, see the [detailed experimental report](./PROFESSOR_DETAILED_EXPERIMENT_REPORT.md).
+
+The current professor-facing progress report, including the 25 classification
+runs, paired segmentation error figures, selected public FUSeg development
+examples, the three-model segmentation comparison, and App/API safety work, is
+[PROJECT_PROGRESS_REPORT_20260929.md](./PROJECT_PROGRESS_REPORT_20260929.md)
+(content updated through 2026-10-24). Its latest machine-readable public
+aggregate is [progress_20261024.json](./evidence/progress_20261024.json).
 
 ## 1. Dataset sources and access
 
