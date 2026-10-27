@@ -4,6 +4,8 @@
 
 [完整研究進度報告](docs/PROJECT_PROGRESS_REPORT_20260929.md) · [公開彙總證據 JSON](docs/evidence/progress_20261024.json) · [App 操作與交付說明](docs/PROJECT_HANDOFF_20260914.md) · [GitHub 安全稽核](docs/GITHUB_SECURITY_AUDIT_20260906.md)
 
+最新文件與軟體驗證更新：[2026-10-27 進度與重驗結果](docs/PROGRESS_UPDATE_20261027.md)。後端 14/14、前端 23/23、lint 與 production build 再次通過；沒有新增訓練、真模型推論、盲測或 App 權重替換。以下模型數字仍引用 2026-10-24 的封存彙總。
+
 ## 專案要解決什麼問題
 
 傷口照片若只交給單一黑盒模型直接下結論，使用者很難知道模型看見了什麼、結果是否可信，以及何時應交由專業人員處理。本專案把流程拆成可檢查的步驟：

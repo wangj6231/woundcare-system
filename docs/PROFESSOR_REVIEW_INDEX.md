@@ -1,6 +1,12 @@
 # Professor Review Index
 
-Updated: 2026-10-24
+Updated: 2026-10-27
+
+Latest documentation and software revalidation:
+[2026-10-27 progress update](./PROGRESS_UPDATE_20261027.md).
+Backend contract tests 14/14, frontend safety tests 23/23, lint and production
+build passed again. No training, real-model inference, blind test or App model
+replacement was performed in this update.
 
 This index is the public, reproducible entry point for the wound detection and
 classification experiments. Raw clinical images and third-party dataset copies
