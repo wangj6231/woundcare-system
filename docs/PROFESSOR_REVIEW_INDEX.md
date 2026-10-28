@@ -2,6 +2,11 @@
 
 Updated: 2026-10-28
 
+[Wound recognition in the October 27 build](./WEB_RECOGNITION_20261027_BUILD.md)
+shows an actual one-image HTTP prediction, mask/boxes and seven-class scores,
+captured October 28. The overbroad mask is preserved; this is not accuracy or
+clinical validation.
+
 [Actual browser demonstration screenshots](./WEB_DEMO_20261028.md) now show
 login, the synthetic care board, assessment, explicit review blocking, and
 audit/RAG controls. This is an isolated synthetic UI demonstration with models

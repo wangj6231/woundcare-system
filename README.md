@@ -8,9 +8,11 @@
 
 ## 專案要解決什麼問題
 
-網頁實機畫面：[登入、照護看板、評估與覆核、RAG 稽核五張截圖](docs/WEB_DEMO_20261028.md)（2026-10-28，實際瀏覽器操作、合成示範資料、未載入模型）。
+網頁實機畫面：[10/27 版本傷口辨識結果](docs/WEB_RECOGNITION_20261027_BUILD.md)（10/28 實際操作擷取，含傷口遮罩、框線及七類分數）；另有[登入、看板與覆核五張截圖](docs/WEB_DEMO_20261028.md)。
 
-![WoundCare 實際網頁照護看板 合成示範資料](docs/report_assets/web_demo_20261028/02_care_board.jpg)
+![WoundCare 傷口辨識實機畫面 FUSeg 開發影像 模型遮罩有過覆蓋](docs/report_assets/web_recognition_20261027_build/02_wound_mask_boxes.jpg)
+
+圖中紫色是實際模型預測，保留過度涵蓋正常皮膚的問題；不是人工真值或臨床驗收。個案身分為合成資料，影像來源為 FUSeg development validation。
 
 傷口照片若只交給單一黑盒模型直接下結論，使用者很難知道模型看見了什麼、結果是否可信，以及何時應交由專業人員處理。本專案把流程拆成可檢查的步驟：
 

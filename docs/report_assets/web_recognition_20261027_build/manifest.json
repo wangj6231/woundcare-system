@@ -1,0 +1,67 @@
+{
+  "app_build_date": "2026-10-27",
+  "captured_on": "2026-10-28",
+  "source_commit": "af58d37ea1851273c57ff306c4228261ac390d5c",
+  "capture_method": "Actual browser screenshots; full page and browser screenshot clip regions; no pixel retouching",
+  "source_image": {
+    "dataset": "FUSeg",
+    "sample": "fuseg__0001.png",
+    "role": "DEVELOPMENT_VALIDATION",
+    "sha256": "8cd00b6c175afbc69c777e82f2c8bef111734b8fbf8f3bb4fe21e59d0402f501",
+    "source": "https://github.com/uwm-bigdata/wound-segmentation",
+    "paper": "https://arxiv.org/abs/2201.00414",
+    "use": "noncommercial academic illustration",
+    "seven_class_ground_truth_available": false
+  },
+  "synthetic_case": true,
+  "clinical_database_used": false,
+  "test_images_used": 0,
+  "http_predictions": 1,
+  "training_runs": 0,
+  "weights_changed": false,
+  "classification_source": "full_image",
+  "top1_name": "Stab_wound",
+  "top1_score": 0.9348245859146118,
+  "segmentation_instance_count": 3,
+  "predicted_box_count": 3,
+  "classification_model": {
+    "sha256": "7d87bea870642b04a9b143ca22bf5125b54abdcc702cf612a7f43f5c56f3bcb2",
+    "task": "classify",
+    "input_size": 224
+  },
+  "segmentation_model": {
+    "sha256": "15483a50f4087a5ef307bdd278fa6ca12e3d14ac2cebdf35bb506af73389f103",
+    "task": "segment",
+    "input_size": 384
+  },
+  "limitations": [
+    "Overbroad predicted mask visible",
+    "No seven-class correctness measured",
+    "Not clinical validation",
+    "Not full E2E regression",
+    "R14 not repaired"
+  ],
+  "files": [
+    {
+      "file": "01_full_result.jpg",
+      "width": 1264,
+      "height": 3012,
+      "bytes": 256149,
+      "sha256": "cbe377c1edd17f98895313fb5521b2b8cb6da3e4231fe8bfadd2ae8ea8c91154"
+    },
+    {
+      "file": "02_wound_mask_boxes.jpg",
+      "width": 1010,
+      "height": 690,
+      "bytes": 69900,
+      "sha256": "d2a056b8fd93c9a0c6a16a73f94b49a927005e3f37986ae175b7f0615d711dab"
+    },
+    {
+      "file": "03_seven_class_scores.jpg",
+      "width": 1010,
+      "height": 800,
+      "bytes": 53450,
+      "sha256": "2fbb90b53962d8fc53cb04aaf78c70101e60679bbcf954bb8b4ba9cda64ca377"
+    }
+  ]
+}

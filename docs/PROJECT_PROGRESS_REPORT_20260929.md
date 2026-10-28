@@ -457,6 +457,10 @@ App新增[PredictionV2Panel.tsx](../wound_nurse_app/src/PredictionV2Panel.tsx)�
 
 ## 十六、2026-10-28 網頁端實機展示
 
+另補入[10/27 建置版本的傷口辨識實機截圖](WEB_RECOGNITION_20261027_BUILD.md)：10/28 實際上傳一張 FUSeg development 影像並取得模型回傳，包含原圖、遮罩、框線與七類分數；不是 10/27 當天拍攝，也不使用 10/24 舊圖。單張展示不取代完整 HTTP 回歸與臨床驗收。
+
+![10/27版本實際傷口辨識與過大遮罩](report_assets/web_recognition_20261027_build/02_wound_mask_boxes.jpg)
+
 [完整五張實際操作截圖與逐圖說明](WEB_DEMO_20261028.md)已補入報告；這些是本機實際 React／FastAPI 網頁，不是設計稿。以拋棄式合成資料庫展示登入、照護看板、評估、人工確認阻擋與 RAG／稽核，不載入模型、不做推論或盲測。不能據此宣稱真模型 HTTP 或臨床驗收完成。
 
 ![實際網頁照護看板 合成示範資料](report_assets/web_demo_20261028/02_care_board.jpg)
