@@ -1,0 +1,68 @@
+{
+  "captured_on": "2026-10-28",
+  "implementation_commit": "af58d37ea1851273c57ff306c4228261ac390d5c",
+  "method": "actual browser screenshots of existing React/FastAPI app",
+  "environment": "loopback ephemeral synthetic preview",
+  "synthetic_cases": true,
+  "raw_patient_images_used": 0,
+  "model_loaded": false,
+  "model_inference_calls": 0,
+  "test_images_used": 0,
+  "screen_pixels_edited": false,
+  "verified_ui_observations": [
+    "login reached care board",
+    "two synthetic cases visible",
+    "one synthetic needs_review record saved",
+    "reviewed without explicit confirmation blocked in browser",
+    "RAG save disabled with both confirmations unchecked"
+  ],
+  "not_verified": [
+    "real model HTTP inference",
+    "mobile",
+    "slow network",
+    "clinical effectiveness",
+    "deployment security"
+  ],
+  "files": [
+    {
+      "file": "01_login.jpg",
+      "caption": "圖 6-1 實際瀏覽器中的登入頁",
+      "width": 1280,
+      "height": 720,
+      "bytes": 56763,
+      "sha256": "fb5117b682aa269a27a5f9849457a978d9b7dea0dae645c1e4298c5faebf6541"
+    },
+    {
+      "file": "02_care_board.jpg",
+      "caption": "圖 6-2 合成個案的照護總覽",
+      "width": 1264,
+      "height": 853,
+      "bytes": 66677,
+      "sha256": "df9c879ebda9d1465e48be0d69e8f072214ce81f3d24a63889ae99e87945b146"
+    },
+    {
+      "file": "03_assessment_review.jpg",
+      "caption": "圖 6-3 實際傷口評估表單與人工確認框",
+      "width": 1264,
+      "height": 1155,
+      "bytes": 89699,
+      "sha256": "b410a7374c73cbeed600587249e1afa7b358c09be574e46d417a9590864d5bb6"
+    },
+    {
+      "file": "05_review_guard.jpg",
+      "caption": "圖 6-4 未勾確認框時不能標記為已覆核",
+      "width": 1264,
+      "height": 1348,
+      "bytes": 103469,
+      "sha256": "d51bec4eeda141f74aff7b448f8d04a60f7c1665be4e3089f46daab1ac6ecf77"
+    },
+    {
+      "file": "04_audit_rag.jpg",
+      "caption": "圖 6-5 待覆核紀錄 操作稽核與 RAG 雙確認",
+      "width": 1264,
+      "height": 1646,
+      "bytes": 113299,
+      "sha256": "bdd0e95fd70da4c8249168aca5265e51de31aa4f0b9379ffe913a310fd02455d"
+    }
+  ]
+}

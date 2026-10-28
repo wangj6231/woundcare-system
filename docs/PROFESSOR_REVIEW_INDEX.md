@@ -1,6 +1,11 @@
 # Professor Review Index
 
-Updated: 2026-10-27
+Updated: 2026-10-28
+
+[Actual browser demonstration screenshots](./WEB_DEMO_20261028.md) now show
+login, the synthetic care board, assessment, explicit review blocking, and
+audit/RAG controls. This is an isolated synthetic UI demonstration with models
+unloaded, not real-model HTTP, mobile, or clinical acceptance.
 
 Latest documentation and software revalidation:
 [2026-10-27 progress update](./PROGRESS_UPDATE_20261027.md).
